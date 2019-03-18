@@ -6,14 +6,17 @@ using UnityEngine.SceneManagement;
 public class EscapeFromScene : MonoBehaviour
 {
     public Animator anim;
-    public string boolTrigger;
-    private bool isEscapePressed = false;
-    public int LoadSceneByIndex;
+    public string enterTrigger;
+    public string exitTrigger;
+    private bool isEscapePressed;
+    private bool isUsedPressed;
+
     
     // Update is called once per frame
     void Update()
     {
-        anim.SetBool(boolTrigger, isEscapePressed);
+        anim.SetBool(enterTrigger, isUsedPressed);
+        anim.SetBool(exitTrigger, isEscapePressed);
         if (Input.GetButtonDown("Cancel"))
         {
             isEscapePressed = true;
@@ -23,14 +26,13 @@ public class EscapeFromScene : MonoBehaviour
             isEscapePressed = false;
         }
 
-        if(anim.GetCurrentAnimatorStateInfo(0).IsName("FadeSceneToBlack"))
+        if(Input.GetButtonDown("Use"))
         {
-            LoadScene(LoadSceneByIndex);
+            isUsedPressed = true;
         }
-    }
-
-    void LoadScene(int index)
-    {
-        SceneManager.LoadScene(index);
+        else
+        {
+            isUsedPressed = false;
+        }
     }
 }
