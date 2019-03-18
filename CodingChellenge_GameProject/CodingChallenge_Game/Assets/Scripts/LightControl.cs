@@ -7,13 +7,17 @@ public class LightControl : MonoBehaviour
     private bool isInteractable;
     public GameObject mainObject;
     public GameObject light;
+    
 
+    public bool isForAnimation = false;
 
     // Start is called before the first frame update
     void Start()
     {
+
         light.GetComponent<Light>().enabled = false;
         isInteractable = false;
+
     }
 
     // Update is called once per frame
@@ -40,6 +44,7 @@ public class LightControl : MonoBehaviour
         {
             Debug.Log("Collision with Player");
             isInteractable = true;
+            isForAnimation = true;
         }
     }
 
@@ -49,6 +54,7 @@ public class LightControl : MonoBehaviour
         {
             Debug.Log("Player exited the collider");
             isInteractable = false;
+            isForAnimation = false;
         }
     }
 
