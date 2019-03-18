@@ -17,11 +17,15 @@ public class EscapeFromScene : MonoBehaviour
         if (Input.GetButtonDown("Cancel"))
         {
             isEscapePressed = true;
-            LoadScene(LoadSceneByIndex);
         }
         else
         {
             isEscapePressed = false;
+        }
+
+        if(anim.GetCurrentAnimatorStateInfo(0).IsName("FadeSceneToBlack"))
+        {
+            LoadScene(LoadSceneByIndex);
         }
     }
 
