@@ -7,7 +7,6 @@ public class LightControl : MonoBehaviour
     private bool isInteractable;
     public GameObject mainObject;
     public GameObject light;
-    //public Animator anim;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +20,6 @@ public class LightControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //anim.SetBool("isForAnimation", isInteractable);
         if (isInteractable == true && Input.GetButtonDown("Use"))
         {
             Debug.Log("E is pressed");
@@ -31,7 +29,7 @@ public class LightControl : MonoBehaviour
             }
             else if (light.GetComponent<Light>().enabled == true)
             {
-                light.GetComponent<Light>().enabled = false;
+                light.GetComponent<Light>().enabled = false ;
             }
 
         }
