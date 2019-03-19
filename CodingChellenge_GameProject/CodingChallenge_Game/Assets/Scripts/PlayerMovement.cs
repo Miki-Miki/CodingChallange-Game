@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-
+    public Animator animator;
     public float pWalkSpeed = 20f;
     Rigidbody2D rb2d;
     public float scaleX;
     public float scaleY;
     public float scaleZ;
+    private bool isWalking;
+    public string boolTrigger;
 
   
     // Start is called before the first frame update
@@ -22,16 +24,30 @@ public class PlayerMovement : MonoBehaviour
      void Update()
     {
 
+        if(Input.GetAxis("Horizontal") < -0.1f || Input.GetAxis("Horizontal") > 0.1f)
+        {
+            isWalking = true;
+        } 
+        else
+        {
+            isWalking = false;
+        }
+
         //Turning the player sprite around it's pivot when it moves in x and -x
         if(Input.GetAxis("Horizontal") < -0.1f)
         {
             transform.localScale = new Vector3(-scaleX, scaleY, scaleZ);
         }
+       
 
         if (Input.GetAxis("Horizontal") > 0.1f)
         {
+           
             transform.localScale = new Vector3(scaleX, scaleY, scaleZ);
         }
+       
+
+        animator.SetBool(boolTrigger, isWalking);
     }
 
     // Update is called once per frame
