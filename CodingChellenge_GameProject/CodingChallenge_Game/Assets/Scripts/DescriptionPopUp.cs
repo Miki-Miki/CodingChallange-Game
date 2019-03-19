@@ -18,7 +18,7 @@ public class DescriptionPopUp : MonoBehaviour
         {
             animator.SetBool(boolTrigger, isTrigger);
         } 
-        if (isTrigger == false)
+        if (isTrigger == false || computerLight.GetComponent<Light>().enabled == true)
         {
             animator.SetBool(boolTrigger, false);
         }
