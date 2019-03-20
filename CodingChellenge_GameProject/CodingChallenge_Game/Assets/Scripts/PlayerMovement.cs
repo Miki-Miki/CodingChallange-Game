@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     public float scaleZ;
     private bool isWalking;
     public string boolTrigger;
-    public GameObject playerParentObject;
+    //public GameObject playerParentObject;
 
   
     // Start is called before the first frame update
@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
      void Update()
     {
 
-        if(Input.GetAxis("Horizontal") < -0.1f || Input.GetAxis("Horizontal") > 0.1f)
+        if(Input.GetAxis("Horizontal") < -0.3f || Input.GetAxis("Horizontal") > 0.1f)
         {
             isWalking = true;
         } 
@@ -35,16 +35,16 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //Turning the player sprite around it's pivot when it moves in x and -x
-        if(Input.GetAxis("Horizontal") < -0.1f)
+        if(Input.GetAxis("Horizontal") < -0.3f)
         {
-            playerParentObject.transform.localScale = new Vector3(-scaleX, scaleY, scaleZ);
+            transform.localScale = new Vector3(-scaleX, scaleY, scaleZ);
         }
        
 
         if (Input.GetAxis("Horizontal") > 0.1f)
         {
 
-            playerParentObject.transform.localScale = new Vector3(scaleX, scaleY, scaleZ);
+            transform.localScale = new Vector3(scaleX, scaleY, scaleZ);
         }
        
 
