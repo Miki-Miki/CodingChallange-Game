@@ -838,7 +838,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.42901, y: -0.075000286, z: -12.690001}
+  m_LocalPosition: {x: 11.452653, y: -0.075000286, z: -12.690001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -924,6 +924,80 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &620411021
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2681783940064020705, guid: 55fe67b92b421424f8b5262a3e9c21e7,
+        type: 3}
+      propertyPath: m_Name
+      value: MainPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 2681783940064020705, guid: 55fe67b92b421424f8b5262a3e9c21e7,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2681783940064020637, guid: 55fe67b92b421424f8b5262a3e9c21e7,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 2681783940064020637, guid: 55fe67b92b421424f8b5262a3e9c21e7,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 2681783940064020637, guid: 55fe67b92b421424f8b5262a3e9c21e7,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.1113281
+      objectReference: {fileID: 0}
+    - target: {fileID: 2681783940064020637, guid: 55fe67b92b421424f8b5262a3e9c21e7,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2681783940064020637, guid: 55fe67b92b421424f8b5262a3e9c21e7,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2681783940064020637, guid: 55fe67b92b421424f8b5262a3e9c21e7,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2681783940064020637, guid: 55fe67b92b421424f8b5262a3e9c21e7,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2681783940064020637, guid: 55fe67b92b421424f8b5262a3e9c21e7,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2681783940064020637, guid: 55fe67b92b421424f8b5262a3e9c21e7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2681783940064020637, guid: 55fe67b92b421424f8b5262a3e9c21e7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2681783940064020637, guid: 55fe67b92b421424f8b5262a3e9c21e7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 55fe67b92b421424f8b5262a3e9c21e7, type: 3}
 --- !u!1 &775869022
 GameObject:
   m_ObjectHideFlags: 0
@@ -1526,7 +1600,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1806735604}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.17684, y: -0.8416004, z: -12.690001}
+  m_LocalPosition: {x: 13.177078, y: -0.8416004, z: -12.690001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1082411875}
@@ -1761,6 +1835,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1063373294824874076, guid: 6c54472992bb9d94ea35a551edab6417,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1063373294824874077, guid: 6c54472992bb9d94ea35a551edab6417,
         type: 3}

@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     public float scaleZ;
     private bool isWalking;
     public string boolTrigger;
-    //public GameObject playerParentObject;
+    //public GameObject torsoObject;
 
   
     // Start is called before the first frame update
