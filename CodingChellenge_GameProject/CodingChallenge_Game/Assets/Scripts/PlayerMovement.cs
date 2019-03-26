@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public string boolTrigger;
     //public GameObject torsoObject;
 
-  
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,31 +23,31 @@ public class PlayerMovement : MonoBehaviour
 
 
     //This function runs every frame
-     void Update()
+    void Update()
     {
 
-        if(Input.GetAxis("Horizontal") < -0.3f || Input.GetAxis("Horizontal") > 0.1f)  //If player is moving on the H - Axis
+        if (Input.GetAxis("Horizontal") < -0.3f || Input.GetAxis("Horizontal") > 0.1f)  //If player is moving on the H - Axis
         {
             isWalking = true;
-        } 
+        }
         else
         {
             isWalking = false;
         }
 
         //Turning the player sprite around it's pivot when it moves in x and -x
-        if(Input.GetAxis("Horizontal") < -0.1f)
+        if (Input.GetAxis("Horizontal") < -0.1f)
         {
             transform.localScale = new Vector3(-scaleX, scaleY, scaleZ);    //By grabbing the player's transform and
         }                                                                   //transforming its scale when it moves to the left 
-       
+
 
         if (Input.GetAxis("Horizontal") > 0.1f)
         {
 
             transform.localScale = new Vector3(scaleX, scaleY, scaleZ);     //While object moves to the right scale remains the same
         }
-       
+
 
         animator.SetBool(boolTrigger, isWalking);                           //Setting the bool that triggers the animation at every frame
     }                                                                       //Once it is true the animation will run or not depending on the bool value
@@ -70,8 +70,9 @@ public class PlayerMovement : MonoBehaviour
 
         Vector2 movement = new Vector2(moveHorizontal, 0);  //Creating a new Vector2 along the line where are player walks (or will walk)
 
-        rb2d.AddForce(movement*pWalkSpeed);                 //Setting that vector as the vector that adds force on our object's rigid body component
-                                                            //Multiplying that with our adjustable pWalkSpeed value we can adjust the objects moving speed
-        
+        rb2d.AddForce(movement * pWalkSpeed);                 //Setting that vector as the vector that adds force on our object's rigid body component
+                                                              //Multiplying that with our adjustable pWalkSpeed value we can adjust the objects moving speed
+
     }
+
 }
