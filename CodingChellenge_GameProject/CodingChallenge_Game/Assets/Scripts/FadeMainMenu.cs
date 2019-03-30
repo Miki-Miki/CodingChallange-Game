@@ -1,25 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FadeMainMenu : MonoBehaviour
 {
-    public Animator imageAnimator;
-    public Animator canvasAnimator;
-    public string boolTrigger;
 
-    // Start is called before the first frame update
-    void Start()
+    public GameObject playButton;
+    public GameObject exitButton;
+
+    public void LoadScene()
     {
-        
+        SceneManager.LoadScene("Scene1");
     }
-
-    // Update is called once per frame
-    void Update()
+    
+    public void DisableGameObject()
     {
-        if(imageAnimator.GetCurrentAnimatorStateInfo(0).IsName("Pressed"))
-        {
-            canvasAnimator.SetBool(boolTrigger, true);
-        }
+        playButton.SetActive(false);
+        exitButton.SetActive(false);
     }
 }
