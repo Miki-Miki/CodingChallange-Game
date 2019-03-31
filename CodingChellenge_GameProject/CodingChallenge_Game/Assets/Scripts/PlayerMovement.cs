@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public Animator animator;
     public float pWalkSpeed = 20f;
+    public float pRunSpeed = 70f;
     Rigidbody2D rb2d;
     public float scaleX;        //These scale attributes allow for the object to be resized
     public float scaleY;        //and not affected by the movement since in the block where we define the
@@ -56,14 +57,13 @@ public class PlayerMovement : MonoBehaviour
         {
             isShiftPressed = true;
             animator.SetBool(boolShiftPressed, isShiftPressed);
-            pWalkSpeed = 70f;
+            pWalkSpeed = pRunSpeed;
         }
         
         if(Input.GetKeyUp("left shift"))
         {
             isShiftPressed = false;
             animator.SetBool(boolShiftPressed, isShiftPressed);
-            pWalkSpeed = 55f;
         }
 
         animator.SetBool(boolTrigger, isWalking);                           //Setting the bool that triggers the animation at every frame
