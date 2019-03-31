@@ -8,10 +8,13 @@ public class LetterPopUp : MonoBehaviour
     public string boolTrigger;
     private bool isTrigger = false;      //Interactable field is initialized to false
     public float delay;                  //this variable allows us to set a certain delay on the triggering of our animation
+    public GameObject LetterPopUpper;
+
 
     void Update()
     {
-        runCoroutine();                 //This function runs every frame (but the animation will only be delay if we enter the interactable field (line 26)                        
+        runCoroutine();                 //This function runs every frame (but the animation will only be delay if we enter the interactable field (line 26)     
+        LetterPopUpper.transform.parent = transform;                  
     }
 
     //This coroutine delays the triggering of an animation

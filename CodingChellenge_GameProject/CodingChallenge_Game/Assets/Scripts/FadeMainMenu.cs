@@ -13,7 +13,7 @@ public class FadeMainMenu : MonoBehaviour
     void OnEnable() 
     {
         playButton.onClick.AddListener(RunFadeAnimation);
-        playButton.onClick.AddListener(ExitGame);
+        exitButton.onClick.AddListener(ExitGame);
     }
     
     public void LoadScene()
