@@ -5,9 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class FadeMainMenu : MonoBehaviour
 {
+    public Animator animator;
+
     public void LoadScene()
     {
         SceneManager.LoadScene("Scene1");
     }
     
+    void Update() 
+    {
+        
+    }
 }

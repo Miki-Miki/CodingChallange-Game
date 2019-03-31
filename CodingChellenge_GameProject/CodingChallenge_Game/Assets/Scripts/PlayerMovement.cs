@@ -12,6 +12,10 @@ public class PlayerMovement : MonoBehaviour
     public float scaleZ;        //sprite flipping when player moves to the right we have to define the scale
     private bool isWalking;     //This way we ensure it is always the same
     public string boolTrigger;
+   
+    //Controllers for fast walking while shift is pressed
+    private bool isShiftPressed;
+    public string boolShiftPressed;
     //public GameObject torsoObject;
 
 
@@ -48,6 +52,19 @@ public class PlayerMovement : MonoBehaviour
             transform.localScale = new Vector3(scaleX, scaleY, scaleZ);     //While object moves to the right scale remains the same
         }
 
+        if(Input.GetKeyDown("left shift"))
+        {
+            isShiftPressed = true;
+            animator.SetBool(boolShiftPressed, isShiftPressed);
+            pWalkSpeed = 70f;
+        }
+        
+        if(Input.GetKeyUp("left shift"))
+        {
+            isShiftPressed = false;
+            animator.SetBool(boolShiftPressed, isShiftPressed);
+            pWalkSpeed = 55f;
+        }
 
         animator.SetBool(boolTrigger, isWalking);                           //Setting the bool that triggers the animation at every frame
     }                                                                       //Once it is true the animation will run or not depending on the bool value
