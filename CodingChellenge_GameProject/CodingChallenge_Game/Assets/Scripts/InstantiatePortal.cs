@@ -15,6 +15,7 @@ public class InstantiatePortal : MonoBehaviour
         {
             isF_pressed = true;
             Instantiate_Portal();
+            Debug.Log("F is pressed portal should be instantiated");
         }
     }
 
