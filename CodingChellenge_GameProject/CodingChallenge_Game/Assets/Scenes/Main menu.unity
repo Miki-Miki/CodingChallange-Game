@@ -201,7 +201,6 @@ GameObject:
   - component: {fileID: 165004416}
   - component: {fileID: 165004415}
   - component: {fileID: 165004414}
-  - component: {fileID: 165004418}
   m_Layer: 5
   m_Name: EXIT
   m_TagString: Untagged
@@ -329,20 +328,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 165004412}
   m_CullTransparentMesh: 0
---- !u!114 &165004418
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 165004412}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0d5554a31c824142a431033f8514e9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playButton: {fileID: 1521986149}
-  exitButton: {fileID: 165004412}
 --- !u!1001 &375983460
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -995,6 +980,11 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 701156cf603138748b05ca5e4a831dd7, type: 2}
+    - target: {fileID: 2681783940064020638, guid: 55fe67b92b421424f8b5262a3e9c21e7,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2681783940007018242, guid: 55fe67b92b421424f8b5262a3e9c21e7,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -2173,7 +2163,6 @@ GameObject:
   - component: {fileID: 1521986153}
   - component: {fileID: 1521986152}
   - component: {fileID: 1521986151}
-  - component: {fileID: 1521986155}
   m_Layer: 5
   m_Name: Play
   m_TagString: Untagged
@@ -2345,20 +2334,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1521986149}
   m_CullTransparentMesh: 0
---- !u!114 &1521986155
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1521986149}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0d5554a31c824142a431033f8514e9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playButton: {fileID: 1521986149}
-  exitButton: {fileID: 165004412}
 --- !u!1 &1525478143
 GameObject:
   m_ObjectHideFlags: 0
@@ -2481,6 +2456,8 @@ GameObject:
   - component: {fileID: 1953343576}
   - component: {fileID: 1953343575}
   - component: {fileID: 1953343574}
+  - component: {fileID: 1953343580}
+  - component: {fileID: 1953343579}
   - component: {fileID: 1953343578}
   m_Layer: 5
   m_Name: Main Menu UI
@@ -2579,7 +2556,7 @@ Animator:
   m_GameObject: {fileID: 1953343573}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1239ee81e69c1484a8d185a9c41c4c99, type: 2}
+  m_Controller: {fileID: 9100000, guid: 9138e498443c1aa4ab2d6ae6a265148b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2588,6 +2565,30 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1953343579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1953343573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0d5554a31c824142a431033f8514e9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!225 &1953343580
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1953343573}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2042254839
 GameObject:
   m_ObjectHideFlags: 0
