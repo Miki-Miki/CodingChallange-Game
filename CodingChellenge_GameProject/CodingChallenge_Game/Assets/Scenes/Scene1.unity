@@ -539,6 +539,12 @@ Animator:
     type: 3}
   m_PrefabInstance: {fileID: 389898714}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &389898716 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2385613384277789853, guid: c606d9b5531c4314293979056c61a2bd,
+    type: 3}
+  m_PrefabInstance: {fileID: 389898714}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &451761657
 GameObject:
   m_ObjectHideFlags: 0
@@ -755,6 +761,7 @@ MonoBehaviour:
   animator: {fileID: 1970112211}
   boolTrigger: isForAnimation
   delay: 0.5
+  LetterPopUpper: {fileID: 1970112212}
 --- !u!114 &517509590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -770,6 +777,7 @@ MonoBehaviour:
   animator: {fileID: 389898715}
   boolTrigger: isForAnimation
   delay: 0
+  LetterPopUpper: {fileID: 389898716}
 --- !u!114 &517509591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -913,7 +921,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.1274939, y: 0.49499965, z: -14.02}
+  m_LocalPosition: {x: -3.1356778, y: 0.49499965, z: -14.02}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1412,7 +1420,7 @@ Transform:
   - {fileID: 517509583}
   - {fileID: 1896847301}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1125878592
 PrefabInstance:
@@ -1958,7 +1966,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1806735604}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.933461, y: -0.38240027, z: -14.02}
+  m_LocalPosition: {x: -4.9333787, y: -0.38240027, z: -14.02}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1082411875}
@@ -2217,6 +2225,12 @@ PrefabInstance:
 --- !u!95 &1970112211 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 2385613384277789922, guid: c606d9b5531c4314293979056c61a2bd,
+    type: 3}
+  m_PrefabInstance: {fileID: 1970112210}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1970112212 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2385613384277789853, guid: c606d9b5531c4314293979056c61a2bd,
     type: 3}
   m_PrefabInstance: {fileID: 1970112210}
   m_PrefabAsset: {fileID: 0}
