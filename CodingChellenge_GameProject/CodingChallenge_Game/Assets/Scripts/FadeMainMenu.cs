@@ -8,10 +8,12 @@ public class FadeMainMenu : MonoBehaviour
 {
     public Animator animator;
     public Button playButton;
+    public Button exitButton;
 
     void OnEnable() 
     {
-        playButton.onClick.AddListener(runFadeAnimation);
+        playButton.onClick.AddListener(RunFadeAnimation);
+        playButton.onClick.AddListener(ExitGame);
     }
     
     public void LoadScene()
@@ -19,8 +21,13 @@ public class FadeMainMenu : MonoBehaviour
         SceneManager.LoadScene("Scene1");
     }
 
-    public void runFadeAnimation() 
+    public void RunFadeAnimation() 
     {
         animator.SetBool("playPressed", true);
+    }
+
+    public void ExitGame() 
+    {
+        Application.Quit();
     }
 }
