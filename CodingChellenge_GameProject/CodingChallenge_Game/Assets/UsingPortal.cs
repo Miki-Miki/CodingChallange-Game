@@ -9,7 +9,7 @@ public class UsingPortal : MonoBehaviour
     private bool isUsePressed;
     private bool isInteractable;
     public string descritpionBoolTrigger;
-    public int sceneIndex = 0;
+    public int sceneIndex = 1;
     public GameObject playerToDisable;
 
     // Update is called once per frame
@@ -36,10 +36,10 @@ public class UsingPortal : MonoBehaviour
 
     void LoadScene() 
     {
-        if(sceneIndex == 0)
-            SceneManager.LoadScene(1);
+        if(sceneIndex == 1)
+            SceneManager.LoadScene(2);
         else
-            SceneManager.LoadScene(3);
+            SceneManager.LoadScene(1);
     }
 
     void OnTriggerEnter2D(Collider2D collision)
