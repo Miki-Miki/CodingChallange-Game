@@ -64,6 +64,7 @@ public class PlayerMovement : MonoBehaviour
         {
             isShiftPressed = false;
             animator.SetBool(boolShiftPressed, isShiftPressed);
+            pWalkSpeed = 55f;
         }
 
         animator.SetBool(boolTrigger, isWalking);                           //Setting the bool that triggers the animation at every frame
