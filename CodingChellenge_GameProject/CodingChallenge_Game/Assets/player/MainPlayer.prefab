@@ -1563,6 +1563,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   portalSpawnPoint: {fileID: 2066963720}
   portal: {fileID: 8103831108970845440, guid: 9a2ed6ff495475a4e8814f37ac62dac8, type: 3}
+  parallel:
+    m_Handle: 0
+  portalAnimator: {fileID: 8103831108970845443, guid: 9a2ed6ff495475a4e8814f37ac62dac8,
+    type: 3}
 --- !u!1 &2681783940188485371
 GameObject:
   m_ObjectHideFlags: 0

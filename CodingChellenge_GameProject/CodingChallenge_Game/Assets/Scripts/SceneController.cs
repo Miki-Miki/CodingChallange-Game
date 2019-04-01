@@ -21,7 +21,7 @@ public class SceneController : MonoBehaviour
 
     void FixedUpdate()
     {
-        Debug.Log("X: " + Player.position.x + ",  Y:" + Player.position.y);
+        //Debug.Log("X: " + Player.position.x + ",  Y:" + Player.position.y);
         player_X = Player.position.x;
         player_Y = Player.position.y;
         player_Z = Player.position.z;

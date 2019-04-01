@@ -9,15 +9,16 @@ public class UsingPortal : MonoBehaviour
     private bool isUsePressed;
     private bool isInteractable;
     public string descritpionBoolTrigger;
-    private GameObject playerToDisable;
-    private Transform player;
-    private GameObject PLAYER;
+    //private GameObject playerToDisable;
+    //private Transform player;
+    //private GameObject PLAYER;
     [SerializeField] private string toScene;
     private SceneController sceneController;
 
 
     void Start()
     {
+
         sceneController = GameObject.FindGameObjectWithTag("GameController").GetComponent<SceneController>();
     }
     

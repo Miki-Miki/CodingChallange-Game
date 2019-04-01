@@ -4895,8 +4895,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   descriptionAnimator: {fileID: 8659173204267856384}
   descritpionBoolTrigger: isForAnimation
-  sceneIndex: 0
-  toScene: velid-testing-lab
+  toScene: Scene1
 --- !u!1 &8103831109015973057
 GameObject:
   m_ObjectHideFlags: 0
