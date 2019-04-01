@@ -4775,7 +4775,7 @@ GameObject:
   - component: {fileID: 6652418598251376611}
   - component: {fileID: 1560393458303379149}
   m_Layer: 0
-  m_Name: portal_prefab
+  m_Name: portal_prefab 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4896,7 +4896,7 @@ MonoBehaviour:
   descriptionAnimator: {fileID: 8659173204267856384}
   descritpionBoolTrigger: isForAnimation
   sceneIndex: 0
-  toScene: velid-testing-lab 1
+  toScene: velid-testing-lab
 --- !u!1 &8103831109015973057
 GameObject:
   m_ObjectHideFlags: 0

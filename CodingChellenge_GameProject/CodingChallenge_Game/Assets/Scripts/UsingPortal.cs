@@ -9,17 +9,25 @@ public class UsingPortal : MonoBehaviour
     private bool isUsePressed;
     private bool isInteractable;
     public string descritpionBoolTrigger;
-    public int sceneIndex = 1;
-    public GameObject playerToDisable;
+    private GameObject playerToDisable;
+    private Transform player;
+    private GameObject PLAYER;
+    [SerializeField] private string toScene;
+    private SceneController sceneController;
 
+
+    void Start()
+    {
+        sceneController = GameObject.FindGameObjectWithTag("GameController").GetComponent<SceneController>();
+    }
+    
     // Update is called once per frame
     void Update()
     {
         if(isInteractable && Input.GetButtonDown("Use"))
         {   
-            sceneIndex = 1;
             isUsePressed = true;
-            LoadScene();
+            sceneController.LoadScene(toScene);
         }
         else
         {
@@ -34,13 +42,6 @@ public class UsingPortal : MonoBehaviour
         
     }
 
-    void LoadScene() 
-    {
-        if(sceneIndex == 1)
-            SceneManager.LoadScene(2);
-        else
-            SceneManager.LoadScene(1);
-    }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -50,7 +51,7 @@ public class UsingPortal : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
