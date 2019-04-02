@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2066963719}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.17, y: 1.18, z: 7.84}
+  m_LocalPosition: {x: 6.17, y: 1.18, z: 6.32}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2681783940064020637}
@@ -1438,6 +1438,7 @@ GameObject:
   - component: {fileID: 2681783940064020638}
   - component: {fileID: 2681783940064020706}
   - component: {fileID: 740810494}
+  - component: {fileID: 355147375835189861}
   m_Layer: 0
   m_Name: MainPlayer
   m_TagString: Player
@@ -1567,6 +1568,19 @@ MonoBehaviour:
     m_Handle: 0
   portalAnimator: {fileID: 8103831108970845443, guid: 9a2ed6ff495475a4e8814f37ac62dac8,
     type: 3}
+--- !u!114 &355147375835189861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2681783940064020705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77a07e28140cbc6429e69e238ef4d750, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Object: {fileID: 2681783940064020705}
 --- !u!1 &2681783940188485371
 GameObject:
   m_ObjectHideFlags: 0

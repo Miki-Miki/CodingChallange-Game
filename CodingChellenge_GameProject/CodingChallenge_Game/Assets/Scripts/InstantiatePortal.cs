@@ -10,12 +10,17 @@ public class InstantiatePortal : MonoBehaviour
     public Scene parallel;
     private bool isF_pressed = false;
     public Animator portalAnimator;
+    private Scene activeScene;
 
+    void Awake()
+    {
+        activeScene = SceneManager.GetActiveScene();
+    }
     // Update is called once per frame
     void Update()
     {
         if(Input.GetButtonDown("InstantiatePortal") && isF_pressed == false
-            && SceneManager.GetActiveScene() != parallel)
+            && SceneManager.GetActiveScene() != parallel && activeScene.buildIndex > 0)
         {
             isF_pressed = true;
             Instantiate_Portal();

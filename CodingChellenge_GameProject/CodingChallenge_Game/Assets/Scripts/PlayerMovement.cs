@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -19,17 +20,34 @@ public class PlayerMovement : MonoBehaviour
     public string boolShiftPressed;
     //public GameObject torsoObject;
 
+    private Scene activeScene;
+    private DontDestroyObjOnLoad ObjectPreservingScript;
+    private InstantiatePortal instantiatePortalScript;
 
     // Start is called before the first frame update
     void Start()
     {
+        activeScene = SceneManager.GetActiveScene();
+        instantiatePortalScript = GetComponent<InstantiatePortal>();
+        ObjectPreservingScript = GetComponent<DontDestroyObjOnLoad>();
         rb2d = GetComponent<Rigidbody2D>();     //Grabbing teh RigidBody2D component from the object
     }
 
 
     //This function runs every frame
     void Update()
-    {
+    {   
+
+        if(activeScene.buildIndex == 0)
+        {
+            ObjectPreservingScript.enabled = false;
+            instantiatePortalScript.enabled = false;
+        }
+        else
+        {
+            instantiatePortalScript.enabled = true;
+            ObjectPreservingScript.enabled = true;
+        }
 
         if (Input.GetAxis("Horizontal") < -0.3f || Input.GetAxis("Horizontal") > 0.1f)  //If player is moving on the H - Axis
         {
