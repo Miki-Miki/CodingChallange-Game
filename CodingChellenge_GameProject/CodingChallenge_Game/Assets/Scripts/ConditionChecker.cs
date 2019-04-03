@@ -16,6 +16,6 @@ public class ConditionChecker : MonoBehaviour
     public bool GetComputerScreenOpened() { return computerScreenOpened; }
 
     public void SceneSwitched() { ScenesSwitched++; }
-    public int GetScenesSwitched() {return ScenesSwitched; }
+    public int GetScenesSwitched() { return ScenesSwitched; }
 
 }

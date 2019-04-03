@@ -32,13 +32,13 @@ public class UsingPortal : MonoBehaviour
 
         if(activeScene.buildIndex == 2)
         {
-            condition.SceneSwitched();
+            Debug.Log("Scenes Switched: " + condition.GetScenesSwitched());
             InteractWithPortalToSceneByIndex(1);
         }
         
         if(activeScene.buildIndex == 1)
         {
-            condition.SceneSwitched();
+            Debug.Log("Scenes Switched: " + condition.GetScenesSwitched());
             InteractWithPortalToScene(toScene);
         }
 
@@ -47,6 +47,10 @@ public class UsingPortal : MonoBehaviour
             Debug.Log("Q pressed and is interactable");
             descriptionAnimator.SetBool(descritpionBoolTrigger, true);
         }
+        else if(isInteractable == false)
+        {
+            descriptionAnimator.SetBool(descritpionBoolTrigger, false);
+        }
         
     }
 
@@ -54,6 +58,7 @@ public class UsingPortal : MonoBehaviour
     {
         if(isInteractable && Input.GetButtonDown("Use"))
         {   
+            condition.SceneSwitched();
             isUsePressed = true;
             SceneManager.LoadScene(ToScene);
         }
@@ -67,6 +72,7 @@ public class UsingPortal : MonoBehaviour
     {
         if(isInteractable && Input.GetButtonDown("Use"))
         {   
+            condition.SceneSwitched();
             isUsePressed = true;
             SceneManager.LoadScene(sceneIndex);
         }

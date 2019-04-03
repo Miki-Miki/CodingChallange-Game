@@ -8,7 +8,7 @@ public class UsingDoor : MonoBehaviour
     private ConditionChecker condition;
     private Animator animator;
     private LetterPopUp letter;
-    private bool isInteractable;
+    private bool isInteractable = false;
 
     void Start()
     {
@@ -31,7 +31,7 @@ public class UsingDoor : MonoBehaviour
             letter.enabled = true;
         }
 
-        if(condition.GetScenesSwitched() > 2 && isInteractable == true
+        if((condition.GetScenesSwitched() >= 2) && isInteractable == true
         && Input.GetButtonDown("Use"))
         {
             animator.SetBool("isForAnimation", true);
@@ -51,7 +51,7 @@ public class UsingDoor : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            isInteractable = true;
+            isInteractable = false;
         }
     }
 }

@@ -7,14 +7,24 @@ public class DontDestroyObjOnLoad : MonoBehaviour
 {
 
     private Scene activeScene;
+    public GameObject[] gameObjectsToDestroy;
 
     void Awake() 
     {   
         activeScene = SceneManager.GetActiveScene();
 
+        if(gameObjectsToDestroy.Length > 0)
+        {
+            for(int i = 0; i < gameObjectsToDestroy.Length; i++)
+            {
+                Destroy(gameObjectsToDestroy[i]);
+            }
+        }
+
+
         GameObject[] objs = GameObject.FindGameObjectsWithTag("Player");
 
-        if(activeScene.buildIndex == 0 || activeScene.buildIndex == 1)
+        if(activeScene.buildIndex == 0)
         {
             this.enabled = false;
         }
