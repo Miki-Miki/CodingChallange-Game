@@ -20,12 +20,12 @@ public class UsingDoor : MonoBehaviour
 
     void Update()
     {
-        if(condition.GetScenesSwitched() < 2)
+        if(condition.GetScenesSwitched() < 2 && letter != null)
         {
             this.enabled = false;
             letter.enabled = false;
         }
-        else
+        else if (condition.GetScenesSwitched() >= 2 && letter != null)
         {
             this.enabled = true;
             letter.enabled = true;

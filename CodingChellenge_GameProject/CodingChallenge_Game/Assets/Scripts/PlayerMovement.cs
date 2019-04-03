@@ -40,7 +40,6 @@ public class PlayerMovement : MonoBehaviour
 
         if(activeScene.buildIndex == 0)
         {
-            ObjectPreservingScript.enabled = false;
             instantiatePortalScript.enabled = false;
         }
         else
