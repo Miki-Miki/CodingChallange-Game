@@ -13,7 +13,16 @@ public class UsingPortal : MonoBehaviour
     //private Transform player;
     //private GameObject PLAYER;
     [SerializeField] private string toScene;
-    private Scene activeScene;    
+    private Scene activeScene;  
+
+    private GameObject ConditionChecker;
+    private ConditionChecker condition;
+
+    void Start()
+    {
+        ConditionChecker = GameObject.FindGameObjectWithTag("ConditionChecker");
+        condition = ConditionChecker.GetComponent<ConditionChecker>();
+    }  
 
     // Update is called once per frame
     void Update()
@@ -23,11 +32,13 @@ public class UsingPortal : MonoBehaviour
 
         if(activeScene.buildIndex == 2)
         {
+            condition.SceneSwitched();
             InteractWithPortalToSceneByIndex(1);
         }
         
         if(activeScene.buildIndex == 1)
         {
+            condition.SceneSwitched();
             InteractWithPortalToScene(toScene);
         }
 
