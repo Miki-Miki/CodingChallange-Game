@@ -14,10 +14,14 @@ public class SceneChangerScript : MonoBehaviour
     public int sceneIndex;              
     public GameObject playerToDisable;  //Select the player object that will be disabled once the new 'scene' is launched
     public GameObject computerLight;    //Grabbing the light object to check if it is turned on or off
+    private GameObject conditionChecker;
+    private ConditionChecker condition;
+
 
     void Start()
     {
-        
+        conditionChecker = GameObject.FindGameObjectWithTag("ConditionChecker");
+        condition = conditionChecker.GetComponent<ConditionChecker>();
     }
 
     // Update is called once per frame
@@ -26,6 +30,7 @@ public class SceneChangerScript : MonoBehaviour
         //If we are in the interactable field and Q button is pressed and the light is on
         if(isInteractable && Input.GetButtonDown("Description") && computerLight.GetComponent<Light>().enabled == true)
         {
+            condition.SetComputerScreenOpened(true);
             isUsePressed = true;                                                //Remember that E was pressed
             animator.SetBool(enterTrigger, isUsePressed);                       //Trigger the animation because E is pressed
             playerToDisable.GetComponent<PlayerMovement>().enabled = false;     //Disable PlayerMovement script on player
