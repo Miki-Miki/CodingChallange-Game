@@ -8,6 +8,7 @@ public class ConditionChecker : MonoBehaviour
     private bool portalOpenedForFirstTime;
     private bool computerScreenOpened;
     private static int ScenesSwitched = 0;
+    private static int numberOfTimesPortalInstantiated = 0;
     
     public void SetBoolPortalOpenedForFristTime(bool checker) { portalOpenedForFirstTime = checker; }
     public bool GetBoolPortalOpenedForFristTime() { return portalOpenedForFirstTime; }
@@ -18,4 +19,6 @@ public class ConditionChecker : MonoBehaviour
     public void SceneSwitched() { ScenesSwitched++; }
     public int GetScenesSwitched() { return ScenesSwitched; }
 
+    public void PortalWasInstantiated() { numberOfTimesPortalInstantiated++; }
+    public int GetNumerOfTimesPortalInstantiated() { return numberOfTimesPortalInstantiated; }
 }

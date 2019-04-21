@@ -17,11 +17,13 @@ public class UsingPortal : MonoBehaviour
 
     private GameObject ConditionChecker;
     private ConditionChecker condition;
+    private int timesPortalWasInstantiated;
 
     void Start()
     {
         ConditionChecker = GameObject.FindGameObjectWithTag("ConditionChecker");
         condition = ConditionChecker.GetComponent<ConditionChecker>();
+        timesPortalWasInstantiated = condition.GetNumerOfTimesPortalInstantiated();
     }  
 
     // Update is called once per frame
@@ -42,7 +44,7 @@ public class UsingPortal : MonoBehaviour
             InteractWithPortalToScene(toScene);
         }
 
-        if(isInteractable && Input.GetButtonDown("Description"))
+        if(isInteractable && Input.GetButtonDown("Description") && timesPortalWasInstantiated <= 3)
         {
            // Debug.Log("Q pressed and is interactable");
             descriptionAnimator.SetBool(descritpionBoolTrigger, true);

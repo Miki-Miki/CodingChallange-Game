@@ -8,6 +8,7 @@ TagManager:
   - InstructionLetter
   - RightWall
   - LeftWall
+  - Portal
   layers:
   - Default
   - TransparentFX

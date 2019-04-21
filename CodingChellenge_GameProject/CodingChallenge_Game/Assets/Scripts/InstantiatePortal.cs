@@ -11,6 +11,7 @@ public class InstantiatePortal : MonoBehaviour
     private bool isF_pressed = false;
     public Animator portalAnimator;
     private Scene activeScene;
+    private GameObject[] existingPortal;
 
     private GameObject ConditionChecker;
     private ConditionChecker condition;
@@ -20,17 +21,36 @@ public class InstantiatePortal : MonoBehaviour
         activeScene = SceneManager.GetActiveScene();
         ConditionChecker = GameObject.FindGameObjectWithTag("ConditionChecker");
         condition = ConditionChecker.GetComponent<ConditionChecker>();
+        
     }
     // Update is called once per frame
     void Update()
     {
-       
+        existingPortal = GameObject.FindGameObjectsWithTag("Portal");
+        if(existingPortal != null && isF_pressed == true 
+            && Input.GetButtonDown("InstantiatePortal") 
+            && SceneManager.GetActiveScene() != parallel 
+            && activeScene.buildIndex > 0
+            && condition.GetComputerScreenOpened() == true) {
+                
+                Debug.Log("Delete previous instantiate new (if block entered)");
+                isF_pressed = false;
+                
+                for(int i = 0; i < existingPortal.Length; i++) {
+                    Destroy(existingPortal[i]);
+                }
+                
+                Instantiate_Portal();
+                condition.PortalWasInstantiated();
+            }
+
         if(Input.GetButtonDown("InstantiatePortal") && isF_pressed == false
             && SceneManager.GetActiveScene() != parallel && activeScene.buildIndex > 0
             && condition.GetComputerScreenOpened() == true)
         {
             isF_pressed = true;
             Instantiate_Portal();
+            condition.PortalWasInstantiated();
             Debug.Log("F is pressed portal should be instantiated" + condition.GetComputerScreenOpened());
             Debug.Log("ComputerScreenOpened: " + condition.GetComputerScreenOpened());
         }
