@@ -10692,6 +10692,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5276441230823381265}
+  - component: {fileID: 7576868132276198355}
+  - component: {fileID: 809987606291118393}
   m_Layer: 0
   m_Name: DescriptionLocation
   m_TagString: Untagged
@@ -10714,6 +10716,45 @@ Transform:
   m_Father: {fileID: 8103831108970845442}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &7576868132276198355
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8530752546879567913}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -4.990619, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 17.156075, y: 1}
+  m_EdgeRadius: 0
+--- !u!114 &809987606291118393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8530752546879567913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4b97a7a857511e4f81cc64ece092418, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DescriptionLocation: {fileID: 5276441230823381265}
 --- !u!1 &9033901493960508813
 GameObject:
   m_ObjectHideFlags: 0
@@ -10870,12 +10911,12 @@ PrefabInstance:
     - target: {fileID: 2385613383802047333, guid: c606d9b5531c4314293979056c61a2bd,
         type: 3}
       propertyPath: m_fontSize
-      value: 6.57
+      value: 5.25
       objectReference: {fileID: 0}
     - target: {fileID: 2385613383802047333, guid: c606d9b5531c4314293979056c61a2bd,
         type: 3}
       propertyPath: m_fontSizeBase
-      value: 6.57
+      value: 5.25
       objectReference: {fileID: 0}
     - target: {fileID: 2385613383802047333, guid: c606d9b5531c4314293979056c61a2bd,
         type: 3}
@@ -10890,7 +10931,7 @@ PrefabInstance:
     - target: {fileID: 2385613383802047333, guid: c606d9b5531c4314293979056c61a2bd,
         type: 3}
       propertyPath: m_margin.z
-      value: 11.334984
+      value: 12.646077
       objectReference: {fileID: 0}
     - target: {fileID: 2385613383802047333, guid: c606d9b5531c4314293979056c61a2bd,
         type: 3}
@@ -10917,6 +10958,26 @@ PrefabInstance:
       propertyPath: m_subTextObjects.Array.data[1]
       value: 
       objectReference: {fileID: 7882290186763521721}
+    - target: {fileID: 2385613383802047333, guid: c606d9b5531c4314293979056c61a2bd,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2385613383802047333, guid: c606d9b5531c4314293979056c61a2bd,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 2385613383802047333, guid: c606d9b5531c4314293979056c61a2bd,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2385613383802047339, guid: c606d9b5531c4314293979056c61a2bd,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2385613383802047336, guid: c606d9b5531c4314293979056c61a2bd,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

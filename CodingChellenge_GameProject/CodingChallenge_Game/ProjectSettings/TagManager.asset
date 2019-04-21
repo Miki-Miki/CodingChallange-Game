@@ -6,6 +6,8 @@ TagManager:
   tags:
   - ConditionChecker
   - InstructionLetter
+  - RightWall
+  - LeftWall
   layers:
   - Default
   - TransparentFX

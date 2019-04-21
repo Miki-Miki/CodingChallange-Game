@@ -32,19 +32,19 @@ public class UsingPortal : MonoBehaviour
 
         if(activeScene.buildIndex == 2)
         {
-            Debug.Log("Scenes Switched: " + condition.GetScenesSwitched());
+           // Debug.Log("Scenes Switched: " + condition.GetScenesSwitched());
             InteractWithPortalToSceneByIndex(1);
         }
         
         if(activeScene.buildIndex == 1)
         {
-            Debug.Log("Scenes Switched: " + condition.GetScenesSwitched());
+           // Debug.Log("Scenes Switched: " + condition.GetScenesSwitched());
             InteractWithPortalToScene(toScene);
         }
 
         if(isInteractable && Input.GetButtonDown("Description"))
         {
-            Debug.Log("Q pressed and is interactable");
+           // Debug.Log("Q pressed and is interactable");
             descriptionAnimator.SetBool(descritpionBoolTrigger, true);
         }
         else if(isInteractable == false)
