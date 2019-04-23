@@ -9,6 +9,8 @@ TagManager:
   - RightWall
   - LeftWall
   - Portal
+  - SceneTransitionCanvas
+  - Letter
   layers:
   - Default
   - TransparentFX

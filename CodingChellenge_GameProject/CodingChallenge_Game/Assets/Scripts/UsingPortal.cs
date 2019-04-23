@@ -6,45 +6,96 @@ using UnityEngine.SceneManagement;
 public class UsingPortal : MonoBehaviour
 {
     public Animator descriptionAnimator;
+    private GameObject sceneTransitionCanvas;
     private bool isUsePressed;
     private bool isInteractable;
     public string descritpionBoolTrigger;
+
     //private GameObject playerToDisable;
     //private Transform player;
     //private GameObject PLAYER;
+
+    public float waitForSeconds = 1f;
+
     [SerializeField] private string toScene;
     private Scene activeScene;  
 
     private GameObject ConditionChecker;
     private ConditionChecker condition;
-    private int timesPortalWasInstantiated;
+    private int timesPortalWasUsed;
+
+    private float delayForSeconds = 1.0f;
+
+   
 
     void Start()
     {
         ConditionChecker = GameObject.FindGameObjectWithTag("ConditionChecker");
         condition = ConditionChecker.GetComponent<ConditionChecker>();
-        timesPortalWasInstantiated = condition.GetNumerOfTimesPortalInstantiated();
     }  
+
+    IEnumerator Delay(float delay_seconds)
+    {
+        yield return new WaitForSeconds(delay_seconds);
+    }
+
+    // void Awake() 
+    // {
+    //     if(timesPortalWasUsed >= 1)
+    //     {
+    //         sceneTransitionCanvas.GetComponent<Animator>().SetBool("hasEntereingScene", true);
+    //         StartCoroutine(Delay(delayForSeconds));
+    //         sceneTransitionCanvas.GetComponent<Animator>().SetBool("hasEntereingScene", false);
+    //     }
+    // }
+
+    // public void TransitionToScene()
+    // {
+    //     if(activeScene.buildIndex == 2)
+    //     {
+    //        GoToSceneByIndex(1);
+    //     }
+    //     if(activeScene.buildIndex == 1)
+    //     {
+    //         GoToScene(toScene);
+    //     }
+    // }
 
     // Update is called once per frame
     void Update()
     {
-        activeScene = SceneManager.GetActiveScene();
+        timesPortalWasUsed = condition.GetNumerOfTimesPortalWasUsed();
+        sceneTransitionCanvas = GameObject.FindGameObjectWithTag("SceneTransitionCanvas");
+        // activeScene = SceneManager.GetActiveScene();
+        
         // Debug.Log("Active-Scene Index: " + activeScene.name);
 
-        if(activeScene.buildIndex == 2)
-        {
-           // Debug.Log("Scenes Switched: " + condition.GetScenesSwitched());
-            InteractWithPortalToSceneByIndex(1);
-        }
+        // if(activeScene.buildIndex == 2)
+        // {
+        //    InteractWithPortalToSceneByIndex(1);
+        // }
         
-        if(activeScene.buildIndex == 1)
-        {
-           // Debug.Log("Scenes Switched: " + condition.GetScenesSwitched());
-            InteractWithPortalToScene(toScene);
-        }
+        // if(activeScene.buildIndex == 1)
+        // {
+        //     InteractWithPortalToScene(toScene);
+          
+        // }
 
-        if(isInteractable && Input.GetButtonDown("Description") && timesPortalWasInstantiated <= 3)
+        if(isInteractable && Input.GetButtonDown("Use"))
+        {
+            condition.PortalWasUsed();
+            condition.SceneSwitched();
+            // Debug.Log("1. Times portal was used: " + timesPortalWasUsed);
+            // Debug.Log("E pressed, animation should be running, you should be entering the portal.");
+            // Debug.Log("(From UsingPortal) Scenes switched: " + condition.GetScenesSwitched());
+
+            sceneTransitionCanvas.GetComponent<Animator>().SetBool("isEnteringScene", true);
+            // StartCoroutine(Delay(2.0f));
+            // sceneTransitionCanvas.GetComponent<Animator>().SetBool("isEnteringScene", false);
+
+        } 
+
+        if(isInteractable && Input.GetButtonDown("Description") && timesPortalWasUsed <= 3)
         {
            // Debug.Log("Q pressed and is interactable");
             descriptionAnimator.SetBool(descritpionBoolTrigger, true);
@@ -53,7 +104,38 @@ public class UsingPortal : MonoBehaviour
         {
             descriptionAnimator.SetBool(descritpionBoolTrigger, false);
         }
+
+
         
+    }
+
+    IEnumerator TransitionToScene(float delay, string to_Scene)
+    {
+        if(isInteractable && Input.GetButtonDown("Use"))
+        {
+            Debug.Log("Transition animation should be running.");
+            sceneTransitionCanvas.GetComponent<Animator>().SetBool("isEnteringScene", true);
+        } 
+        else
+        {
+            sceneTransitionCanvas.GetComponent<Animator>().SetBool("isEnteringScene", false);
+        }
+
+        yield return new WaitForSeconds(delay);
+        InteractWithPortalToScene(to_Scene);
+
+    }
+    
+    IEnumerator TransitionToSceneByIndex(float delay, int scene_index)
+    {
+        if(isInteractable && Input.GetButtonDown("Use"))
+        {
+            Debug.Log("Entering scene Animation.");
+            sceneTransitionCanvas.GetComponent<Animator>().SetBool("isEnteringScene", true);
+        }
+
+        yield return new WaitForSeconds(delay);
+        InteractWithPortalToSceneByIndex(scene_index);
     }
 
     void InteractWithPortalToScene(string ToScene)
@@ -61,6 +143,7 @@ public class UsingPortal : MonoBehaviour
         if(isInteractable && Input.GetButtonDown("Use"))
         {   
             condition.SceneSwitched();
+            condition.PortalWasUsed();
             isUsePressed = true;
             SceneManager.LoadScene(ToScene);
         }
@@ -70,10 +153,21 @@ public class UsingPortal : MonoBehaviour
         }
     }
 
+    void GoToSceneByIndex(int sceneIndex)
+    {
+        SceneManager.LoadScene(sceneIndex);
+    }
+
+    void GoToScene(string toScene)
+    {
+        SceneManager.LoadScene(toScene);
+    }
+
     void InteractWithPortalToSceneByIndex(int sceneIndex)
     {
         if(isInteractable && Input.GetButtonDown("Use"))
         {   
+            condition.PortalWasUsed();
             condition.SceneSwitched();
             isUsePressed = true;
             SceneManager.LoadScene(sceneIndex);

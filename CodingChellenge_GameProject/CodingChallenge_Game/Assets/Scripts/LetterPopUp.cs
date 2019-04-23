@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LetterPopUp : MonoBehaviour
 {
-    public Animator animator;            //Grabbing the animator of the object we want to animate
+    private Animator animator;            //Grabbing the animator of the object we want to animate
     public string boolTrigger;
     private bool isTrigger = false;      //Interactable field is initialized to false
     public float delay;                  //this variable allows us to set a certain delay on the triggering of our animation
@@ -17,6 +17,7 @@ public class LetterPopUp : MonoBehaviour
 
     void Update()
     {
+        animator = GameObject.FindGameObjectWithTag("Letter").GetComponent<Animator>();
         runCoroutine();                 //This function runs every frame (but the animation will only be delay if we enter the interactable field (line 26)                
     }
 
@@ -29,7 +30,8 @@ public class LetterPopUp : MonoBehaviour
         }
         else {
             for(int i = 0; i < instructionLetters.Length; i++) {
-                instructionLetters[i].GetComponent<Animator>().SetBool("isInteractable", isTrigger);
+                if(instructionLetters[i] != null)
+                    instructionLetters[i].GetComponent<Animator>().SetBool("isInteractable", isTrigger);
             }
         }
 

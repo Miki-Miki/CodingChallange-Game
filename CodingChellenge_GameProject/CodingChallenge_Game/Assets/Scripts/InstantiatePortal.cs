@@ -18,7 +18,7 @@ public class InstantiatePortal : MonoBehaviour
 
     void Start()
     {
-        activeScene = SceneManager.GetActiveScene();
+        
         ConditionChecker = GameObject.FindGameObjectWithTag("ConditionChecker");
         condition = ConditionChecker.GetComponent<ConditionChecker>();
         
@@ -27,6 +27,8 @@ public class InstantiatePortal : MonoBehaviour
     void Update()
     {
         existingPortal = GameObject.FindGameObjectsWithTag("Portal");
+        activeScene = SceneManager.GetActiveScene();
+
         if(existingPortal != null && isF_pressed == true 
             && Input.GetButtonDown("InstantiatePortal") 
             && SceneManager.GetActiveScene() != parallel 
@@ -41,7 +43,6 @@ public class InstantiatePortal : MonoBehaviour
                 }
                 
                 Instantiate_Portal();
-                condition.PortalWasInstantiated();
             }
 
         if(Input.GetButtonDown("InstantiatePortal") && isF_pressed == false
@@ -50,7 +51,6 @@ public class InstantiatePortal : MonoBehaviour
         {
             isF_pressed = true;
             Instantiate_Portal();
-            condition.PortalWasInstantiated();
             Debug.Log("F is pressed portal should be instantiated" + condition.GetComputerScreenOpened());
             Debug.Log("ComputerScreenOpened: " + condition.GetComputerScreenOpened());
         }
