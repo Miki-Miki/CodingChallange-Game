@@ -11,6 +11,7 @@ TagManager:
   - Portal
   - SceneTransitionCanvas
   - Letter
+  - Foreground
   layers:
   - Default
   - TransparentFX

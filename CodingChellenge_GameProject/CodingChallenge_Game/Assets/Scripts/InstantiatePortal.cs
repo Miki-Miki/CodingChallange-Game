@@ -20,7 +20,9 @@ public class InstantiatePortal : MonoBehaviour
     {
         
         ConditionChecker = GameObject.FindGameObjectWithTag("ConditionChecker");
-        condition = ConditionChecker.GetComponent<ConditionChecker>();
+        
+        if(ConditionChecker != null)
+            condition = ConditionChecker.GetComponent<ConditionChecker>();
         
     }
     // Update is called once per frame

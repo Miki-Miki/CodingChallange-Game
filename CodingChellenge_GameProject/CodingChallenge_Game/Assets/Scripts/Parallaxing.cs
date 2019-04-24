@@ -12,6 +12,8 @@ public class Parallaxing : MonoBehaviour
     private Transform cam;
     private Vector3 previosCamPosition;
 
+    //private Transform foreground;
+
     void Awake()
     {
         cam = Camera.main.transform;
@@ -19,6 +21,10 @@ public class Parallaxing : MonoBehaviour
 
     void Start()
     {
+        // foreground = GameObject.FindGameObjectWithTag("Foreground").transform;
+        // if(foreground != null)
+        //     backgrounds[0] = foreground;
+
         previosCamPosition = cam.position;
 
         parallaxScales = new float[backgrounds.Length];
