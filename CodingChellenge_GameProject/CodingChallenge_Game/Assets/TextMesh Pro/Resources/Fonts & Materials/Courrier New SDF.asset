@@ -875,7 +875,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Courrier New SDF Material
   m_Shader: {fileID: 4800000, guid: 68e6db2ebdc24f95958faec2be5558d6, type: 3}
-  m_ShaderKeywords: GLOW_ON
+  m_ShaderKeywords: ETC1_EXTERNAL_ALPHA GLOW_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -976,7 +976,7 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _OutlineShininess: 0
-    - _OutlineSoftness: 0.631
+    - _OutlineSoftness: 0.25
     - _OutlineUVSpeedX: 0
     - _OutlineUVSpeedY: 0
     - _OutlineWidth: 0.067

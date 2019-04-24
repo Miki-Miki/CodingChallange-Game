@@ -26,12 +26,15 @@ public class UsingPortal : MonoBehaviour
 
     private float delayForSeconds = 1.0f;
 
+   //private Animator letterAnimator;
+
    
 
     void Start()
     {
         ConditionChecker = GameObject.FindGameObjectWithTag("ConditionChecker");
         condition = ConditionChecker.GetComponent<ConditionChecker>();
+        //letterAnimator = GameObject.FindGameObjectWithTag("Letter").GetComponent<Animator>();
     }  
 
     IEnumerator Delay(float delay_seconds)
@@ -183,6 +186,7 @@ public class UsingPortal : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             isInteractable = true;
+            //letterAnimator.SetBool("isInteractable", true);
         }
     }
 
@@ -191,6 +195,8 @@ public class UsingPortal : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             isInteractable = false;
+            //letterAnimator.SetBool("isInteractable", false);
+
         }
     }
 

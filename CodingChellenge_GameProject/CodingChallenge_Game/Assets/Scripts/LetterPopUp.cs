@@ -17,7 +17,8 @@ public class LetterPopUp : MonoBehaviour
 
     void Update()
     {
-        // animator = GameObject.FindGameObjectWithTag("Letter").GetComponent<Animator>();
+        //animator = GameObject.FindGameObjectWithTag("Letter").GetComponent<Animator>();
+        
         runCoroutine();                 //This function runs every frame (but the animation will only be delayed if we enter the interactable field (line 26)                
     }
 
