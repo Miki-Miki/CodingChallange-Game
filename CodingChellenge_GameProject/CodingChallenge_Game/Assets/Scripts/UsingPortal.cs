@@ -26,6 +26,10 @@ public class UsingPortal : MonoBehaviour
 
     private float delayForSeconds = 1.0f;
 
+    private Animator player_animator;
+
+    private PlayerMovement mainPlayerScript;
+
    //private Animator letterAnimator;
 
    
@@ -35,6 +39,8 @@ public class UsingPortal : MonoBehaviour
         ConditionChecker = GameObject.FindGameObjectWithTag("ConditionChecker");
         condition = ConditionChecker.GetComponent<ConditionChecker>();
         //letterAnimator = GameObject.FindGameObjectWithTag("Letter").GetComponent<Animator>();
+        player_animator = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
+        mainPlayerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
     }  
 
     IEnumerator Delay(float delay_seconds)
@@ -93,8 +99,14 @@ public class UsingPortal : MonoBehaviour
             // Debug.Log("(From UsingPortal) Scenes switched: " + condition.GetScenesSwitched());
 
             sceneTransitionCanvas.GetComponent<Animator>().SetBool("isEnteringScene", true);
+            player_animator.SetTrigger("openPortal");
+            mainPlayerScript.enabled = false;
+            condition.delay_player(2.0f);
+
             // StartCoroutine(Delay(2.0f));
             // sceneTransitionCanvas.GetComponent<Animator>().SetBool("isEnteringScene", false);
+
+            
 
         } 
 

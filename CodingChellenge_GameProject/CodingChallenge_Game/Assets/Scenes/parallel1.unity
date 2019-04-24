@@ -408,7 +408,7 @@ GameObject:
   - component: {fileID: 374651256}
   m_Layer: 0
   m_Name: foreground-new
-  m_TagString: Untagged
+  m_TagString: Foreground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -547,16 +547,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2385613383802047332, guid: c606d9b5531c4314293979056c61a2bd,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -1.06
-      objectReference: {fileID: 0}
-    - target: {fileID: 2385613383802047335, guid: c606d9b5531c4314293979056c61a2bd,
-        type: 3}
-      propertyPath: m_Name
-      value: E
-      objectReference: {fileID: 0}
     - target: {fileID: 2385613383802047333, guid: c606d9b5531c4314293979056c61a2bd,
         type: 3}
       propertyPath: m_havePropertiesChanged
@@ -615,6 +605,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21806268352416080, guid: aeefc81a82b50484093859955a7139ee,
         type: 2}
+    - target: {fileID: 2385613383802047332, guid: c606d9b5531c4314293979056c61a2bd,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -1.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 2385613383802047335, guid: c606d9b5531c4314293979056c61a2bd,
+        type: 3}
+      propertyPath: m_Name
+      value: E
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c606d9b5531c4314293979056c61a2bd, type: 3}
 --- !u!1 &451761657
@@ -11646,16 +11646,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2385613383802047332, guid: c606d9b5531c4314293979056c61a2bd,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 12.57
-      objectReference: {fileID: 0}
-    - target: {fileID: 2385613383802047335, guid: c606d9b5531c4314293979056c61a2bd,
-        type: 3}
-      propertyPath: m_Name
-      value: E
-      objectReference: {fileID: 0}
     - target: {fileID: 2385613383802047333, guid: c606d9b5531c4314293979056c61a2bd,
         type: 3}
       propertyPath: m_havePropertiesChanged
@@ -11739,6 +11729,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21806268352416080, guid: aeefc81a82b50484093859955a7139ee,
         type: 2}
+    - target: {fileID: 2385613383802047332, guid: c606d9b5531c4314293979056c61a2bd,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 12.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 2385613383802047335, guid: c606d9b5531c4314293979056c61a2bd,
+        type: 3}
+      propertyPath: m_Name
+      value: E
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c606d9b5531c4314293979056c61a2bd, type: 3}
 --- !u!1001 &2068968357
@@ -11993,16 +11993,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2385613383802047332, guid: c606d9b5531c4314293979056c61a2bd,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 15.29
-      objectReference: {fileID: 0}
-    - target: {fileID: 2385613383802047332, guid: c606d9b5531c4314293979056c61a2bd,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0.33
-      objectReference: {fileID: 0}
     - target: {fileID: 2385613383802047333, guid: c606d9b5531c4314293979056c61a2bd,
         type: 3}
       propertyPath: m_havePropertiesChanged
@@ -12141,6 +12131,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21806268352416080, guid: aeefc81a82b50484093859955a7139ee,
         type: 2}
+    - target: {fileID: 2385613383802047332, guid: c606d9b5531c4314293979056c61a2bd,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 15.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 2385613383802047332, guid: c606d9b5531c4314293979056c61a2bd,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.33
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c606d9b5531c4314293979056c61a2bd, type: 3}
 --- !u!1001 &5154672375200147546

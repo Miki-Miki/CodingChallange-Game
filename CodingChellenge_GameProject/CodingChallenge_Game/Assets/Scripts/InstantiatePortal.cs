@@ -52,6 +52,12 @@ public class InstantiatePortal : MonoBehaviour
             && condition.GetComputerScreenOpened() == true)
         {
             isF_pressed = true;
+
+            condition.portalWasInstantiated();
+
+            if (condition.getNumberOfTimesPortalWasSpawned() == 1)
+                condition.setPortalOpenedFirstTime();
+
             Instantiate_Portal();
             Debug.Log("F is pressed portal should be instantiated" + condition.GetComputerScreenOpened());
             Debug.Log("ComputerScreenOpened: " + condition.GetComputerScreenOpened());

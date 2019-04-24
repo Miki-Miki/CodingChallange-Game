@@ -9,15 +9,33 @@ public class ConditionChecker : MonoBehaviour
     private bool computerScreenOpened;
     private static int ScenesSwitched = 0;
     private int numberOfTimesPortalWasUsed = 1;
+    private int numberOfTimesPortalWasSpawned = 0;
+    public Animator cameraAnimator;
+    public Animator playerAnimator;
+    private PlayerMovement mainPlayer;
 
     public GameObject info_letter_F;
     private float seconds_delay = 2.0f;
+    //private float delay_player_for_seconds = 3.3f;
+
+    void Start()
+    {
+        mainPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+    }
 
     void Update()
     {
         if(computerScreenOpened)
         {
             spawn_instruction_letter_F();
+        }
+
+        if(portalOpenedForFirstTime)
+        {
+            cameraAnimator.SetTrigger("firstPortal");
+            playerAnimator.SetTrigger("firstPortal");
+            portalOpenedForFirstTime = false;
+
         }
     }
 
@@ -27,6 +45,17 @@ public class ConditionChecker : MonoBehaviour
         {
             info_letter_F.gameObject.SetActive(true);
         }
+    }
+
+    IEnumerator Delay_player_movement(float delay_for_seconds)
+    {
+        yield return new WaitForSeconds(delay_for_seconds);
+        mainPlayer.enabled = true;
+    }
+ 
+    public void delay_player(float delayPlayerForSeconds)
+    {
+        StartCoroutine(Delay_player_movement(delayPlayerForSeconds));
     }
 
     void spawn_instruction_letter_F()
@@ -45,4 +74,9 @@ public class ConditionChecker : MonoBehaviour
 
     public void PortalWasUsed() { numberOfTimesPortalWasUsed++; }
     public int GetNumerOfTimesPortalWasUsed() { return numberOfTimesPortalWasUsed; }
+
+    public void setPortalOpenedFirstTime() { portalOpenedForFirstTime = true; }
+
+    public void portalWasInstantiated() { numberOfTimesPortalWasSpawned++; }
+    public int getNumberOfTimesPortalWasSpawned() { return numberOfTimesPortalWasSpawned; }
 }

@@ -110,4 +110,14 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    public void disablePlayer()
+    {
+        this.enabled = false;
+    }
+
+    public void enablePlayer()
+    {
+        this.enabled = true;
+    }
+
 }
