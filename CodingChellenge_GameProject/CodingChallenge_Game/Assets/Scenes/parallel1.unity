@@ -11034,7 +11034,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backgrounds:
-  - {fileID: 0}
+  - {fileID: 1182359074}
   smoothing: 1.65
 --- !u!4 &1517991304
 Transform:
