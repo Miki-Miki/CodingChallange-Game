@@ -235,6 +235,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: ShiftPressed
     m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: isForAnimation
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102610452353643456}
   m_Solo: 0
