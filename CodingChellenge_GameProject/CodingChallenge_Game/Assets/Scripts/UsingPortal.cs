@@ -100,7 +100,7 @@ public class UsingPortal : MonoBehaviour
 
             sceneTransitionCanvas.GetComponent<Animator>().SetBool("isEnteringScene", true);
             player_animator.SetTrigger("openPortal");
-            mainPlayerScript.enabled = false;
+            //mainPlayerScript.enabled = false;
             condition.delay_player(2.0f);
 
             // StartCoroutine(Delay(2.0f));

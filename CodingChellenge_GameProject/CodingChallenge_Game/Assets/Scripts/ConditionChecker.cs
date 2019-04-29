@@ -6,7 +6,7 @@ public class ConditionChecker : MonoBehaviour
 {
     
     private bool portalOpenedForFirstTime;
-    private bool computerScreenOpened;
+    public bool computerScreenOpened;
     private static int ScenesSwitched = 0;
     private int numberOfTimesPortalWasUsed = 1;
     private int numberOfTimesPortalWasSpawned = 0;
@@ -49,6 +49,7 @@ public class ConditionChecker : MonoBehaviour
 
     IEnumerator Delay_player_movement(float delay_for_seconds)
     {
+        mainPlayer.enabled = false;
         yield return new WaitForSeconds(delay_for_seconds);
         mainPlayer.enabled = true;
     }

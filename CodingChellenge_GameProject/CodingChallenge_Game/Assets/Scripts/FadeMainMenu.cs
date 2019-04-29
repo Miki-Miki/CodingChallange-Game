@@ -9,6 +9,7 @@ public class FadeMainMenu : MonoBehaviour
     public Animator animator;
     public Button playButton;
     public Button exitButton;
+    public Animator controlsAnimator;
 
     void OnEnable() 
     {
@@ -24,6 +25,7 @@ public class FadeMainMenu : MonoBehaviour
     public void RunFadeAnimation() 
     {
         animator.SetBool("playPressed", true);
+        controlsAnimator.SetTrigger("playPressed");
     }
 
     public void ExitGame() 
