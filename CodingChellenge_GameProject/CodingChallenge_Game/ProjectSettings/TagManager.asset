@@ -12,6 +12,7 @@ TagManager:
   - SceneTransitionCanvas
   - Letter
   - Foreground
+  - trToOutdoors
   layers:
   - Default
   - TransparentFX

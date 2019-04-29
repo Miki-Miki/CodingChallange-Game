@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
+    private GameObject player;
+
     public Animator animator;
     public float pWalkSpeed = 20f;
     public float pRunSpeed = 70f;
@@ -24,13 +26,19 @@ public class PlayerMovement : MonoBehaviour
     private DontDestroyObjOnLoad ObjectPreservingScript;
     private InstantiatePortal instantiatePortalScript;
 
+    private GameObject ConditionChecker;
+    private ConditionChecker condition;
+
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         activeScene = SceneManager.GetActiveScene();
         instantiatePortalScript = GetComponent<InstantiatePortal>();
         ObjectPreservingScript = GetComponent<DontDestroyObjOnLoad>();
         rb2d = GetComponent<Rigidbody2D>();     //Grabbing teh RigidBody2D component from the object
+        ConditionChecker = GameObject.FindGameObjectWithTag("ConditionChecker");
+        condition = ConditionChecker.GetComponent<ConditionChecker>();
     }
 
 
@@ -85,7 +93,9 @@ public class PlayerMovement : MonoBehaviour
         }
 
         animator.SetBool(boolTrigger, isWalking);                           //Setting the bool that triggers the animation at every frame
-    }                                                                       //Once it is true the animation will run or not depending on the bool value
+                                                                            //Once it is true the animation will run or not depending on the bool value
+        //if(condition.getExitingRoom() == true) destroyPlayer(1.0f, player);                                                                    
+    }                                                                       
 
     // FixedUpdate is called every fixed frame-rate frame
     void FixedUpdate()
@@ -119,5 +129,12 @@ public class PlayerMovement : MonoBehaviour
     {
         this.enabled = true;
     }
+
+    IEnumerator delay_destruction(float seconds, GameObject objectToDestroy) {
+        yield return new WaitForSeconds(seconds);
+        Destroy(objectToDestroy);
+    }
+
+    public void destroyPlayer(float seconds, GameObject playerObject) { StartCoroutine(delay_destruction(seconds, playerObject)); }
 
 }

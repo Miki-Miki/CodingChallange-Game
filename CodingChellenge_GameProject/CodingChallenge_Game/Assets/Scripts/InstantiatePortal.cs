@@ -31,6 +31,12 @@ public class InstantiatePortal : MonoBehaviour
         existingPortal = GameObject.FindGameObjectsWithTag("Portal");
         activeScene = SceneManager.GetActiveScene();
 
+        if(condition.getExitingRoom() == true) {
+           for(int i = 0; i < existingPortal.Length; i++) {
+                    delay_destruction(1.0f, existingPortal[i]);
+                } 
+        }
+
         if(existingPortal != null && isF_pressed == true 
             && Input.GetButtonDown("InstantiatePortal") 
             && SceneManager.GetActiveScene() != parallel 
@@ -70,4 +76,12 @@ public class InstantiatePortal : MonoBehaviour
        
         Instantiate(portal, portalSpawnPoint.position, portalSpawnPoint.rotation);
     }
+
+    IEnumerator delay_destruction(float seconds, GameObject objectToDestroy) {
+        yield return new WaitForSeconds(seconds);
+        Destroy(objectToDestroy);
+    }
+
+    public void destroyPlayer(float seconds, GameObject playerObject) { StartCoroutine(delay_destruction(seconds, playerObject)); }
+
 }

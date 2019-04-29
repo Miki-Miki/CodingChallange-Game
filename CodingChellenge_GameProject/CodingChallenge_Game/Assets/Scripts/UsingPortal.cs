@@ -94,6 +94,7 @@ public class UsingPortal : MonoBehaviour
         {
             condition.PortalWasUsed();
             condition.SceneSwitched();
+            condition.stopTestPortalObjective();
             // Debug.Log("1. Times portal was used: " + timesPortalWasUsed);
             // Debug.Log("E pressed, animation should be running, you should be entering the portal.");
             // Debug.Log("(From UsingPortal) Scenes switched: " + condition.GetScenesSwitched());
