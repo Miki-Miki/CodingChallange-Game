@@ -23,11 +23,14 @@ public class PlayerMovement : MonoBehaviour
     //public GameObject torsoObject;
 
     private Scene activeScene;
+    private Scene currentScene;
     private DontDestroyObjOnLoad ObjectPreservingScript;
     private InstantiatePortal instantiatePortalScript;
 
     private GameObject ConditionChecker;
     private ConditionChecker condition;
+
+    private bool flag = true;
 
     // Start is called before the first frame update
     void Start()
@@ -45,6 +48,9 @@ public class PlayerMovement : MonoBehaviour
     //This function runs every frame
     void Update()
     {   
+        
+
+        currentScene = SceneManager.GetActiveScene();
 
         if(activeScene.buildIndex == 0)
         {
@@ -90,6 +96,17 @@ public class PlayerMovement : MonoBehaviour
             isShiftPressed = false;
             animator.SetBool(boolShiftPressed, isShiftPressed);
             pWalkSpeed = 55f;
+        }
+
+        if(currentScene.buildIndex == 3 && flag == true) 
+        {
+            scaleX = 0.6f;
+            scaleY = 0.6f;
+            scaleZ = 1f;
+            transform.localScale = new Vector3(scaleX, scaleY, scaleZ);
+            pRunSpeed = pRunSpeed - 20f;
+            pWalkSpeed = pWalkSpeed - 20f;
+            flag = false;
         }
 
         animator.SetBool(boolTrigger, isWalking);                           //Setting the bool that triggers the animation at every frame

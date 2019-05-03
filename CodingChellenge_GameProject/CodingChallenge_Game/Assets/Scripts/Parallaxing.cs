@@ -16,7 +16,8 @@ public class Parallaxing : MonoBehaviour
 
     void Awake()
     {
-        cam = Camera.main.transform;
+       // cam = Camera.main.transform;
+       cam = GameObject.FindGameObjectWithTag("MainCamera").transform;
     }
 
     void Start()

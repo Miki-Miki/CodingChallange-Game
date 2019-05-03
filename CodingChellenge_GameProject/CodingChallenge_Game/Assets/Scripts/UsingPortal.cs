@@ -90,6 +90,8 @@ public class UsingPortal : MonoBehaviour
           
         // }
 
+
+
         if(isInteractable && Input.GetButtonDown("Use"))
         {
             condition.PortalWasUsed();

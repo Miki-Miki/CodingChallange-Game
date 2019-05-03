@@ -172,7 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e0e4914c698a9c4bb6418d97b03bf80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  computerScreenOpened: 0
+  computerScreenOpened: 1
   cameraAnimator: {fileID: 1806735609}
   playerAnimator: {fileID: 147587038}
   TestPortalAnim: {fileID: 2150274024235770651}
@@ -2303,6 +2303,7 @@ GameObject:
   - component: {fileID: 1114686116}
   - component: {fileID: 1114686115}
   - component: {fileID: 1114686117}
+  - component: {fileID: 1114686118}
   m_Layer: 0
   m_Name: Table_PNG
   m_TagString: Untagged
@@ -2387,6 +2388,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameObjectsToDestroy: []
+--- !u!114 &1114686118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1114686114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a65703a3945f3f49baae84e2458ea52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToDestroy: {fileID: 1114686114}
 --- !u!1 &1137451008
 GameObject:
   m_ObjectHideFlags: 0

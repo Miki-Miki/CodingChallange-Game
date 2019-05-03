@@ -56,19 +56,19 @@ public class ConditionChecker : MonoBehaviour
 
         }
 
-        if(computerScreenOpened && objectiveTestPortal == 1) delay_objective(2.0f, TestPortalAnim, "isObjectiveAvailible", true);
-        else TestPortalAnim.SetBool("isObjectiveAvailible", false);
+        if(computerScreenOpened && objectiveTestPortal == 1 && TestPortalAnim != null) delay_objective(2.0f, TestPortalAnim, "isObjectiveAvailible", true);
+        else if(TestPortalAnim != null) TestPortalAnim.SetBool("isObjectiveAvailible", false);
 
-        if(objectiveTestPortalComplete == 1) {
+        if(objectiveTestPortalComplete == 1 && TestPortalAnim != null) {
             TestPortalAnim.SetBool("isObjectiveComplete", true);
             TestPortalAnim.SetBool("isObjectiveAvailile", false);
         }
-        else TestPortalAnim.SetBool("isObjectiveComplete", false);
+        else if(TestPortalAnim != null) TestPortalAnim.SetBool("isObjectiveComplete", false);
     }
 
     IEnumerator Delay_letter_F(float delay_for_seconds) {
         yield return new WaitForSeconds(delay_for_seconds);
-        if(computerScreenOpened)
+        if(computerScreenOpened && info_letter_F != null)
         {
             info_letter_F.gameObject.SetActive(true);
         }

@@ -15,6 +15,7 @@ public class InstantiatePortal : MonoBehaviour
 
     private GameObject ConditionChecker;
     private ConditionChecker condition;
+    private static bool flag = true;
 
     void Start()
     {
@@ -67,6 +68,17 @@ public class InstantiatePortal : MonoBehaviour
             Instantiate_Portal();
             Debug.Log("F is pressed portal should be instantiated" + condition.GetComputerScreenOpened());
             Debug.Log("ComputerScreenOpened: " + condition.GetComputerScreenOpened());
+        }
+
+        if(activeScene.buildIndex == 3 && flag == true)
+        {
+            if(existingPortal != null) {
+                for (int i = 0; i < existingPortal.Length; i++)
+                {
+                    Destroy(existingPortal[i]);
+                    flag = false;
+                }
+            }
         }
     }
 
