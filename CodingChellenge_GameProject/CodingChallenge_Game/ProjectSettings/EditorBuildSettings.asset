@@ -21,7 +21,7 @@ EditorBuildSettings:
     path: Assets/Scenes/computuer-screen.unity
     guid: dae32825408ba8f4abc4295dfc56ad6d
   - enabled: 1
-    path: Assets/Scenes/velid-testing-lab 1.unity
+    path: Assets/Scenes/inside_1_parallel.unity
     guid: ceca22e6cb98cc54981905683ca21219
   - enabled: 1
     path: Assets/Scenes/velid-testing-lab 2.unity
