@@ -6,19 +6,22 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class PlayDelayedLoop : MonoBehaviour
 {
-    public AudioClip first;
-    public AudioClip looped;
-    private AudioSource audio;
+    public AudioSource first;
+    public AudioSource looped;
+    public float offset;
 
     void Start()
     {
-        audio = GetComponent<AudioSource>();
-        audio.clip = first;
-        audio.Play();
-        audio.clip = looped;
-        audio.PlayDelayed(first.length);
+        first.Play();
+        looped.loop = true;
+        //StartCoroutine(play_delayed(looped));
+        looped.PlayDelayed(first.clip.length - offset);
     }
 
+    IEnumerator play_delayed(AudioSource audio_source) {
+        yield return new WaitForSeconds(offset);
+        audio_source.Play();
+    }
     // Update is called once per frame
     void Update()
     {
