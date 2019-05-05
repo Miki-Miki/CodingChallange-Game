@@ -7,6 +7,7 @@ public class LightControl : MonoBehaviour
     private bool isInteractable;
     public GameObject mainObject;
     public GameObject light;
+    private AudioSource switch_sound;
 
     // Start is called before the first frame update
     void Start()
@@ -14,6 +15,7 @@ public class LightControl : MonoBehaviour
         
         light.GetComponent<Light>().enabled = false;
         isInteractable = false;
+        switch_sound = GetComponent<AudioSource>();
 
     }
 
@@ -32,6 +34,8 @@ public class LightControl : MonoBehaviour
             {
                 light.GetComponent<Light>().enabled = false ;
             }
+
+            switch_sound.Play();
 
         }
     }
