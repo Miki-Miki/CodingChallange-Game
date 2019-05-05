@@ -10,12 +10,16 @@ public class PlayerMovement : MonoBehaviour
     public Animator animator;
     public float pWalkSpeed = 20f;
     public float pRunSpeed = 70f;
+    public float pCrouchSpeed = 100f;
     Rigidbody2D rb2d;
     public float scaleX;        //These scale attributes allow for the object to be resized
     public float scaleY;        //and not affected by the movement since in the block where we define the
     public float scaleZ;        //sprite flipping when player moves to the right we have to define the scale
     private bool isWalking;     //This way we ensure it is always the same
     public string boolTrigger;
+
+   // private bool isForCrouchAnim;
+    private bool cPresesed;
 
    
     //Controllers for fast walking while shift is pressed
@@ -66,10 +70,16 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetAxis("Horizontal") < -0.3f || Input.GetAxis("Horizontal") > 0.1f)  //If player is moving on the H - Axis
         {
             isWalking = true;
+            animator.SetBool(boolTrigger, isWalking);
+            if (cPresesed == true)
+                pWalkSpeed = pCrouchSpeed;
+            else
+                pWalkSpeed = 55f;
         }
         else
         {
             isWalking = false;
+            animator.SetBool(boolTrigger, isWalking);
         }
 
         //Turning the player sprite around it's pivot when it moves in x and -x
@@ -99,6 +109,27 @@ public class PlayerMovement : MonoBehaviour
             pWalkSpeed = 55f;
         }
 
+        if(Input.GetKeyDown("c"))
+        {
+            cPresesed = true;
+            animator.SetBool("cPressed", true);
+
+            if(isWalking == true)
+            {
+               // isForCrouchAnim = true;
+              //  animator.SetBool("isForCrouchAnimantion", true);
+                pWalkSpeed = pCrouchSpeed;
+            }
+
+
+        }
+        if(Input.GetKeyUp("c"))
+        {
+            animator.SetBool("cPressed", false);
+            animator.SetBool("isForCrouchAnimantion", false);
+            pWalkSpeed = 55f;
+            cPresesed = false;
+        }
 
         if(currentScene.buildIndex == 3 && flag == true) 
         {
@@ -111,7 +142,7 @@ public class PlayerMovement : MonoBehaviour
             flag = false;
         }
 
-        animator.SetBool(boolTrigger, isWalking);                       //Setting the bool that triggers the animation at every frame
+       // animator.SetBool(boolTrigger, isWalking);                       //Setting the bool that triggers the animation at every frame
                                                                             //Once it is true the animation will run or not depending on the bool value
         //if(condition.getExitingRoom() == true) destroyPlayer(1.0f, player);                                                                    
     }                                                                       
