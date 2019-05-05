@@ -24,6 +24,6 @@ EditorBuildSettings:
     path: Assets/Scenes/inside_1_parallel.unity
     guid: ceca22e6cb98cc54981905683ca21219
   - enabled: 1
-    path: Assets/Scenes/velid-testing-lab 2.unity
+    path: Assets/Scenes/outdoors_parallel.unity
     guid: 34d4f7ab2e0ec654aad596d1fb5656b3
   m_configObjects: {}
