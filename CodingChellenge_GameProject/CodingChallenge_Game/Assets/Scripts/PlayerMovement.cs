@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     public float scaleZ;        //sprite flipping when player moves to the right we have to define the scale
     private bool isWalking;     //This way we ensure it is always the same
     public string boolTrigger;
+
    
     //Controllers for fast walking while shift is pressed
     private bool isShiftPressed;
@@ -98,6 +99,7 @@ public class PlayerMovement : MonoBehaviour
             pWalkSpeed = 55f;
         }
 
+
         if(currentScene.buildIndex == 3 && flag == true) 
         {
             scaleX = 0.6f;
@@ -109,7 +111,7 @@ public class PlayerMovement : MonoBehaviour
             flag = false;
         }
 
-        animator.SetBool(boolTrigger, isWalking);                           //Setting the bool that triggers the animation at every frame
+        animator.SetBool(boolTrigger, isWalking);                       //Setting the bool that triggers the animation at every frame
                                                                             //Once it is true the animation will run or not depending on the bool value
         //if(condition.getExitingRoom() == true) destroyPlayer(1.0f, player);                                                                    
     }                                                                       
