@@ -16,7 +16,7 @@ public class FadeMainMenu : MonoBehaviour
         playButton.onClick.AddListener(RunFadeAnimation);
         exitButton.onClick.AddListener(ExitGame);
     }
-    
+
     public void LoadScene()
     {
         SceneManager.LoadScene("Scene1");
