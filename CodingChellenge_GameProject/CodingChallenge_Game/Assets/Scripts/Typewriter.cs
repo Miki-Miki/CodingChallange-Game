@@ -9,6 +9,7 @@ public class Typewriter : MonoBehaviour
     string story;
     public bool PlayOnAwake = true;
     public float Delay;
+    public float Speed = 0.1f;
 
     void Awake()
     {
@@ -36,7 +37,7 @@ public class Typewriter : MonoBehaviour
         foreach (char c in story)
         {
             txt.text += c;
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(Speed);
         }
     }
 }
