@@ -7,7 +7,7 @@ public class UsingPortal : MonoBehaviour
 {
     public Animator descriptionAnimator;
     private GameObject sceneTransitionCanvas;
-    private bool isUsePressed;
+    private bool isUsePressed = false;
     private bool isInteractable;
     public string descritpionBoolTrigger;
 
@@ -54,6 +54,8 @@ public class UsingPortal : MonoBehaviour
        
         if(isInteractable && Input.GetButtonDown("Use"))
         {
+            isUsePressed = true;
+
             condition.PortalWasUsed();
             condition.SceneSwitched();
             condition.stopTestPortalObjective();
@@ -66,6 +68,7 @@ public class UsingPortal : MonoBehaviour
 
             portalEnteringSound.Play();
         } 
+        else isUsePressed = false;
 
         if(isInteractable && Input.GetButtonDown("Description") && timesPortalWasUsed <= 3)
         {
@@ -168,6 +171,6 @@ public class UsingPortal : MonoBehaviour
         }
     }
 
-
+    public bool GetIsUsedPressed() { return isUsePressed; }
 
 }

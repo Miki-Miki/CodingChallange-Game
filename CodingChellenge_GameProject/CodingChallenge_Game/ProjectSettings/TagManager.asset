@@ -13,6 +13,7 @@ TagManager:
   - Letter
   - Foreground
   - trToOutdoors
+  - computerScreen
   layers:
   - Default
   - TransparentFX

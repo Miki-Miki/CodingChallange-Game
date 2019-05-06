@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public Animator animator;
     public float pWalkSpeed = 20f;
     public float pRunSpeed = 70f;
-    public float pCrouchSpeed = 100f;
+    public float pCrouchSpeed = 300f;
     Rigidbody2D rb2d;
     public float scaleX;        //These scale attributes allow for the object to be resized
     public float scaleY;        //and not affected by the movement since in the block where we define the
@@ -53,18 +53,18 @@ public class PlayerMovement : MonoBehaviour
     //This function runs every frame
     void Update()
     {   
-        
-
         currentScene = SceneManager.GetActiveScene();
 
-        if(activeScene.buildIndex == 0)
+        if (activeScene.buildIndex == 0)
         {
             instantiatePortalScript.enabled = false;
+            this.enabled = false;
         }
         else
         {
             instantiatePortalScript.enabled = true;
             ObjectPreservingScript.enabled = true;
+            this.enabled = true;
         }
 
         if (Input.GetAxis("Horizontal") < -0.3f || Input.GetAxis("Horizontal") > 0.1f)  //If player is moving on the H - Axis
@@ -91,33 +91,33 @@ public class PlayerMovement : MonoBehaviour
             transform.localScale = new Vector3(scaleX, scaleY, scaleZ);     //While object moves to the right scale remains the same
         }
 
-        if(Input.GetKeyDown("left shift"))
+        if (Input.GetKeyDown("left shift") && cPresesed == false)
         {
             isShiftPressed = true;
             animator.SetBool(boolShiftPressed, isShiftPressed);
             pWalkSpeed = pRunSpeed;
         }
         
-        if(Input.GetKeyUp("left shift"))
+        if (Input.GetKeyUp("left shift") && cPresesed == false)
         {
             isShiftPressed = false;
             animator.SetBool(boolShiftPressed, isShiftPressed);
             pWalkSpeed = 55f;
         }
 
-        if(Input.GetKeyDown("c"))
+        if (Input.GetKeyDown("c") && isShiftPressed == false)
         {
             cPresesed = true;
             animator.SetBool("cPressed", true);
+            pWalkSpeed = pCrouchSpeed;
 
-            if(isWalking == true)
+            if(isWalking == true && isShiftPressed == false)
             {
-               // isForCrouchAnim = true;
-              //  animator.SetBool("isForCrouchAnimantion", true);
                 pWalkSpeed = pCrouchSpeed;
             }
         }
-        if(Input.GetKeyUp("c"))
+
+        if (Input.GetKeyUp("c"))
         {
             animator.SetBool("cPressed", false);
             animator.SetBool("isForCrouchAnimantion", false);
@@ -125,7 +125,7 @@ public class PlayerMovement : MonoBehaviour
             cPresesed = false;
         }
 
-        if(currentScene.buildIndex == 3 && flag == true) 
+        if (currentScene.buildIndex == 3 && flag == true) 
         {
             scaleX = 0.6f;
             scaleY = 0.6f;

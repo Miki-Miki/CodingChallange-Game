@@ -23,10 +23,12 @@ public class ConditionChecker : MonoBehaviour
     // Animators for objectives 
     public Animator TestPortalAnim;
     public Animator OpenCompAnim;
+    public Animator CheckCompPRL;
     
     //Checkers for objectives
     private int objectiveTestPortal = 0;
     private int objectiveTestPortalComplete = 0;
+    private bool cmpOpenInParallel = false;
 
     public GameObject info_letter_F;
     private float seconds_delay = 2.0f;
@@ -43,12 +45,12 @@ public class ConditionChecker : MonoBehaviour
 
     void Update()
     {
-        if(computerScreenOpened)
+        if (computerScreenOpened)
         {
             spawn_instruction_letter_F();
         }
 
-        if(portalOpenedForFirstTime)
+        if (portalOpenedForFirstTime)
         {
             cameraAnimator.SetTrigger("firstPortal");
             playerAnimator.SetTrigger("firstPortal");
@@ -56,19 +58,26 @@ public class ConditionChecker : MonoBehaviour
 
         }
 
-        if(computerScreenOpened && objectiveTestPortal == 1 && TestPortalAnim != null) delay_objective(2.0f, TestPortalAnim, "isObjectiveAvailible", true);
-        else if(TestPortalAnim != null) TestPortalAnim.SetBool("isObjectiveAvailible", false);
+        if (computerScreenOpened && objectiveTestPortal == 1 && TestPortalAnim != null)
+            delay_objective(3.0f, TestPortalAnim, "isObjectiveAvailible", true);
+        else if (TestPortalAnim != null) 
+            TestPortalAnim.SetBool("isObjectiveAvailible", false);
 
-        if(objectiveTestPortalComplete == 1 && TestPortalAnim != null) {
+        if (objectiveTestPortalComplete == 1 && TestPortalAnim != null) {
             TestPortalAnim.SetBool("isObjectiveComplete", true);
-            TestPortalAnim.SetBool("isObjectiveAvailile", false);
+            TestPortalAnim.SetBool("isObjectiveAvailible", false);
         }
-        else if(TestPortalAnim != null) TestPortalAnim.SetBool("isObjectiveComplete", false);
+        else if (TestPortalAnim != null) TestPortalAnim.SetBool("isObjectiveComplete", false);
+
+        if (cmpOpenInParallel == true) 
+            CheckCompPRL.SetBool("isObjectiveComplete", true);
+        if (numberOfTimesPortalWasUsed == 2)
+            delay_objective(6.0f, CheckCompPRL, "isObjectiveAvailible", true);
     }
 
     IEnumerator Delay_letter_F(float delay_for_seconds) {
         yield return new WaitForSeconds(delay_for_seconds);
-        if(computerScreenOpened && info_letter_F != null)
+        if (computerScreenOpened && info_letter_F != null)
         {
             info_letter_F.gameObject.SetActive(true);
         }
@@ -131,4 +140,11 @@ public class ConditionChecker : MonoBehaviour
     public void doorIsOpen() { isDoorOpen = true; }
     public void exitRoom() { exitingRoom = true; toOutdoorsAnim.SetTrigger("isTransitioning"); }
     public bool getExitingRoom() { return exitingRoom; }
+
+    public void cmpOpenedInParallel() { cmpOpenInParallel = true; }
+    public bool getCmpOpenInParallel() { return cmpOpenInParallel; }
+    public void stopOpenCompInParallelObjective() {
+        OpenCompAnim.SetBool("isObjectiveComplete", true);
+        OpenCompAnim.SetBool("isObjectiveAvailible", false);
+    }
 }

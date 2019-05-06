@@ -5,38 +5,49 @@ using UnityEngine.SceneManagement;
 
 public class SceneChangerScript : MonoBehaviour
 {
-    public Animator animator;           
+    private Animator animator;           
     public string enterTrigger;         //Name of bool that triggers the enter (Fade in) animation
     public string exitTrigger;          //Name of bool that triggers the exit (Fade out) animation
     private bool isEscapePressed;   
     private bool isUsePressed;
     private bool isInteractable;        //If we are in the interactable field (the collider on the object)
     public int sceneIndex;              
-    public GameObject playerToDisable;  //Select the player object that will be disabled once the new 'scene' is launched
+    private GameObject playerToDisable;  //Select the player object that will be disabled once the new 'scene' is launched
     public GameObject computerLight;    //Grabbing the light object to check if it is turned on or off
     private GameObject conditionChecker;
     private ConditionChecker condition;
-
+    private Scene activeScene;
 
     void Start()
     {
         conditionChecker = GameObject.FindGameObjectWithTag("ConditionChecker");
         condition = conditionChecker.GetComponent<ConditionChecker>();
+        playerToDisable = GameObject.FindGameObjectWithTag("Player");
+        animator = GameObject.FindGameObjectWithTag("computerScreen").GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        activeScene = SceneManager.GetActiveScene();
         //If we are in the interactable field and Q button is pressed and the light is on
         if(isInteractable && Input.GetButtonDown("Description") && computerLight.GetComponent<Light>().enabled == true)
         {
             condition.SetComputerScreenOpened(true);
             isUsePressed = true;                                                //Remember that E was pressed
-            animator.SetBool(enterTrigger, isUsePressed);                       //Trigger the animation because E is pressed
+            animator.SetBool("isUsedPressed", true);                            //Trigger the animation because E is pressed
             playerToDisable.GetComponent<PlayerMovement>().enabled = false;     //Disable PlayerMovement script on player
             isEscapePressed = false;                                            //Remember that escape is not pressed
             animator.SetBool(exitTrigger, isEscapePressed);                     //Run the exit animation accordingly to ^ line
             condition.stopOpenCompObjective();
+
+            Debug.Log("Opening computer screen.");
+
+            if (activeScene.buildIndex == 2 && condition.getCmpOpenInParallel() == false) 
+            {
+                condition.cmpOpenedInParallel();
+                condition.stopOpenCompInParallelObjective();
+            }
         } 
         else
         {
