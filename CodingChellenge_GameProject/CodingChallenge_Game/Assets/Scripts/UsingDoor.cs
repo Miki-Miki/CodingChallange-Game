@@ -11,6 +11,11 @@ public class UsingDoor : MonoBehaviour
     private Animator letterE;
     private bool isInteractable = false;
     private int usePressed = 0;
+    public float loopOffset;
+
+    public AudioSource atd_first;       // Automatic door sound clip (first)
+    public AudioSource atd_loop;        // Automatic door sound clip (loop)
+    private bool doorOpened = false;
 
     void Start()
     {
@@ -34,14 +39,31 @@ public class UsingDoor : MonoBehaviour
         if((condition.GetScenesSwitched() >= 2) && isInteractable == true
         && Input.GetButtonDown("Use"))
         {
-            if(usePressed > 0) condition.exitRoom();
+            if(usePressed > 0) 
+            {
+                condition.exitRoom();
+                fade_audio();
+            }
+            if(doorOpened == false) 
+            {
+                atd_first.Play();
+                atd_loop.loop = true;
+                atd_loop.PlayDelayed(atd_first.clip.length - loopOffset);
+                doorOpened = true;
+            }
+
             animator.SetBool("isForAnimation", true);
             condition.doorIsOpen();
             usePressed++;
         }
     }
 
-     void OnTriggerEnter2D(Collider2D collision)
+    public void fade_audio() 
+    {
+        StartCoroutine(AudioFadeOut.FadeOut(atd_loop, 2.2f));
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "Player")
         {

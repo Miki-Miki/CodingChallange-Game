@@ -23,6 +23,7 @@ public class UsingPortal : MonoBehaviour
     private GameObject ConditionChecker;
     private ConditionChecker condition;
     private int timesPortalWasUsed;
+    public AudioSource portalEnteringSound;
 
     private float delayForSeconds = 1.0f;
 
@@ -31,8 +32,6 @@ public class UsingPortal : MonoBehaviour
     private PlayerMovement mainPlayerScript;
 
    //private Animator letterAnimator;
-
-   
 
     void Start()
     {
@@ -48,74 +47,28 @@ public class UsingPortal : MonoBehaviour
         yield return new WaitForSeconds(delay_seconds);
     }
 
-    // void Awake() 
-    // {
-    //     if(timesPortalWasUsed >= 1)
-    //     {
-    //         sceneTransitionCanvas.GetComponent<Animator>().SetBool("hasEntereingScene", true);
-    //         StartCoroutine(Delay(delayForSeconds));
-    //         sceneTransitionCanvas.GetComponent<Animator>().SetBool("hasEntereingScene", false);
-    //     }
-    // }
-
-    // public void TransitionToScene()
-    // {
-    //     if(activeScene.buildIndex == 2)
-    //     {
-    //        GoToSceneByIndex(1);
-    //     }
-    //     if(activeScene.buildIndex == 1)
-    //     {
-    //         GoToScene(toScene);
-    //     }
-    // }
-
-    // Update is called once per frame
     void Update()
     {
         timesPortalWasUsed = condition.GetNumerOfTimesPortalWasUsed();
         sceneTransitionCanvas = GameObject.FindGameObjectWithTag("SceneTransitionCanvas");
-        // activeScene = SceneManager.GetActiveScene();
-        
-        // Debug.Log("Active-Scene Index: " + activeScene.name);
-
-        // if(activeScene.buildIndex == 2)
-        // {
-        //    InteractWithPortalToSceneByIndex(1);
-        // }
-        
-        // if(activeScene.buildIndex == 1)
-        // {
-        //     InteractWithPortalToScene(toScene);
-          
-        // }
-
-
-
+       
         if(isInteractable && Input.GetButtonDown("Use"))
         {
             condition.PortalWasUsed();
             condition.SceneSwitched();
             condition.stopTestPortalObjective();
-            // Debug.Log("1. Times portal was used: " + timesPortalWasUsed);
-            // Debug.Log("E pressed, animation should be running, you should be entering the portal.");
-            // Debug.Log("(From UsingPortal) Scenes switched: " + condition.GetScenesSwitched());
 
             sceneTransitionCanvas.GetComponent<Animator>().SetBool("isEnteringScene", true);
             player_animator.SetTrigger("openPortal");
+           
             //mainPlayerScript.enabled = false;
             condition.delay_player(2.0f);
 
-            // StartCoroutine(Delay(2.0f));
-            // sceneTransitionCanvas.GetComponent<Animator>().SetBool("isEnteringScene", false);
-
-            
-
+            portalEnteringSound.Play();
         } 
 
         if(isInteractable && Input.GetButtonDown("Description") && timesPortalWasUsed <= 3)
         {
-           // Debug.Log("Q pressed and is interactable");
             descriptionAnimator.SetBool(descritpionBoolTrigger, true);
         }
         else if(isInteractable == false)

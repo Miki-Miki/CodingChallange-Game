@@ -71,10 +71,6 @@ public class PlayerMovement : MonoBehaviour
         {
             isWalking = true;
             animator.SetBool(boolTrigger, isWalking);
-            if (cPresesed == true)
-                pWalkSpeed = pCrouchSpeed;
-            else
-                pWalkSpeed = 55f;
         }
         else
         {
@@ -120,8 +116,6 @@ public class PlayerMovement : MonoBehaviour
               //  animator.SetBool("isForCrouchAnimantion", true);
                 pWalkSpeed = pCrouchSpeed;
             }
-
-
         }
         if(Input.GetKeyUp("c"))
         {
