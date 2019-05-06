@@ -24,11 +24,13 @@ public class ConditionChecker : MonoBehaviour
     public Animator TestPortalAnim;
     public Animator OpenCompAnim;
     public Animator CheckCompPRL;
+    public Animator goOutside;
     
     //Checkers for objectives
     private int objectiveTestPortal = 0;
     private int objectiveTestPortalComplete = 0;
     private bool cmpOpenInParallel = false;
+    private bool isOutside = false;
 
     public GameObject info_letter_F;
     private float seconds_delay = 2.0f;
@@ -58,6 +60,7 @@ public class ConditionChecker : MonoBehaviour
 
         }
 
+        // MANAGING OBJECTIVES
         if (computerScreenOpened && objectiveTestPortal == 1 && TestPortalAnim != null)
             delay_objective(3.0f, TestPortalAnim, "isObjectiveAvailible", true);
         else if (TestPortalAnim != null) 
@@ -73,6 +76,11 @@ public class ConditionChecker : MonoBehaviour
             CheckCompPRL.SetBool("isObjectiveComplete", true);
         if (numberOfTimesPortalWasUsed == 2)
             delay_objective(6.0f, CheckCompPRL, "isObjectiveAvailible", true);
+
+        if (numberOfTimesPortalWasUsed == 4)
+            delay_objective(5.5f, goOutside, "isObjectiveAvailible", true);
+        if (isDoorOpen == true)
+            goOutside.SetBool("isObjectiveComplete", true);
     }
 
     IEnumerator Delay_letter_F(float delay_for_seconds) {
@@ -147,4 +155,7 @@ public class ConditionChecker : MonoBehaviour
         OpenCompAnim.SetBool("isObjectiveComplete", true);
         OpenCompAnim.SetBool("isObjectiveAvailible", false);
     }
+
+    public void SetIsOutside() { isOutside = true; }
+    public bool GetIsOutside() { return isOutside; }
 }

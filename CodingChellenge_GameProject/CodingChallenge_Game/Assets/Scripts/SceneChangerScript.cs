@@ -23,12 +23,12 @@ public class SceneChangerScript : MonoBehaviour
         conditionChecker = GameObject.FindGameObjectWithTag("ConditionChecker");
         condition = conditionChecker.GetComponent<ConditionChecker>();
         playerToDisable = GameObject.FindGameObjectWithTag("Player");
-        animator = GameObject.FindGameObjectWithTag("computerScreen").GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        animator = GameObject.FindGameObjectWithTag("computerScreen").GetComponent<Animator>();
         activeScene = SceneManager.GetActiveScene();
         //If we are in the interactable field and Q button is pressed and the light is on
         if(isInteractable && Input.GetButtonDown("Description") && computerLight.GetComponent<Light>().enabled == true)
@@ -47,6 +47,7 @@ public class SceneChangerScript : MonoBehaviour
             {
                 condition.cmpOpenedInParallel();
                 condition.stopOpenCompInParallelObjective();
+                condition.PortalWasUsed();
             }
         } 
         else

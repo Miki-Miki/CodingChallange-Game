@@ -52,25 +52,28 @@ public class UsingPortal : MonoBehaviour
         timesPortalWasUsed = condition.GetNumerOfTimesPortalWasUsed();
         sceneTransitionCanvas = GameObject.FindGameObjectWithTag("SceneTransitionCanvas");
        
-        if(isInteractable && Input.GetButtonDown("Use"))
+        if (isInteractable && Input.GetButtonDown("Use"))
         {
-            isUsePressed = true;
+            if (condition.GetNumerOfTimesPortalWasUsed() != 2) {
+                isUsePressed = true;
 
-            condition.PortalWasUsed();
-            condition.SceneSwitched();
-            condition.stopTestPortalObjective();
+                condition.PortalWasUsed();
+                condition.SceneSwitched();
+                condition.stopTestPortalObjective();
 
-            sceneTransitionCanvas.GetComponent<Animator>().SetBool("isEnteringScene", true);
-            player_animator.SetTrigger("openPortal");
+                sceneTransitionCanvas.GetComponent<Animator>().SetBool("isEnteringScene", true);
+                player_animator.SetTrigger("openPortal");
            
-            //mainPlayerScript.enabled = false;
-            condition.delay_player(2.0f);
+                //mainPlayerScript.enabled = false;
+                condition.delay_player(2.0f);
 
-            portalEnteringSound.Play();
+                portalEnteringSound.Play();
+            }
         } 
+
         else isUsePressed = false;
 
-        if(isInteractable && Input.GetButtonDown("Description") && timesPortalWasUsed <= 3)
+        if (isInteractable && Input.GetButtonDown("Description") && timesPortalWasUsed <= 3)
         {
             descriptionAnimator.SetBool(descritpionBoolTrigger, true);
         }
