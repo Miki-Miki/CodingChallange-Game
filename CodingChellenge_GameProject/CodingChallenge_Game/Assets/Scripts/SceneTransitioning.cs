@@ -62,14 +62,28 @@ public class SceneTransitioning : MonoBehaviour
 
     public void TransitionToScene()
     {
-        if(activeScene.buildIndex == 2)
+        if (activeScene.buildIndex == 3)
         {
-            GoToSceneByIndex(1);
+            GoToSceneByIndex(2);
         }
-        if(activeScene.buildIndex == 1)
+
+        if (activeScene.buildIndex == 2)
         {
             GoToScene(toScene);
         }
+
+        if (activeScene.buildIndex == 4)
+            GoToSceneByIndex(5);
+        
+        if (activeScene.buildIndex == 5)
+            GoToSceneByIndex(4);
+
+        if (activeScene.buildIndex == 6)
+            GoToSceneByIndex(7);
+        
+        if (activeScene.buildIndex == 7)
+            GoToSceneByIndex(6);
+
     }
 
     public void set_animInt_to_one()

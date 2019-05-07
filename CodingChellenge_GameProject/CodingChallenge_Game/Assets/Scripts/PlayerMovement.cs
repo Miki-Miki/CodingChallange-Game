@@ -55,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
     {   
         currentScene = SceneManager.GetActiveScene();
 
-        if (activeScene.buildIndex == 0)
+        if (activeScene.buildIndex == 1)
         {
             instantiatePortalScript.enabled = false;
             this.enabled = false;
@@ -125,7 +125,7 @@ public class PlayerMovement : MonoBehaviour
             cPresesed = false;
         }
 
-        if (currentScene.buildIndex == 3 && flag == true) 
+        if (currentScene.buildIndex == 4 && flag == true) 
         {
             scaleX = 0.6f;
             scaleY = 0.6f;

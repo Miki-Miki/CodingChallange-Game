@@ -43,7 +43,7 @@ public class SceneChangerScript : MonoBehaviour
 
             Debug.Log("Opening computer screen.");
 
-            if (activeScene.buildIndex == 2 && condition.getCmpOpenInParallel() == false) 
+            if (activeScene.buildIndex == 3 && condition.getCmpOpenInParallel() == false) 
             {
                 condition.cmpOpenedInParallel();
                 condition.stopOpenCompInParallelObjective();

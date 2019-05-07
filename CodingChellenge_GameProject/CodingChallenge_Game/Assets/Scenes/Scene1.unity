@@ -1876,7 +1876,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.7727194, y: -0.045000076, z: -14.02}
+  m_LocalPosition: {x: -6.7756786, y: -0.045000076, z: -14.02}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 995692049}
@@ -4505,7 +4505,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1806735604}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.483409, y: -1.1824002, z: -14.02}
+  m_LocalPosition: {x: -8.483379, y: -1.1824002, z: -14.02}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1082411875}
@@ -5395,32 +5395,8 @@ PrefabInstance:
       propertyPath: ConditionCheckerObj
       value: 
       objectReference: {fileID: 23062488}
-    - target: {fileID: 4275116195352443180, guid: 1e827d38989fc2947be72c1859486e7d,
-        type: 3}
-      propertyPath: m_AdditionalShaderChannelsFlag
-      value: 25
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e827d38989fc2947be72c1859486e7d, type: 3}
---- !u!1 &4275116195352443184 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4275116195352443184, guid: 1e827d38989fc2947be72c1859486e7d,
-    type: 3}
-  m_PrefabInstance: {fileID: 4275116194436969533}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &4275116195352443185
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4275116195352443184}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77a07e28140cbc6429e69e238ef4d750, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameObjectsToDestroy: []
 --- !u!1001 &5154672375200147546
 PrefabInstance:
   m_ObjectHideFlags: 0

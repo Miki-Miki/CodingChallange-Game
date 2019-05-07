@@ -70,7 +70,7 @@ public class InstantiatePortal : MonoBehaviour
             Debug.Log("ComputerScreenOpened: " + condition.GetComputerScreenOpened());
         }
 
-        if(activeScene.buildIndex == 3 && flag == true)
+        if(activeScene.buildIndex == 4 && flag == true)
         {
             if(existingPortal != null) {
                 for (int i = 0; i < existingPortal.Length; i++)

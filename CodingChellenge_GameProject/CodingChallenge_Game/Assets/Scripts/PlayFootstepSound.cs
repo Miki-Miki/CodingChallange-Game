@@ -21,13 +21,13 @@ public class PlayFootstepSound : MonoBehaviour
     {
         currentScene = SceneManager.GetActiveScene();
         
-        if(currentScene.buildIndex == 1 || currentScene.buildIndex == 2)
+        if(currentScene.buildIndex == 2 || currentScene.buildIndex == 3)
         {
             footstep_one.clip = carpetFootstepOne;
             footstep_two.clip = carpetFootstepTwo;
         }
 
-        if(currentScene.buildIndex == 3 || currentScene.buildIndex == 4)
+        if(currentScene.buildIndex == 4 || currentScene.buildIndex == 5)
         {
             footstep_one.clip = outdoorsFootstepOne;
             footstep_two.clip = outdoorsFootsteptwo;

@@ -51,7 +51,8 @@ public class UsingPortal : MonoBehaviour
     {
         timesPortalWasUsed = condition.GetNumerOfTimesPortalWasUsed();
         sceneTransitionCanvas = GameObject.FindGameObjectWithTag("SceneTransitionCanvas");
-       
+
+
         if (isInteractable && Input.GetButtonDown("Use"))
         {
             if (condition.GetNumerOfTimesPortalWasUsed() != 2) {

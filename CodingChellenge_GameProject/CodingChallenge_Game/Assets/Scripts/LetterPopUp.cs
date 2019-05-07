@@ -12,11 +12,11 @@ public class LetterPopUp : MonoBehaviour
 
     void Start() 
     {
-        instructionLetters = GameObject.FindGameObjectsWithTag("InstructionLetter");
     }
 
     void Update()
     {
+        instructionLetters = GameObject.FindGameObjectsWithTag("InstructionLetter");
         //animator = GameObject.FindGameObjectWithTag("Letter").GetComponent<Animator>();
         
         runCoroutine();                 //This function runs every frame (but the animation will only be delayed if we enter the interactable field (line 26)                

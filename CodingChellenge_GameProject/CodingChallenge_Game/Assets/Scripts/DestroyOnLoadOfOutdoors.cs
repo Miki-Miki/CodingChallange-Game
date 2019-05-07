@@ -12,7 +12,7 @@ public class DestroyOnLoadOfOutdoors : MonoBehaviour
     void Update()
     {
         activeScene = SceneManager.GetActiveScene();
-        if(activeScene.buildIndex == 3 && flag == true) {
+        if(activeScene.buildIndex == 4 && flag == true) {
             Destroy(objectToDestroy);
             //flag = false;
         }

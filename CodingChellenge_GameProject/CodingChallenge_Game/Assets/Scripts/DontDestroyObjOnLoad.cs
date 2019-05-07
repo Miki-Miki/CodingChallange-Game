@@ -24,7 +24,7 @@ public class DontDestroyObjOnLoad : MonoBehaviour
 
         GameObject[] objs = GameObject.FindGameObjectsWithTag("Player");
 
-        if(activeScene.buildIndex == 0)
+        if(activeScene.buildIndex == 1)
         {
             this.enabled = false;
         }
