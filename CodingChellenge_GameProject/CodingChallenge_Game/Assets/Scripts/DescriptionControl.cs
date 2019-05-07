@@ -8,15 +8,18 @@ public class DescriptionControl : MonoBehaviour
     private bool isInteractable = false;
     public Animator animator;
     public string boolTrigger;
+    private int descriptionOpened = 0;
 
     // Update is called once per frame
     void Update()
     {
-        if (isInteractable && Input.GetButtonDown("Descirption"))
+        if (isInteractable && Input.GetButtonDown("Description"))
         {
             animator.SetBool(boolTrigger, true);
+            descriptionOpened++;
         }
-        else
+        
+        if (!isInteractable)
         {
             animator.SetBool(boolTrigger, false);
         }
@@ -35,7 +38,9 @@ public class DescriptionControl : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            isInteractable = true;
+            isInteractable = false;
         }
     }
+
+    public int GetTimesDescritpionWasPoped() { return descriptionOpened; }
 }
