@@ -11637,7 +11637,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'space and time it self and
+  m_Text: 'space and time itself and
 
     bending reality as we know it '
 --- !u!222 &1273462201
@@ -12113,7 +12113,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'She meant everything to me,
 
-    and in a noble act o speak her mind'
+    and in a noble act to speak her mind'
 --- !u!222 &1378465344
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -18108,7 +18108,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'I am close to a breakthrough...
 
-    If I suceed in tearing'
+    If I succeed in tearing'
 --- !u!222 &1919901207
 CanvasRenderer:
   m_ObjectHideFlags: 0
