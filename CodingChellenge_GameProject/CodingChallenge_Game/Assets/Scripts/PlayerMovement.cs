@@ -105,7 +105,7 @@ public class PlayerMovement : MonoBehaviour
             pWalkSpeed = 55f;
         }
 
-        if (Input.GetKeyDown("c") && isShiftPressed == false)
+        if (Input.GetKeyDown("left ctrl") && isShiftPressed == false)
         {
             cPresesed = true;
             animator.SetBool("cPressed", true);
@@ -117,7 +117,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyUp("c"))
+        if (Input.GetKeyUp("left ctrl"))
         {
             animator.SetBool("cPressed", false);
             animator.SetBool("isForCrouchAnimantion", false);
