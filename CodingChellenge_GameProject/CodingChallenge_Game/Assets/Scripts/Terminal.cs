@@ -2,12 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
 
 public class Terminal : MonoBehaviour
 {
     private bool isInteractable;
     private DescriptionControl description;
-    private GameObject SceneTransitionCanvas;
+    public GameObject SceneTransitionCanvas;
+    public InputField _inputField;
+    public TextMeshProUGUI _textMesh;
+    private int numberOfCommands = 0;
 
     void Start()
     {
@@ -18,8 +23,8 @@ public class Terminal : MonoBehaviour
     {
         if (description.GetTimesDescritpionWasPoped() > 0 && isInteractable &&
         Input.GetButtonDown("Use"))
-        {
-            SceneTransitionCanvas.GetComponent<Animator>().SetBool("toScene", true);
+        {   
+            SceneTransitionCanvas.GetComponent<Animator>().SetBool("toTerminal", true);
         }
     }
 
@@ -44,4 +49,140 @@ public class Terminal : MonoBehaviour
     {
         SceneManager.LoadScene(buildIndex);
     }
+
+    public void ActivateInput()
+    {
+        _inputField.Select();
+    }
+
+    public void OnTextEnter() 
+    {
+        if (_inputField.text == "shell")
+        {
+            DisplayText("...", _textMesh, "ACCESS GRANTED...\n"+
+                                          "       FOR MORE INFORMATION TYPE 'HELP'");
+            numberOfCommands++;
+        }
+        else if (numberOfCommands == 0)
+        {
+            DisplayText("..", _textMesh, "ACCESS DENIED");
+            DisplayDelayedText(2f, "...", _textMesh, "ACCESS KEY REQUIRED");
+        }
+        else if (_inputField.text == "help" && numberOfCommands == 1)
+        {
+            DisplayText("..", _textMesh, "LIST OF AVAILIBLE COMMANDS:\n"+
+                                            " 'SYSTEMS' | 'CONTROLS' | 'CHANGE USER'");
+            numberOfCommands++;
+        }
+        else if (numberOfCommands == 1)
+        {
+            DisplayText("..", _textMesh, "WRONG INPUT");
+            DisplayDelayedText(2f, "...", _textMesh, " FOR MORE INFORMATION TYPE 'HELP'");
+        }
+        else if (_inputField.text == "systems" && numberOfCommands == 2)
+        {
+            DisplayText(".......", _textMesh, "OPEN, KILL, EDIT\n"+
+                                              "22101...........SPEAKERS\n"+
+                                              "22014...........VENTIALTION\n"+
+                                              "55142...........DOOR\n"+
+                                              "55468...........HEATING");
+           numberOfCommands++;
+        }
+        // else if (numberOfCommands == 2)
+        // {
+        //     DisplayText("..", _textMesh, "WRONG INPUT");
+        //     DisplayDelayedText(2f, "..", _textMesh, "LIST OF AVAILIBLE COMMANDS:\n"+
+        //                                     " 'SYSTEMS' | 'CONTROLS' | 'CHANGE USER'");
+        // }
+        else if (numberOfCommands == 2 || (_textMesh.text == "controls" || _textMesh.text == "change user"))
+        {
+            DisplayText("..", _textMesh, "ACCESS DENIED");
+            DisplayDelayedText(2f, "..", _textMesh, "LIST OF AVAILIBLE COMMANDS:\n"+
+                                            " 'SYSTEMS' | 'CONTROLS' | 'CHANGE USER'");
+        }
+        else if (_inputField.text == "open 55142" && numberOfCommands == 3)
+        {
+            DisplayText(".......", _textMesh, "DOOR OPENED");
+            SceneTransitionCanvas.GetComponent<Animator>().SetBool("toTerminal", false);
+        }
+        else if (numberOfCommands == 3)
+        {
+            DisplayText("..", _textMesh, "WRONG INPUT");
+            DisplayDelayedText(2f, ".......", _textMesh, "OPEN, KILL, EDIT\n"+
+                                              "22101...........SPEAKERS\n"+
+                                              "22014...........VENTIALTION\n"+
+                                              "55142...........DOOR\n"+
+                                              "55468...........HEATING");
+        }
+        else if (numberOfCommands == 3)
+        {
+            DisplayText("..", _textMesh, "WRONG INPUT");
+            DisplayDelayedText(2f, ".......", _textMesh, "OPEN, KILL, EDIT\n"+
+                                              "22101...........SPEAKERS\n"+
+                                              "22014...........VENTIALTION\n"+
+                                              "55142...........DOOR\n"+
+                                              "55468...........HEATING");
+        }
+        else if (numberOfCommands == 3 && _textMesh.text.Contains("speakers") ||
+                _textMesh.text.Contains("22101") || _textMesh.text.Contains("open") ||
+                _textMesh.text.Contains("kill") || _textMesh.text.Contains("edit") || 
+                _textMesh.text.Contains("ventilation") || _textMesh.text.Contains("heating") ||
+                _textMesh.text.Contains("kill"))
+        {
+            DisplayText("..", _textMesh, "CAN'T PERFORM THAT ACTION");
+            DisplayDelayedText(2f, ".......", _textMesh, "OPEN, KILL, EDIT\n"+
+                                              "22101...........SPEAKERS\n"+
+                                              "22014...........VENTIALTION\n"+
+                                              "55142...........DOOR\n"+
+                                              "55468...........HEATING");
+        }
+        else 
+        {
+            DisplayText("...", _textMesh, "WRONG INPUT!");
+        }
+    }
+
+    IEnumerator LoadingText(string text, TextMeshProUGUI textMesh, string displayText) 
+    {
+        
+        string currentText = "";
+        for (int i = 0; i <= text.Length; i++)
+        {
+            currentText = text.Substring(0, i);
+            textMesh.text = currentText;
+            yield return new WaitForSeconds(0.4f);
+        }
+        textMesh.text = displayText;
+    }
+
+    private void DisplayText(string text, TextMeshProUGUI textMesh, string displayText) 
+    {
+        StartCoroutine(LoadingText(text, textMesh, displayText));
+        _inputField.text = "";
+        _inputField.ActivateInputField();
+        _inputField.Select();
+    }
+
+    IEnumerator DelayText(float delay, string text, TextMeshProUGUI textMesh, string displayText) 
+    {
+        yield return new WaitForSeconds(delay);
+        string currentText = "";
+        for (int i = 0; i <= text.Length; i++)
+        {
+            currentText = text.Substring(0, i);
+            textMesh.text = currentText;
+            yield return new WaitForSeconds(0.4f);
+        }
+        textMesh.text = displayText;
+        _inputField.text = "";
+    }
+
+    private void DisplayDelayedText(float delay, string text, TextMeshProUGUI textMesh, string displayText) 
+    {
+        StartCoroutine(DelayText(delay, text, textMesh, displayText));
+        _inputField.text = "";
+        _inputField.ActivateInputField();
+        _inputField.Select();
+    }
+
 }
