@@ -55,6 +55,7 @@ public class UsingPortal : MonoBehaviour
 
         if (isInteractable && Input.GetButtonDown("Use"))
         {
+            Debug.Log("Times protal was used: " + condition.GetNumerOfTimesPortalWasUsed());
             if (condition.GetNumerOfTimesPortalWasUsed() != 2) {
                 isUsePressed = true;
 

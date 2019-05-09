@@ -43,6 +43,7 @@ public class UsingDoor : MonoBehaviour
             {
                 condition.exitRoom();
                 fade_audio();
+                letterE.SetBool("isInteractable", false);
             }
             if(doorOpened == false) 
             {

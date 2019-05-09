@@ -80,7 +80,7 @@ public class ConditionChecker : MonoBehaviour
         if (numberOfTimesPortalWasUsed == 2)
             delay_objective(6.0f, CheckCompPRL, "isObjectiveAvailible", true);
 
-        if (numberOfTimesPortalWasUsed == 5)
+        if (numberOfTimesPortalWasUsed == 4)
             delay_objective(5.5f, goOutside, "isObjectiveAvailible", true);
         if (isDoorOpen == true)
             goOutside.SetBool("isObjectiveComplete", true);
