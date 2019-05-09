@@ -13,6 +13,8 @@ public class Terminal : MonoBehaviour
     public InputField _inputField;
     public TextMeshProUGUI _textMesh;
     private int numberOfCommands = 0;
+    private int ntTerminalWasOpened = 0;
+    private ConditionChecker condition;
 
     void Start()
     {
@@ -21,10 +23,30 @@ public class Terminal : MonoBehaviour
 
     void Update()
     {
+        condition = GameObject.FindGameObjectWithTag("ConditionChecker").GetComponent<ConditionChecker>();
+
         if (description.GetTimesDescritpionWasPoped() > 0 && isInteractable &&
         Input.GetButtonDown("Use"))
         {   
             SceneTransitionCanvas.GetComponent<Animator>().SetBool("toTerminal", true);
+            ntTerminalWasOpened++;
+        }
+
+        if (description.GetTimesDescritpionWasPoped() > 0 && isInteractable &&
+        Input.GetButtonDown("Use") && ntTerminalWasOpened > 0 && 
+        SceneTransitionCanvas.GetComponent<Animator>().GetBool("exitTerminal"))
+        {   
+            SceneTransitionCanvas.GetComponent<Animator>().SetBool("exitTerminal", false);
+            _inputField.ActivateInputField();
+            _inputField.Select();
+            ntTerminalWasOpened++;
+        }
+
+        if(SceneTransitionCanvas.GetComponent<Animator>().GetBool("toTerminal")
+        && Input.GetButtonDown("Cancel"))
+        {
+            SceneTransitionCanvas.GetComponent<Animator>().SetBool("exitTerminal", true);
+            SceneTransitionCanvas.GetComponent<Animator>().SetBool("toTerminal", false);
         }
     }
 
@@ -57,88 +79,171 @@ public class Terminal : MonoBehaviour
 
     public void OnTextEnter() 
     {
-        if (_inputField.text == "shell")
-        {
-            DisplayText("...", _textMesh, "ACCESS GRANTED...\n"+
+
+        if (condition.GetNTTerminalWasUsed() == 0)
+            {
+            if (_inputField.text == "shell")
+            {
+               DisplayText("...", _textMesh, "ACCESS GRANTED...\n"+
                                           "       FOR MORE INFORMATION TYPE 'HELP'");
-            numberOfCommands++;
-        }
-        else if (numberOfCommands == 0)
-        {
-            DisplayText("..", _textMesh, "ACCESS DENIED");
-            DisplayDelayedText(2f, "...", _textMesh, "ACCESS KEY REQUIRED");
-        }
-        else if (_inputField.text == "help" && numberOfCommands == 1)
-        {
-            DisplayText("..", _textMesh, "LIST OF AVAILIBLE COMMANDS:\n"+
+               numberOfCommands++;
+            }
+            else if (numberOfCommands == 0)
+            {
+                DisplayText("..", _textMesh, "ACCESS DENIED");
+                DisplayDelayedText(2f, "...", _textMesh, "ACCESS KEY REQUIRED");
+            }
+            else if (_inputField.text == "help" && numberOfCommands == 1)
+            {
+               DisplayText("..", _textMesh, "LIST OF AVAILIBLE COMMANDS:\n"+
                                             " 'SYSTEMS' | 'CONTROLS' | 'CHANGE USER'");
-            numberOfCommands++;
-        }
-        else if (numberOfCommands == 1)
-        {
-            DisplayText("..", _textMesh, "WRONG INPUT");
-            DisplayDelayedText(2f, "...", _textMesh, " FOR MORE INFORMATION TYPE 'HELP'");
-        }
-        else if (_inputField.text == "systems" && numberOfCommands == 2)
-        {
-            DisplayText(".......", _textMesh, "OPEN, KILL, EDIT\n"+
+             numberOfCommands++;
+            }
+            else if (numberOfCommands == 1)
+            {
+                DisplayText("..", _textMesh, "WRONG INPUT");
+                DisplayDelayedText(2f, "...", _textMesh, " FOR MORE INFORMATION TYPE 'HELP'");
+            }
+            else if (_inputField.text == "systems" && numberOfCommands == 2)
+            {
+                DisplayText(".......", _textMesh, "OPEN, KILL, EDIT\n"+
                                               "22101...........SPEAKERS\n"+
                                               "22014...........VENTIALTION\n"+
                                               "55142...........DOOR\n"+
                                               "55468...........HEATING");
-           numberOfCommands++;
+                numberOfCommands++;
+            }
+            else if (numberOfCommands == 2 && !(_inputField.text == "controls" || _inputField.text == "change user"))
+            {
+                DisplayText("..", _textMesh, "WRONG INPUT");
+                DisplayDelayedText(2f, "..", _textMesh, "LIST OF AVAILIBLE COMMANDS:\n"+
+                                                        " 'SYSTEMS' | 'CONTROLS' | 'CHANGE USER'");
+            }
+            else if (numberOfCommands == 2 && (_inputField.text == "controls" || _inputField.text == "change user"))
+            {
+                DisplayText("..", _textMesh, "ACCESS DENIED");
+                DisplayDelayedText(2f, "..", _textMesh, "LIST OF AVAILIBLE COMMANDS:\n"+
+                                                    " 'SYSTEMS' | 'CONTROLS' | 'CHANGE USER'");
+            }
+            else if (_inputField.text == "open 55142" && numberOfCommands == 3)
+            {
+                DisplayText(".......", _textMesh, "DOOR OPENED");
+                SceneTransitionCanvas.GetComponent<Animator>().SetBool("openDoor", true);
+                condition.TerminalWasUsed();
+            }
+            else if (numberOfCommands == 3 && !(_inputField.text.Contains("speakers") ||
+                _inputField.text.Contains("22101") || _inputField.text.Contains("open") ||
+                _inputField.text.Contains("kill") || _inputField.text.Contains("edit") || 
+                _inputField.text.Contains("ventilation") || _inputField.text.Contains("heating") ||
+                _inputField.text.Contains("kill")))
+            {
+                DisplayText("..", _textMesh, "WRONG INPUT");
+                DisplayDelayedText(2f, ".......", _textMesh, "OPEN, KILL, EDIT\n"+
+                                              "22101...........SPEAKERS\n"+
+                                              "22014...........VENTIALTION\n"+
+                                              "55142...........DOOR\n"+
+                                              "55468...........HEATING");
+            }
+            else if (numberOfCommands == 3 && _inputField.text.Contains("speakers") ||
+                _inputField.text.Contains("22101") || _inputField.text.Contains("open") ||
+                _inputField.text.Contains("kill") || _inputField.text.Contains("edit") || 
+                _inputField.text.Contains("ventilation") || _inputField.text.Contains("heating") ||
+                _inputField.text.Contains("kill"))
+            {
+                DisplayText("..", _textMesh, "CAN'T PERFORM THAT ACTION");
+                DisplayDelayedText(2f, ".......", _textMesh, "OPEN, KILL, EDIT\n"+
+                                              "22101...........SPEAKERS\n"+
+                                              "22014...........VENTIALTION\n"+
+                                              "55142...........DOOR\n"+
+                                              "55468...........HEATING");
+            }
+            else 
+            {
+                DisplayText("...", _textMesh, "WRONG INPUT!");
+            }
         }
-        // else if (numberOfCommands == 2)
-        // {
-        //     DisplayText("..", _textMesh, "WRONG INPUT");
-        //     DisplayDelayedText(2f, "..", _textMesh, "LIST OF AVAILIBLE COMMANDS:\n"+
-        //                                     " 'SYSTEMS' | 'CONTROLS' | 'CHANGE USER'");
-        // }
-        else if (numberOfCommands == 2 || (_textMesh.text == "controls" || _textMesh.text == "change user"))
-        {
-            DisplayText("..", _textMesh, "ACCESS DENIED");
-            DisplayDelayedText(2f, "..", _textMesh, "LIST OF AVAILIBLE COMMANDS:\n"+
+
+        if (condition.GetNTTerminalWasUsed() == 1)
+            {
+            if (_inputField.text == "shell")
+            {
+               DisplayText("...", _textMesh, "ACCESS GRANTED...\n"+
+                                          "       FOR MORE INFORMATION TYPE 'HELP'");
+               numberOfCommands++;
+            }
+            else if (numberOfCommands == 0)
+            {
+                DisplayText("..", _textMesh, "ACCESS DENIED");
+                DisplayDelayedText(2f, "...", _textMesh, "ACCESS KEY REQUIRED");
+            }
+            else if (_inputField.text == "help" && numberOfCommands == 1)
+            {
+               DisplayText("..", _textMesh, "LIST OF AVAILIBLE COMMANDS:\n"+
                                             " 'SYSTEMS' | 'CONTROLS' | 'CHANGE USER'");
-        }
-        else if (_inputField.text == "open 55142" && numberOfCommands == 3)
-        {
-            DisplayText(".......", _textMesh, "DOOR OPENED");
-            SceneTransitionCanvas.GetComponent<Animator>().SetBool("toTerminal", false);
-        }
-        else if (numberOfCommands == 3)
-        {
-            DisplayText("..", _textMesh, "WRONG INPUT");
-            DisplayDelayedText(2f, ".......", _textMesh, "OPEN, KILL, EDIT\n"+
+             numberOfCommands++;
+            }
+            else if (numberOfCommands == 1)
+            {
+                DisplayText("..", _textMesh, "WRONG INPUT");
+                DisplayDelayedText(2f, "...", _textMesh, " FOR MORE INFORMATION TYPE 'HELP'");
+            }
+            else if (_inputField.text == "systems" && numberOfCommands == 2)
+            {
+                DisplayText(".......", _textMesh, "OPEN, KILL, EDIT\n"+
                                               "22101...........SPEAKERS\n"+
                                               "22014...........VENTIALTION\n"+
                                               "55142...........DOOR\n"+
                                               "55468...........HEATING");
-        }
-        else if (numberOfCommands == 3)
-        {
-            DisplayText("..", _textMesh, "WRONG INPUT");
-            DisplayDelayedText(2f, ".......", _textMesh, "OPEN, KILL, EDIT\n"+
+                numberOfCommands++;
+            }
+            else if (numberOfCommands == 2 && !(_inputField.text == "controls" || _inputField.text == "change user"))
+            {
+                DisplayText("..", _textMesh, "WRONG INPUT");
+                DisplayDelayedText(2f, "..", _textMesh, "LIST OF AVAILIBLE COMMANDS:\n"+
+                                                        " 'SYSTEMS' | 'CONTROLS' | 'CHANGE USER'");
+            }
+            else if (numberOfCommands == 2 && (_inputField.text == "controls" || _inputField.text == "change user"))
+            {
+                DisplayText("..", _textMesh, "ACCESS DENIED");
+                DisplayDelayedText(2f, "..", _textMesh, "LIST OF AVAILIBLE COMMANDS:\n"+
+                                                    " 'SYSTEMS' | 'CONTROLS' | 'CHANGE USER'");
+            }
+            else if (_inputField.text == "open 55142" && numberOfCommands == 3)
+            {
+                DisplayText(".......", _textMesh, "DOOR OPENED");
+                SceneTransitionCanvas.GetComponent<Animator>().SetBool("openDoor", true);
+                condition.TerminalWasUsed();
+            }
+            else if (numberOfCommands == 3 && !(_inputField.text.Contains("speakers") ||
+                _inputField.text.Contains("22101") || _inputField.text.Contains("open") ||
+                _inputField.text.Contains("kill") || _inputField.text.Contains("edit") || 
+                _inputField.text.Contains("ventilation") || _inputField.text.Contains("heating") ||
+                _inputField.text.Contains("kill")))
+            {
+                DisplayText("..", _textMesh, "WRONG INPUT");
+                DisplayDelayedText(2f, ".......", _textMesh, "OPEN, KILL, EDIT\n"+
                                               "22101...........SPEAKERS\n"+
                                               "22014...........VENTIALTION\n"+
                                               "55142...........DOOR\n"+
                                               "55468...........HEATING");
-        }
-        else if (numberOfCommands == 3 && _textMesh.text.Contains("speakers") ||
-                _textMesh.text.Contains("22101") || _textMesh.text.Contains("open") ||
-                _textMesh.text.Contains("kill") || _textMesh.text.Contains("edit") || 
-                _textMesh.text.Contains("ventilation") || _textMesh.text.Contains("heating") ||
-                _textMesh.text.Contains("kill"))
-        {
-            DisplayText("..", _textMesh, "CAN'T PERFORM THAT ACTION");
-            DisplayDelayedText(2f, ".......", _textMesh, "OPEN, KILL, EDIT\n"+
+            }
+            else if (numberOfCommands == 3 && _inputField.text.Contains("speakers") ||
+                _inputField.text.Contains("22101") || _inputField.text.Contains("open") ||
+                _inputField.text.Contains("kill") || _inputField.text.Contains("edit") || 
+                _inputField.text.Contains("ventilation") || _inputField.text.Contains("heating") ||
+                _inputField.text.Contains("kill"))
+            {
+                DisplayText("..", _textMesh, "CAN'T PERFORM THAT ACTION");
+                DisplayDelayedText(2f, ".......", _textMesh, "OPEN, KILL, EDIT\n"+
                                               "22101...........SPEAKERS\n"+
                                               "22014...........VENTIALTION\n"+
                                               "55142...........DOOR\n"+
                                               "55468...........HEATING");
-        }
-        else 
-        {
-            DisplayText("...", _textMesh, "WRONG INPUT!");
+            }
+            else 
+            {
+                DisplayText("...", _textMesh, "WRONG INPUT!");
+            }
         }
     }
 

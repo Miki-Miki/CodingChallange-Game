@@ -32,6 +32,9 @@ public class ConditionChecker : MonoBehaviour
     private bool cmpOpenInParallel = false;
     private bool isOutside = false;
 
+    //Checkers for terminals
+    private int ntTerminalWasUsed = 0;
+
     public GameObject info_letter_F;
     private float seconds_delay = 2.0f;
     //private float delay_player_for_seconds = 3.3f;
@@ -158,4 +161,7 @@ public class ConditionChecker : MonoBehaviour
 
     public void SetIsOutside() { isOutside = true; }
     public bool GetIsOutside() { return isOutside; }
+
+    public void TerminalWasUsed() { ntTerminalWasUsed++; }
+    public int GetNTTerminalWasUsed() { return ntTerminalWasUsed; }
 }
