@@ -36,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
     private ConditionChecker condition;
 
     private bool flag = true;
+    private bool flag2 = true;
 
     // Start is called before the first frame update
     void Start()
@@ -134,6 +135,17 @@ public class PlayerMovement : MonoBehaviour
             pWalkSpeed = pWalkSpeed - 20f;
             pRunSpeed = pRunSpeed - 20f;
             flag = false;
+        }
+
+        if (currentScene.buildIndex == 6 && flag2 == true) 
+        {
+            scaleX = 0.7f;
+            scaleY = 0.7f;
+            scaleZ = 1f;
+            transform.localScale = new Vector3(scaleX, scaleY, scaleZ);
+            pWalkSpeed = pWalkSpeed + 20f;
+            pRunSpeed = pRunSpeed + 20f;
+            flag2 = false;
         }
 
        // animator.SetBool(boolTrigger, isWalking);                       //Setting the bool that triggers the animation at every frame

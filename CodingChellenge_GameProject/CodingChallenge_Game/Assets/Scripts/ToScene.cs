@@ -9,10 +9,12 @@ public class ToScene : MonoBehaviour
     public InputField _inputField;
     public Animator door1Animator;
     private PlayerMovement playerMovementScript;
+    private InstantiatePortal portal;
 
     void Update()
     {
         playerMovementScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+        portal = GameObject.FindGameObjectWithTag("Player").GetComponent<InstantiatePortal>();
     }
 
     public void GoToScene(int sceneIndex)
@@ -38,5 +40,15 @@ public class ToScene : MonoBehaviour
     public void DisablePlayer()
     {
         playerMovementScript.enabled = false;
+    }
+
+    public void DisablePortal()
+    {
+        portal.enabled = false;
+    }
+
+    public void EnablePortal()
+    {
+        portal.enabled = true;
     }
 }
