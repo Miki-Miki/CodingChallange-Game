@@ -895,7 +895,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 119.925316, y: 0.008800864, z: -14.340001}
+  m_LocalPosition: {x: 119.90278, y: 0.008800864, z: -14.340001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1413,7 +1413,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 670817177}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 110.09347, y: -1.4180003, z: -14.340001}
+  m_LocalPosition: {x: 110.0937, y: -1.4180003, z: -14.340001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 319160865}
@@ -2068,6 +2068,7 @@ GameObject:
   - component: {fileID: 1050033820}
   - component: {fileID: 1050033819}
   - component: {fileID: 1050033822}
+  - component: {fileID: 1050033823}
   m_Layer: 0
   m_Name: door_1
   m_TagString: Untagged
@@ -2182,6 +2183,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1050033823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1050033818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77a07e28140cbc6429e69e238ef4d750, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameObjectsToDestroy: []
 --- !u!1 &1068291789
 GameObject:
   m_ObjectHideFlags: 0
@@ -2926,6 +2940,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _inputField: {fileID: 1798871650}
   door1Animator: {fileID: 1050033822}
+  camera2Animator: {fileID: 0}
 --- !u!95 &1355672494
 Animator:
   serializedVersion: 3
@@ -3403,6 +3418,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _inputField: {fileID: 505939337}
   door1Animator: {fileID: 1050033822}
+  camera2Animator: {fileID: 0}
 --- !u!1 &1764780522
 GameObject:
   m_ObjectHideFlags: 0
@@ -3775,7 +3791,7 @@ MonoBehaviour:
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 654887085}
         m_MethodName: OnTextEnter
         m_Mode: 1
         m_Arguments:
@@ -4608,6 +4624,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2084049032}
+  - component: {fileID: 2084049033}
   m_Layer: 0
   m_Name: Door_1
   m_TagString: Untagged
@@ -4630,6 +4647,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2084049033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084049031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77a07e28140cbc6429e69e238ef4d750, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameObjectsToDestroy: []
 --- !u!1001 &2092771543
 PrefabInstance:
   m_ObjectHideFlags: 0

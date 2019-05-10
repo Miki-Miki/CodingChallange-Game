@@ -10,9 +10,15 @@ public class ToScene : MonoBehaviour
     public Animator door1Animator;
     private PlayerMovement playerMovementScript;
     private InstantiatePortal portal;
+    public Animator camera2Animator;
 
     void Update()
     {
+        if(door1Animator == null) 
+            door1Animator = GameObject.Find("door_1").GetComponent<Animator>();
+
+        if(camera2Animator == null)
+            camera2Animator = GameObject.Find("camera_2").GetComponent<Animator>();
         playerMovementScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         portal = GameObject.FindGameObjectWithTag("Player").GetComponent<InstantiatePortal>();
     }
@@ -50,5 +56,10 @@ public class ToScene : MonoBehaviour
     public void EnablePortal()
     {
         portal.enabled = true;
+    }
+
+    public void killCameraTwo()
+    {
+        camera2Animator.SetBool("killCamera", true);
     }
 }
