@@ -6,17 +6,24 @@ public class player_disable : MonoBehaviour
 {
     private PlayerMovement player;
     private InstantiatePortal portal;
+    private GameObject Player;
+    private Animator playerAnimator;
 
     void Update()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         portal = GameObject.FindGameObjectWithTag("Player").GetComponent<InstantiatePortal>();
-
+        Player = GameObject.FindGameObjectWithTag("Player");
+        playerAnimator = Player.GetComponent<Animator>();
 
     }
 
     public void DisablePlayer()
     {
+        playerAnimator.SetBool("ShiftPressed", false);
+        playerAnimator.SetBool("isForAnimation", false);
+        playerAnimator.SetBool("isForCrouchAnimation", false);
+        playerAnimator.SetBool("cPressed", false);
         player.enabled = false;
     }
 
