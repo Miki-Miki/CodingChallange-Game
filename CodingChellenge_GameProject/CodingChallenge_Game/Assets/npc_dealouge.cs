@@ -7,11 +7,13 @@ public class npc_dealouge : MonoBehaviour
 
     public GameObject canvas;
     private bool isTrigger;
+    public GameObject dialogueSystem;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
+       
     }
 
     // Update is called once per frame
@@ -25,6 +27,7 @@ public class npc_dealouge : MonoBehaviour
         if(isTrigger && Input.GetButtonDown("Description"))
         {
             canvas.GetComponent<Animator>().SetBool("for_fade_in", true);
+            dialogueSystem.active = true;
         }
 
         if (isTrigger && Input.GetButtonDown("Cancel"))
