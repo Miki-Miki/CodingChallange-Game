@@ -27,6 +27,9 @@ EditorBuildSettings:
     path: Assets/Scenes/inside_1.unity
     guid: 3e88db353ec0ca047b6606709abd7200
   - enabled: 1
+    path: Assets/Scenes/inside_1_parallel 1.unity
+    guid: 1221f224fe6db634e9d0c265dfa11b8f
+  - enabled: 0
     path: Assets/Scenes/inside_1_parallel.unity
     guid: ceca22e6cb98cc54981905683ca21219
   - enabled: 1
