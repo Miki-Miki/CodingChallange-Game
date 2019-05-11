@@ -11,7 +11,6 @@ public class AudioFadeOut : MonoBehaviour
         while (adjusetVolume > 0) {
             adjusetVolume -= startVolume * Time.deltaTime / FadeTime;
             audioSource.volume = adjusetVolume;
-            Debug.Log("Adjusted volume: " + adjusetVolume);
             yield return null;
         }
  

@@ -4,34 +4,48 @@ using UnityEngine;
 
 public class player_disable : MonoBehaviour
 {
-    private PlayerMovement player;
-    private InstantiatePortal portal;
+    private PlayerMovement playerScript;
+    private InstantiatePortal portalScript;
+    private GameObject Player;
+    private Animator playerAnimator;
+
+    void Start() 
+    {
+        Player = GameObject.FindGameObjectWithTag("Player");
+        portalScript = Player.GetComponent<InstantiatePortal>();
+        playerScript = Player.GetComponent<PlayerMovement>();
+        playerAnimator = Player.GetComponent<Animator>();
+    }
 
     void Update()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
-        portal = GameObject.FindGameObjectWithTag("Player").GetComponent<InstantiatePortal>();
-
+        if(portalScript == null) Debug.Log("Can't find instantiate portal.");
+        if(playerScript == null) Debug.Log("Can't find PlayerMovement.");
+        if(Player == null) Debug.Log("Can't find player");
 
     }
 
     public void DisablePlayer()
     {
-        player.enabled = false;
+        playerAnimator.SetBool("ShiftPressed", false);
+        playerAnimator.SetBool("isForAnimation", false);
+        playerAnimator.SetBool("isForCrouchAnimation", false);
+        playerAnimator.SetBool("cPressed", false);
+        playerScript.enabled = false;
     }
 
     public void EnablePlayer()
     {
-        player.enabled = true;
+        playerScript.enabled = true;
     }
 
     public void DisablePortal()
     {
-        portal.enabled = false;
+        portalScript.enabled = false;
     }
 
     public void EnablePortal()
     {
-        portal.enabled = true;
+        portalScript.enabled = true;
     }
 }
