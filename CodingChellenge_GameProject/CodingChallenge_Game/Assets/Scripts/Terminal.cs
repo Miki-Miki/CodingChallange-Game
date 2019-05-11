@@ -144,6 +144,7 @@ public class Terminal : MonoBehaviour
                 condition.setTerminalIsOpen(false);
                 condition.TerminalWasUsed();
                 condition.setDoorOneOpen(true);
+                numberOfCommands = 0;
             }
             else if (numberOfCommands == 3 && !(_inputField.text.Contains("speakers") ||
                 _inputField.text.Contains("22101") || _inputField.text.Contains("open") ||
