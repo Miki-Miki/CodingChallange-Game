@@ -23,6 +23,7 @@ public class DescriptionControl : MonoBehaviour
         {
             animator.SetBool(boolTrigger, false);
         }
+
     }
 
     void OnTriggerEnter2D(Collider2D collision)

@@ -16,26 +16,27 @@ public class Terminal : MonoBehaviour
     private int ntTerminalWasOpened = 0;
     private ConditionChecker condition;
     private Scene activeScene;
+    public Transform doorOne;
 
     void Start()
     {
         description = GetComponent<DescriptionControl>();
+        condition = GameObject.FindGameObjectWithTag("ConditionChecker").GetComponent<ConditionChecker>();
     }
 
     void Update()
     {
         activeScene = SceneManager.GetActiveScene();
-        condition = GameObject.FindGameObjectWithTag("ConditionChecker").GetComponent<ConditionChecker>();
 
-        if(Input.GetKeyDown("e")) Debug.Log("E pressed");
-        if(Input.GetButtonDown("Description")) Debug.Log("Q pressed");
-
-        if (description.GetTimesDescritpionWasPoped() >= 0 && isInteractable &&
+        if (description.GetTimesDescritpionWasPoped() > 0 && isInteractable &&
         Input.GetButtonDown("Use"))
         {   
             Debug.Log("Open Terminal");
             SceneTransitionCanvas.GetComponent<Animator>().SetBool("toTerminal", true);
             ntTerminalWasOpened++;
+            _inputField.ActivateInputField();
+            _inputField.Select();
+            condition.setTerminalIsOpen(true);
         }
 
         if (description.GetTimesDescritpionWasPoped() > 0 && isInteractable &&
@@ -48,12 +49,15 @@ public class Terminal : MonoBehaviour
             ntTerminalWasOpened++;
         }
 
-        if(SceneTransitionCanvas.GetComponent<Animator>().GetBool("toTerminal")
+        if (SceneTransitionCanvas.GetComponent<Animator>().GetBool("toTerminal")
         && Input.GetButtonDown("Cancel"))
         {
             SceneTransitionCanvas.GetComponent<Animator>().SetBool("exitTerminal", true);
             SceneTransitionCanvas.GetComponent<Animator>().SetBool("toTerminal", false);
+            condition.setTerminalIsOpen(false);
         }
+
+        if (condition.getDoorOneOpen()) keepDoorOpen();
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -85,14 +89,15 @@ public class Terminal : MonoBehaviour
 
     public void OnTextEnter() 
     {
-
+        Debug.Log("Active scene build index: " + activeScene.buildIndex);
+        Debug.Log("Terminal used: " + condition.GetNTTerminalWasUsed());
         if (condition.GetNTTerminalWasUsed() == 0 && activeScene.buildIndex == 7)
             {
             if (_inputField.text == "shell")
             {
-               DisplayText("...", _textMesh, "ACCESS GRANTED...\n"+
+                DisplayText("...", _textMesh, "ACCESS GRANTED...\n"+
                                           "       FOR MORE INFORMATION TYPE 'HELP'");
-               numberOfCommands++;
+                numberOfCommands++;
             }
             else if (numberOfCommands == 0)
             {
@@ -134,8 +139,11 @@ public class Terminal : MonoBehaviour
             else if (_inputField.text == "open 55142" && numberOfCommands == 3)
             {
                 DisplayText(".......", _textMesh, "DOOR OPENED");
+                SceneTransitionCanvas.GetComponent<Animator>().SetBool("toTerminal", false);
                 SceneTransitionCanvas.GetComponent<Animator>().SetBool("openDoor", true);
+                condition.setTerminalIsOpen(false);
                 condition.TerminalWasUsed();
+                condition.setDoorOneOpen(true);
             }
             else if (numberOfCommands == 3 && !(_inputField.text.Contains("speakers") ||
                 _inputField.text.Contains("22101") || _inputField.text.Contains("open") ||
@@ -170,7 +178,9 @@ public class Terminal : MonoBehaviour
         }
         else 
         {
-            DisplayText("..", _textMesh, "ACCES DENIED");
+            _inputField.text = "";
+            _inputField.ActivateInputField();
+            _inputField.Select();
         }
 
         if (condition.GetNTTerminalWasUsed() == 1 && activeScene.buildIndex == 7)
@@ -257,7 +267,9 @@ public class Terminal : MonoBehaviour
         }
         else 
         {
-            DisplayText("...", _textMesh, "ACCESS DENIED");
+            _inputField.text = "";
+            _inputField.ActivateInputField();
+            _inputField.Select();
         }
     }
 
@@ -302,6 +314,11 @@ public class Terminal : MonoBehaviour
         _inputField.text = "";
         _inputField.ActivateInputField();
         _inputField.Select();
+    }
+
+    private void keepDoorOpen() 
+    {
+        doorOne.position = new Vector3(119.35f, 2.09f, -6.490003f);
     }
 
 }

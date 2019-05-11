@@ -80,6 +80,9 @@ public class InstantiatePortal : MonoBehaviour
                 }
             }
         }
+
+        if(condition.getTerminalIsOpen()) this.enabled = false;
+        else this.enabled = true;
     }
 
     void Instantiate_Portal()

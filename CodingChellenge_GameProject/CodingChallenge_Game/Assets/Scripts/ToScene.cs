@@ -6,14 +6,13 @@ using UnityEngine.UI;
 
 public class ToScene : MonoBehaviour
 {
-    public InputField _inputField;
-    public Animator door1Animator;
+    public InputField inputField;
     private PlayerMovement playerMovementScript;
     private InstantiatePortal portal;
+    public Animator door1Animator;
     public Animator camera2Animator;
 
-    void Update()
-    {
+    void Start() {
         if(door1Animator == null) 
             door1Animator = GameObject.Find("door_1").GetComponent<Animator>();
 
@@ -23,14 +22,20 @@ public class ToScene : MonoBehaviour
         portal = GameObject.FindGameObjectWithTag("Player").GetComponent<InstantiatePortal>();
     }
 
+    void Update()
+    {
+    }
+
     public void GoToScene(int sceneIndex)
     {
         SceneManager.LoadScene(sceneIndex);
     }
 
-    public void ActivateInputField() 
+    public void SelectInputField() 
     {
-        _inputField.Select();
+        inputField.ActivateInputField();
+        inputField.Select();
+        Debug.Log("Active Input field: " + inputField.isFocused);
     }
 
     public void OpenDoorOne()
@@ -38,25 +43,26 @@ public class ToScene : MonoBehaviour
         door1Animator.SetTrigger("openDoor");
     }
     
-    public void EnablePlayer()
-    {
-        playerMovementScript.enabled = true;
-    }
+    // public void EnablePlayer()
+    // {
+    //     playerMovementScript.enabled = true;
+    // }
 
-    public void DisablePlayer()
-    {
-        playerMovementScript.enabled = false;
-    }
+    // public void DisablePlayer()
+    // {
+    //     playerMovementScript.enabled = false;
+    // }
 
-    public void DisablePortal()
-    {
-        portal.enabled = false;
-    }
+    // public void DisablePortal()
+    // {
+    //     portal.enabled = false;
+    //     Debug.Log("Portal: " + portal + portal.enabled);
+    // }
 
-    public void EnablePortal()
-    {
-        portal.enabled = true;
-    }
+    // public void EnablePortal()
+    // {
+    //     portal.enabled = true;
+    // }
 
     public void killCameraTwo()
     {

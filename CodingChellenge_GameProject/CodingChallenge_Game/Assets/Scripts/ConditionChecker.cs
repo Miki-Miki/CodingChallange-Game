@@ -34,6 +34,8 @@ public class ConditionChecker : MonoBehaviour
 
     //Checkers for terminals
     private int ntTerminalWasUsed = 0;
+    private bool terminalIsOpen = false;
+    private bool isDoorOneOpen = false;
 
     public GameObject info_letter_F;
     private float seconds_delay = 2.0f;
@@ -164,4 +166,8 @@ public class ConditionChecker : MonoBehaviour
 
     public void TerminalWasUsed() { ntTerminalWasUsed++; }
     public int GetNTTerminalWasUsed() { return ntTerminalWasUsed; }
+    public void setTerminalIsOpen(bool isOpen) { terminalIsOpen = isOpen; }
+    public bool getTerminalIsOpen() { return terminalIsOpen; }
+    public void setDoorOneOpen(bool open) { isDoorOneOpen = open; }
+    public bool getDoorOneOpen() { return isDoorOneOpen; }
 }
