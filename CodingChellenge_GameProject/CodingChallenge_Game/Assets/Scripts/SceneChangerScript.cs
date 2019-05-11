@@ -36,7 +36,6 @@ public class SceneChangerScript : MonoBehaviour
             condition.SetComputerScreenOpened(true);
             isUsePressed = true;                                                //Remember that E was pressed
             animator.SetBool("isUsedPressed", true);                            //Trigger the animation because E is pressed
-            playerToDisable.GetComponent<PlayerMovement>().enabled = false;     //Disable PlayerMovement script on player
             isEscapePressed = false;                                            //Remember that escape is not pressed
             animator.SetBool(exitTrigger, isEscapePressed);                     //Run the exit animation accordingly to ^ line
             condition.stopOpenCompObjective();
@@ -60,7 +59,6 @@ public class SceneChangerScript : MonoBehaviour
         {
             isEscapePressed = true;                                         //Remember if escape was (is) pressed
             animator.SetBool(exitTrigger, isEscapePressed);                 //Trigger animation accordingly
-            playerToDisable.GetComponent<PlayerMovement>().enabled = true;  //Enable our player
             isUsePressed = false;                                           //Remember if E was (is) pressed
 
             animator.SetBool(enterTrigger, isUsePressed);                   //Trigger animation accordingly
