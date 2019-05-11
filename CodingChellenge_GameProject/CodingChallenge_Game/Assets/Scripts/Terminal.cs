@@ -27,9 +27,13 @@ public class Terminal : MonoBehaviour
         activeScene = SceneManager.GetActiveScene();
         condition = GameObject.FindGameObjectWithTag("ConditionChecker").GetComponent<ConditionChecker>();
 
-        if (description.GetTimesDescritpionWasPoped() > 0 && isInteractable &&
+        if(Input.GetKeyDown("e")) Debug.Log("E pressed");
+        if(Input.GetButtonDown("Description")) Debug.Log("Q pressed");
+
+        if (description.GetTimesDescritpionWasPoped() >= 0 && isInteractable &&
         Input.GetButtonDown("Use"))
         {   
+            Debug.Log("Open Terminal");
             SceneTransitionCanvas.GetComponent<Animator>().SetBool("toTerminal", true);
             ntTerminalWasOpened++;
         }
@@ -57,7 +61,7 @@ public class Terminal : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             isInteractable = true;
-            
+            Debug.Log("isInteractable");
         }
     }
 

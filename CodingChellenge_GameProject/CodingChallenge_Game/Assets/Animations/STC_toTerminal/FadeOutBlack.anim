@@ -170,7 +170,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 3.05
+        time: 1.8833333
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -445,7 +445,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 3.05
+        time: 1.8833333
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -500,7 +500,7 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 4.016667
-    functionName: killCameraTwo
+    functionName: OpenDoorOne
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

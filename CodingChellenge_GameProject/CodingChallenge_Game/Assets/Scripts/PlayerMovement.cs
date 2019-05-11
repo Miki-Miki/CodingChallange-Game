@@ -133,7 +133,7 @@ public class PlayerMovement : MonoBehaviour
             scaleZ = 1f;
             transform.localScale = new Vector3(scaleX, scaleY, scaleZ);
             pWalkSpeed = pWalkSpeed - 20f;
-            pRunSpeed = pRunSpeed - 20f;
+            pRunSpeed = pRunSpeed - 5f;
             flag = false;
         }
 
