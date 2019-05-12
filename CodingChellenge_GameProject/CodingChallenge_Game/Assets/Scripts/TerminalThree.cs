@@ -5,12 +5,11 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 
-public class Terminal : MonoBehaviour
+
+public class TerminalThree : MonoBehaviour
 {
     public GameObject SceneTransitionCanvas;
     public InputField _inputField;
-    public Transform doorOne;
-    public Transform doorOnePRL;
     public TextMeshProUGUI _textMesh;
 
     private bool isInteractable;
@@ -19,7 +18,6 @@ public class Terminal : MonoBehaviour
     private int ntTerminalWasOpened = 0;
     private ConditionChecker condition;
     private Scene activeScene;
-
 
     void Start()
     {
@@ -59,9 +57,6 @@ public class Terminal : MonoBehaviour
             SceneTransitionCanvas.GetComponent<Animator>().SetBool("toTerminal", false);
             condition.setTerminalIsOpen(false);
         }
-
-        if (condition.getDoorOneOpen()) keepDoorOpen();
-        if (condition.getPRL_DoorOpen()) keepPRLDoorOpen();
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -96,9 +91,9 @@ public class Terminal : MonoBehaviour
             {
             if (_inputField.text == "shell")
             {
-                DisplayText("...", _textMesh, "ACCESS GRANTED...\n"+
+               DisplayText("...", _textMesh, "ACCESS GRANTED...\n"+
                                           "       FOR MORE INFORMATION TYPE 'HELP'");
-                numberOfCommands++;
+               numberOfCommands++;
             }
             else if (numberOfCommands == 0)
             {
@@ -118,11 +113,11 @@ public class Terminal : MonoBehaviour
             }
             else if (_inputField.text == "systems" && numberOfCommands == 2)
             {
-                DisplayText(".......", _textMesh, "OPEN, KILL, EDIT\n"+
-                                              "22101...........SPEAKERS\n"+
-                                              "22014...........VENTIALTION\n"+
-                                              "55142...........DOOR\n"+
-                                              "55468...........HEATING");
+               DisplayText(".......", _textMesh, "OPEN, KILL, EDIT\n"+
+                                              "67X0X...........CAM_2\n"+
+                                              "52234...........CAM_1\n"+
+                                              "53145...........RADIATION\n"+
+                                              "88974...........PLUMAGE");
                 numberOfCommands++;
             }
             else if (numberOfCommands == 2 && !(_inputField.text == "controls" || _inputField.text == "change user"))
@@ -137,41 +132,40 @@ public class Terminal : MonoBehaviour
                 DisplayDelayedText(2f, "..", _textMesh, "LIST OF AVAILIBLE COMMANDS:\n"+
                                                     " 'SYSTEMS' | 'CONTROLS' | 'CHANGE USER'");
             }
-            else if (_inputField.text == "open 55142" && numberOfCommands == 3)
+            else if (_inputField.text == "kill 52234" && numberOfCommands == 3)
             {
-                DisplayText(".......", _textMesh, "DOOR OPENED");
+                DisplayText(".......", _textMesh, "CAMERA KILLED");
                 SceneTransitionCanvas.GetComponent<Animator>().SetBool("toTerminal", false);
                 SceneTransitionCanvas.GetComponent<Animator>().SetBool("openDoor", true);
                 condition.setTerminalIsOpen(false);
                 condition.TerminalWasUsed();
-                condition.setDoorOneOpen(true);
                 numberOfCommands = 0;
             }
             else if (numberOfCommands == 3 && !(_inputField.text.Contains("speakers") ||
                 _inputField.text.Contains("22101") || _inputField.text.Contains("open") ||
                 _inputField.text.Contains("kill") || _inputField.text.Contains("edit") || 
-                _inputField.text.Contains("ventilation") || _inputField.text.Contains("heating") ||
+                _inputField.text.Contains("ventilation") || _inputField.text.Contains("call") ||
                 _inputField.text.Contains("kill")))
             {
                 DisplayText("..", _textMesh, "WRONG INPUT");
                 DisplayDelayedText(2f, ".......", _textMesh, "OPEN, KILL, EDIT\n"+
-                                              "22101...........SPEAKERS\n"+
-                                              "22014...........VENTIALTION\n"+
-                                              "55142...........DOOR\n"+
-                                              "55468...........HEATING");
+                                              "67X0X...........CAM_2\n"+
+                                              "52234...........CAM_1\n"+
+                                              "53145...........RADIATION\n"+
+                                              "88974...........PLUMAGE");
             }
             else if (numberOfCommands == 3 && _inputField.text.Contains("speakers") ||
                 _inputField.text.Contains("22101") || _inputField.text.Contains("open") ||
                 _inputField.text.Contains("kill") || _inputField.text.Contains("edit") || 
-                _inputField.text.Contains("ventilation") || _inputField.text.Contains("heating") ||
+                _inputField.text.Contains("ventilation") || _inputField.text.Contains("call") ||
                 _inputField.text.Contains("kill"))
             {
                 DisplayText("..", _textMesh, "CAN'T PERFORM THAT ACTION");
                 DisplayDelayedText(2f, ".......", _textMesh, "OPEN, KILL, EDIT\n"+
-                                              "22101...........SPEAKERS\n"+
-                                              "22014...........VENTIALTION\n"+
-                                              "55142...........DOOR\n"+
-                                              "55468...........HEATING");
+                                              "67X0X...........CAM_2\n"+
+                                              "52234...........CAM_1\n"+
+                                              "53145...........RADIATION\n"+
+                                              "88974...........PLUMAGE");
             }
             else 
             {
@@ -180,7 +174,6 @@ public class Terminal : MonoBehaviour
         }
         else 
         {
-            DisplayText("...", _textMesh, "ACCESS DENIED!");
             _inputField.text = "";
             _inputField.ActivateInputField();
             _inputField.Select();
@@ -202,7 +195,6 @@ public class Terminal : MonoBehaviour
 
     private void DisplayText(string text, TextMeshProUGUI textMesh, string displayText) 
     {
-        
         StartCoroutine(LoadingText(text, textMesh, displayText));
         _inputField.text = "";
         _inputField.ActivateInputField();
@@ -230,17 +222,4 @@ public class Terminal : MonoBehaviour
         _inputField.ActivateInputField();
         _inputField.Select();
     }
-
-    private void keepDoorOpen() 
-    {
-        if(doorOne != null)
-            doorOne.position = new Vector3(114.56f, 1.98f, -6.490003f);
-    }
-
-    private void keepPRLDoorOpen()
-    {
-        if(doorOnePRL != null)
-            doorOnePRL.position = new Vector3(116.15f, 1.55f, -6.490003f);
-    }
-   
 }
