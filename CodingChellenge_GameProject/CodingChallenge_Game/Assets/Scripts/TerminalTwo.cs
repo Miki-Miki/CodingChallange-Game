@@ -239,6 +239,6 @@ public class TerminalTwo : MonoBehaviour
     private void keepPRLDoorOpen()
     {
         if(door2PRL != null)
-            door2PRL.position = new Vector3(142.8f, 1.82f, -6.490003f);
+            door2PRL.position = new Vector3(0f, 4.69f, 0f);
     }
 }

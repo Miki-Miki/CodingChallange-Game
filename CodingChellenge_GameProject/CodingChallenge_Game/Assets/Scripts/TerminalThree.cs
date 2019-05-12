@@ -174,6 +174,7 @@ public class TerminalThree : MonoBehaviour
         }
         else 
         {
+            DisplayText("...", _textMesh, "WRONG INPUT!");
             _inputField.text = "";
             _inputField.ActivateInputField();
             _inputField.Select();

@@ -15,12 +15,12 @@ public class CameraWarning : MonoBehaviour
 
     void Start()
     {
-        condition = GameObject.FindGameObjectWithTag("ConditionChecker").GetComponent<CCInside>();
         cmFollowScript = GetComponent<CMFollowObject>();
     }
 
     void Update()
     {
+        condition = GameObject.FindGameObjectWithTag("CCInside").GetComponent<CCInside>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         if (hasEntered) cameraWarnignComplete(4f);
     }

@@ -152,6 +152,7 @@ GameObject:
   m_Component:
   - component: {fileID: 23062490}
   - component: {fileID: 23062489}
+  - component: {fileID: 23062491}
   m_Layer: 0
   m_Name: ConditionChecker
   m_TagString: ConditionChecker
@@ -193,6 +194,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &23062491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 23062488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77a07e28140cbc6429e69e238ef4d750, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameObjectsToDestroy: []
 --- !u!1 &30188345
 GameObject:
   m_ObjectHideFlags: 0
@@ -1862,7 +1876,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.7815304, y: -0.045000076, z: -14.02}
+  m_LocalPosition: {x: -6.7813787, y: -0.045000076, z: -14.02}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 995692049}
@@ -4491,7 +4505,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1806735604}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.48332, y: -1.1824002, z: -14.02}
+  m_LocalPosition: {x: -8.483321, y: -1.1824002, z: -14.02}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1082411875}

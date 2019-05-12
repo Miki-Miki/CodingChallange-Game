@@ -15,6 +15,7 @@ TagManager:
   - trToOutdoors
   - computerScreen
   - cameraObjective
+  - CCInside
   layers:
   - Default
   - TransparentFX

@@ -14,8 +14,7 @@ public class keepDoorOpen : MonoBehaviour
     public void PRL_DoorOpened()
     {
         conditionChecker.setPRL_DoorOpen(true);
-        if(conditionChecker.getPRL_DoorOpen())
-            conditionChecker.setPRL_DoorTwoOpen(true);
+            
     }
    
     public void PRL_DoorTwoOpened()

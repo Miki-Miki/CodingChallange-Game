@@ -240,7 +240,7 @@ public class Terminal : MonoBehaviour
     private void keepPRLDoorOpen()
     {
         if(doorOnePRL != null)
-            doorOnePRL.position = new Vector3(116.15f, 1.55f, -6.490003f);
+            doorOnePRL.position = new Vector3(0f, 4.69f, 0f);
     }
    
 }
