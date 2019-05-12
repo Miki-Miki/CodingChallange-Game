@@ -11,9 +11,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main menu.unity
     guid: edd2d1b0ed27f1e468c8354b53b19ca1
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Scene1.unity
     guid: d2bf6f7a334eb334783fb3828a5c8330
+  - enabled: 1
+    path: Assets/Scenes/Scene2.unity
+    guid: ca06e42854f03ef4d80456805b82beda
   - enabled: 1
     path: Assets/Scenes/parallel1.unity
     guid: 567ee1c4905061246a1575afb80fb8a2
