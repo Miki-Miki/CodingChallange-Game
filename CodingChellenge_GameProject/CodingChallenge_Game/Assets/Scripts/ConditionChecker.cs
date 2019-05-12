@@ -31,11 +31,15 @@ public class ConditionChecker : MonoBehaviour
     private int objectiveTestPortalComplete = 0;
     private bool cmpOpenInParallel = false;
     private bool isOutside = false;
+    private bool isForCamWarning = false;
 
     //Checkers for terminals
     private int ntTerminalWasUsed = 0;
     private bool terminalIsOpen = false;
     private bool isDoorOneOpen = false;
+    private bool PRL_DoorOpened = false;
+    private bool isDoorTwoOpen = false;
+    private bool PRL_DoorTwoOpened = false;
 
     public GameObject info_letter_F;
     private float seconds_delay = 2.0f;
@@ -164,10 +168,20 @@ public class ConditionChecker : MonoBehaviour
     public void SetIsOutside() { isOutside = true; }
     public bool GetIsOutside() { return isOutside; }
 
+    //Terminals
     public void TerminalWasUsed() { ntTerminalWasUsed++; }
     public int GetNTTerminalWasUsed() { return ntTerminalWasUsed; }
     public void setTerminalIsOpen(bool isOpen) { terminalIsOpen = isOpen; }
     public bool getTerminalIsOpen() { return terminalIsOpen; }
     public void setDoorOneOpen(bool open) { isDoorOneOpen = open; }
     public bool getDoorOneOpen() { return isDoorOneOpen; }
+    public bool getPRL_DoorOpen() { return PRL_DoorOpened; }
+    public void setPRL_DoorOpen(bool set) { PRL_DoorOpened = set; }
+    public void setDoorTwoOpen(bool open) { isDoorTwoOpen = open; }
+    public bool getDoorTwoOpen() { return isDoorTwoOpen; }
+    public bool getPRL_DoorTwoOpen() { return PRL_DoorTwoOpened; }
+    public void setPRL_DoorTwoOpen(bool set) { PRL_DoorTwoOpened = set; }
+    
+    public void setIsForCamWarning(bool set) { isForCamWarning = set; }
+    public bool getIsForCamWarning() { return isForCamWarning; }
 }

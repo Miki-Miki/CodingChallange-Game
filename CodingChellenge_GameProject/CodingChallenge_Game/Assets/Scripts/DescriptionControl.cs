@@ -8,7 +8,7 @@ public class DescriptionControl : MonoBehaviour
     private bool isInteractable = false;
     public Animator animator;
     public string boolTrigger;
-    private int descriptionOpened = 0;
+    private static int descriptionOpened = 0;
 
     // Update is called once per frame
     void Update()
