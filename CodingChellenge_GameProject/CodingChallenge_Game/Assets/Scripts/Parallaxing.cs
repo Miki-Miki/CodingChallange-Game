@@ -16,12 +16,13 @@ public class Parallaxing : MonoBehaviour
 
     void Awake()
     {
-       // cam = Camera.main.transform;
-       cam = GameObject.FindGameObjectWithTag("MainCamera").transform;
+        //cam = Camera.main.transform;
+        cam = GameObject.FindGameObjectWithTag("MainCamera").transform;
     }
 
     void Start()
     {
+       
         // foreground = GameObject.FindGameObjectWithTag("Foreground").transform;
         // if(foreground != null)
         //     backgrounds[0] = foreground;
@@ -32,7 +33,7 @@ public class Parallaxing : MonoBehaviour
 
         for (int i = 0; i < backgrounds.Length; i++)
         {
-            parallaxScales[i] = backgrounds[i].position.z * -1;
+            parallaxScales[i] = backgrounds[i].position.z * -1f;
         }
         
     }

@@ -33,6 +33,7 @@ public class npc_dealouge : MonoBehaviour
         if (isTrigger && Input.GetButtonDown("Cancel"))
         {
             canvas.GetComponent<Animator>().SetBool("for_fade_in", false);
+            dialogueSystem.active = false;
         }
     }
 
