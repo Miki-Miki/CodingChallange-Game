@@ -5,12 +5,12 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 
-public class Terminal : MonoBehaviour
+public class TerminalFive : MonoBehaviour
 {
     public GameObject SceneTransitionCanvas;
     public InputField _inputField;
-    public Transform doorOnePRL;
     public TextMeshProUGUI _textMesh;
+    public Transform door3;
     public float doorSpeed;
 
     private bool isInteractable;
@@ -19,24 +19,15 @@ public class Terminal : MonoBehaviour
     private int ntTerminalWasOpened = 0;
     private ConditionChecker condition;
     private Scene activeScene;
-    private bool doorOpened = false;
-    private CCInside ccInside;
-    private Transform doorOne;
-
 
     void Start()
     {
         description = GetComponent<DescriptionControl>();
+        condition = GameObject.FindGameObjectWithTag("ConditionChecker").GetComponent<ConditionChecker>();
     }
 
     void Update()
     {
-        condition = GameObject.FindGameObjectWithTag("ConditionChecker").GetComponent<ConditionChecker>();
-        //ccInside = GameObject.FindGameObjectWithTag("CCInside").GetComponent<CCInside>();
-        doorOne = GameObject.FindGameObjectWithTag("doorOne").transform;
-
-        //if (condition.getDoorOneOpen()) { keepDoorOneOpen(); }
-
         activeScene = SceneManager.GetActiveScene();
 
         if (description.GetTimesDescritpionWasPoped() > 0 && isInteractable &&
@@ -68,11 +59,10 @@ public class Terminal : MonoBehaviour
             condition.setTerminalIsOpen(false);
         }
 
-        if(condition.getDoorOneOpen())
+        if (condition.getDoorThreeOpen()) 
         {
-            Debug.Log("Running!!!");
-            Vector3 target = new Vector3(114f, 2.34f, -4.9f);
-            doorOne.position = Vector3.Lerp(doorOne.position, target, Time.deltaTime * doorSpeed);
+            Vector3 target = new Vector3(196.98f, 2.59f, -6.490003f);
+            door3.position = Vector3.Lerp(door3.position, target, Time.deltaTime * doorSpeed);
         }
     }
 
@@ -108,9 +98,9 @@ public class Terminal : MonoBehaviour
             {
             if (_inputField.text == "shell")
             {
-                DisplayText("...", _textMesh, "ACCESS GRANTED...\n"+
+               DisplayText("...", _textMesh, "ACCESS GRANTED...\n"+
                                           "       FOR MORE INFORMATION TYPE 'HELP'");
-                numberOfCommands++;
+               numberOfCommands++;
             }
             else if (numberOfCommands == 0)
             {
@@ -130,11 +120,12 @@ public class Terminal : MonoBehaviour
             }
             else if (_inputField.text == "systems" && numberOfCommands == 2)
             {
-                DisplayText(".......", _textMesh, "OPEN, KILL, EDIT\n"+
-                                              "22101...........SPEAKERS\n"+
-                                              "22014...........VENTIALTION\n"+
-                                              "55142...........DOOR\n"+
-                                              "55468...........HEATING");
+               DisplayText(".......", _textMesh, "OPEN, KILL, EDIT\n"+
+                                              "55412...........DOOR_1\n"+
+                                              "78412...........DOOR_2\n"+
+                                              "52234...........CAM_1\n"+
+                                              "67606...........CAM_2\n"+
+                                              "XXXX9...........DOOR_3");
                 numberOfCommands++;
             }
             else if (numberOfCommands == 2 && !(_inputField.text == "controls" || _inputField.text == "change user"))
@@ -149,42 +140,43 @@ public class Terminal : MonoBehaviour
                 DisplayDelayedText(2f, "..", _textMesh, "LIST OF AVAILIBLE COMMANDS:\n"+
                                                     " 'SYSTEMS' | 'CONTROLS' | 'CHANGE USER'");
             }
-            else if (_inputField.text == "open 55142" && numberOfCommands == 3)
+            else if (_inputField.text == "open 57569" && numberOfCommands == 3)
             {
                 DisplayText(".......", _textMesh, "DOOR OPENED");
                 SceneTransitionCanvas.GetComponent<Animator>().SetBool("toTerminal", false);
                 SceneTransitionCanvas.GetComponent<Animator>().SetBool("openDoor", true);
                 condition.setTerminalIsOpen(false);
                 condition.TerminalWasUsed();
-                condition.setDoorOneOpen(true);
+                condition.setDoorThreeOpen(true);
                 numberOfCommands = 0;
-                //ccInside.setHasDoorOpened(true);
             }
             else if (numberOfCommands == 3 && !(_inputField.text.Contains("speakers") ||
                 _inputField.text.Contains("22101") || _inputField.text.Contains("open") ||
                 _inputField.text.Contains("kill") || _inputField.text.Contains("edit") || 
-                _inputField.text.Contains("ventilation") || _inputField.text.Contains("heating") ||
+                _inputField.text.Contains("ventilation") || _inputField.text.Contains("call") ||
                 _inputField.text.Contains("kill")))
             {
                 DisplayText("..", _textMesh, "WRONG INPUT");
                 DisplayDelayedText(2f, ".......", _textMesh, "OPEN, KILL, EDIT\n"+
-                                              "22101...........SPEAKERS\n"+
-                                              "22014...........VENTIALTION\n"+
-                                              "55142...........DOOR\n"+
-                                              "55468...........HEATING");
+                                              "55412...........DOOR_1\n"+
+                                              "78412...........DOOR_2\n"+
+                                              "52234...........CAM_1\n"+
+                                              "67606...........CAM_2\n"+
+                                              "XXXX9...........DOOR_3");
             }
             else if (numberOfCommands == 3 && _inputField.text.Contains("speakers") ||
                 _inputField.text.Contains("22101") || _inputField.text.Contains("open") ||
                 _inputField.text.Contains("kill") || _inputField.text.Contains("edit") || 
-                _inputField.text.Contains("ventilation") || _inputField.text.Contains("heating") ||
+                _inputField.text.Contains("ventilation") || _inputField.text.Contains("call") ||
                 _inputField.text.Contains("kill"))
             {
                 DisplayText("..", _textMesh, "CAN'T PERFORM THAT ACTION");
                 DisplayDelayedText(2f, ".......", _textMesh, "OPEN, KILL, EDIT\n"+
-                                              "22101...........SPEAKERS\n"+
-                                              "22014...........VENTIALTION\n"+
-                                              "55142...........DOOR\n"+
-                                              "55468...........HEATING");
+                                              "55412...........DOOR_1\n"+
+                                              "78412...........DOOR_2\n"+
+                                              "52234...........CAM_1\n"+
+                                              "67606...........CAM_2\n"+
+                                              "XXXX9...........DOOR_3");
             }
             else 
             {
@@ -193,7 +185,7 @@ public class Terminal : MonoBehaviour
         }
         else 
         {
-            DisplayText("...", _textMesh, "ACCESS DENIED");
+            DisplayText("...", _textMesh, "WRONG INPUT");
             _inputField.text = "";
             _inputField.ActivateInputField();
             _inputField.Select();
@@ -215,7 +207,6 @@ public class Terminal : MonoBehaviour
 
     private void DisplayText(string text, TextMeshProUGUI textMesh, string displayText) 
     {
-        
         StartCoroutine(LoadingText(text, textMesh, displayText));
         _inputField.text = "";
         _inputField.ActivateInputField();
@@ -243,17 +234,4 @@ public class Terminal : MonoBehaviour
         _inputField.ActivateInputField();
         _inputField.Select();
     }
-
-    private void keepDoorOneOpen() 
-    {
-        if(doorOne != null)
-            doorOne.position = new Vector3(114.56f, 1.98f, -6.490003f);
-    }
-
-    private void keepPRLDoorOpen()
-    {
-        if (doorOnePRL != null)
-            doorOnePRL.position = new Vector3(0f, 9.33f, 0f);
-    }
-   
 }

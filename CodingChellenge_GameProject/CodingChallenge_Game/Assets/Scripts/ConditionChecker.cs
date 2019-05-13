@@ -40,6 +40,9 @@ public class ConditionChecker : MonoBehaviour
     private bool PRL_DoorOpened = false;
     private bool isDoorTwoOpen = false;
     private bool PRL_DoorTwoOpened = false;
+    private bool isCamOneKilled = false;
+    private bool isCamTwoKilled = false;
+    private bool isDoorThreeOpen = false;
 
     public GameObject info_letter_F;
     private float seconds_delay = 2.0f;
@@ -184,4 +187,13 @@ public class ConditionChecker : MonoBehaviour
     
     public void setIsForCamWarning(bool set) { isForCamWarning = set; }
     public bool getIsForCamWarning() { return isForCamWarning; }
+
+    public void setCamOneKilled(bool set) { isCamOneKilled = set; }
+    public bool getCamOneKilled() { return isCamOneKilled; }
+
+    public void setCamTwoKilled(bool set) { isCamTwoKilled = set; }
+    public bool getCamTwoKilled() { return isCamTwoKilled; }
+
+    public void setDoorThreeOpen(bool set) { isDoorThreeOpen = set; }
+    public bool getDoorThreeOpen() {return isDoorThreeOpen; }
 }

@@ -65,7 +65,7 @@ public class TerminalTwo : MonoBehaviour
 
         if(condition.getDoorTwoOpen())
         {
-            Vector3 target = new Vector3(142.8f, 2.24f, -4.9f);
+            Vector3 target = new Vector3(140.6f, 4.17f, -4.9f);
             door2.position = Vector3.Lerp(door2.position, target, Time.deltaTime * doorSpeed);
         }
    
@@ -182,7 +182,7 @@ public class TerminalTwo : MonoBehaviour
             }
             else 
             {
-                DisplayText("...", _textMesh, "WRONG INPUT!");
+                DisplayText("...", _textMesh, "WRONG INPUT");
             }
         }
         else 

@@ -11,6 +11,7 @@ public class TerminalThree : MonoBehaviour
     public GameObject SceneTransitionCanvas;
     public InputField _inputField;
     public TextMeshProUGUI _textMesh;
+    public Animator cameraOneAnimator;
 
     private bool isInteractable;
     private DescriptionControl description;
@@ -56,6 +57,11 @@ public class TerminalThree : MonoBehaviour
             SceneTransitionCanvas.GetComponent<Animator>().SetBool("exitTerminal", true);
             SceneTransitionCanvas.GetComponent<Animator>().SetBool("toTerminal", false);
             condition.setTerminalIsOpen(false);
+        }
+
+        if (condition.getCamOneKilled()) 
+        {
+            cameraOneAnimator.SetBool("killCamera", true);
         }
     }
 
@@ -139,6 +145,7 @@ public class TerminalThree : MonoBehaviour
                 SceneTransitionCanvas.GetComponent<Animator>().SetBool("openDoor", true);
                 condition.setTerminalIsOpen(false);
                 condition.TerminalWasUsed();
+                condition.setCamOneKilled(true);
                 numberOfCommands = 0;
             }
             else if (numberOfCommands == 3 && !(_inputField.text.Contains("speakers") ||
@@ -169,12 +176,12 @@ public class TerminalThree : MonoBehaviour
             }
             else 
             {
-                DisplayText("...", _textMesh, "WRONG INPUT!");
+                DisplayText("...", _textMesh, "WRONG INPUT");
             }
         }
         else 
         {
-            DisplayText("...", _textMesh, "WRONG INPUT!");
+            DisplayText("...", _textMesh, "WRONG INPUT");
             _inputField.text = "";
             _inputField.ActivateInputField();
             _inputField.Select();
