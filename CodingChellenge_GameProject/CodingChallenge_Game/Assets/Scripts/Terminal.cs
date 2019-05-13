@@ -60,7 +60,7 @@ public class Terminal : MonoBehaviour
             condition.setTerminalIsOpen(false);
         }
 
-        if (condition.getDoorOneOpen()) keepDoorOpen();
+        if (condition.getDoorOneOpen()) keepDoorOneOpen();
         if (condition.getPRL_DoorOpen()) keepPRLDoorOpen();
     }
 
@@ -231,7 +231,7 @@ public class Terminal : MonoBehaviour
         _inputField.Select();
     }
 
-    private void keepDoorOpen() 
+    private void keepDoorOneOpen() 
     {
         if(doorOne != null)
             doorOne.position = new Vector3(114.56f, 1.98f, -6.490003f);

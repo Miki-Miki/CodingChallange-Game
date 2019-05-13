@@ -22,4 +22,6 @@ public class keepDoorOpen : MonoBehaviour
        conditionChecker.setPRL_DoorTwoOpen(true);
     }
 
+    
+
 }
