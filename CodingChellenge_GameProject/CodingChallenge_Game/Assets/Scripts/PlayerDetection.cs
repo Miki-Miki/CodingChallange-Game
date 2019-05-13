@@ -13,15 +13,15 @@ public class PlayerDetection : MonoBehaviour
     {
         activeScene = SceneManager.GetActiveScene();
         // GameOverCanvas = GameObject.FindGameObjectWithTag("GameOverCanvas");
-        if(isGameOver && activeScene.buildIndex != 7) GameOverCanvas.SetActive(true);
     }
-
+       
     void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "Player")
         {
             Debug.Log("Player has entered vision");
             isGameOver = true;
+            GameOverCanvas.SetActive(true);
         }
     }
 
