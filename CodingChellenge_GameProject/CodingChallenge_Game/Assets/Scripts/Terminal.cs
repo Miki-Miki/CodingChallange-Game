@@ -9,9 +9,9 @@ public class Terminal : MonoBehaviour
 {
     public GameObject SceneTransitionCanvas;
     public InputField _inputField;
-    public Transform doorOne;
     public Transform doorOnePRL;
     public TextMeshProUGUI _textMesh;
+    public float doorSpeed;
 
     private bool isInteractable;
     private DescriptionControl description;
@@ -19,16 +19,24 @@ public class Terminal : MonoBehaviour
     private int ntTerminalWasOpened = 0;
     private ConditionChecker condition;
     private Scene activeScene;
+    private bool doorOpened = false;
+    private CCInside ccInside;
+    private Transform doorOne;
 
 
     void Start()
     {
         description = GetComponent<DescriptionControl>();
-        condition = GameObject.FindGameObjectWithTag("ConditionChecker").GetComponent<ConditionChecker>();
     }
 
     void Update()
     {
+        condition = GameObject.FindGameObjectWithTag("ConditionChecker").GetComponent<ConditionChecker>();
+        //ccInside = GameObject.FindGameObjectWithTag("CCInside").GetComponent<CCInside>();
+        doorOne = GameObject.FindGameObjectWithTag("doorOne").transform;
+
+        //if (condition.getDoorOneOpen()) { keepDoorOneOpen(); }
+
         activeScene = SceneManager.GetActiveScene();
 
         if (description.GetTimesDescritpionWasPoped() > 0 && isInteractable &&
@@ -60,8 +68,12 @@ public class Terminal : MonoBehaviour
             condition.setTerminalIsOpen(false);
         }
 
-        if (condition.getDoorOneOpen()) keepDoorOneOpen();
-        if (condition.getPRL_DoorOpen()) keepPRLDoorOpen();
+        if(condition.getDoorOneOpen())
+        {
+            Debug.Log("Running!!!");
+            Vector3 target = new Vector3(116.2f, 1.97f, -4.9f);
+            doorOne.position = Vector3.Lerp(doorOne.position, target, Time.deltaTime * doorSpeed);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -146,6 +158,7 @@ public class Terminal : MonoBehaviour
                 condition.TerminalWasUsed();
                 condition.setDoorOneOpen(true);
                 numberOfCommands = 0;
+                //ccInside.setHasDoorOpened(true);
             }
             else if (numberOfCommands == 3 && !(_inputField.text.Contains("speakers") ||
                 _inputField.text.Contains("22101") || _inputField.text.Contains("open") ||
@@ -239,8 +252,8 @@ public class Terminal : MonoBehaviour
 
     private void keepPRLDoorOpen()
     {
-        if(doorOnePRL != null)
-            doorOnePRL.position = new Vector3(0f, 4.69f, 0f);
+        if (doorOnePRL != null)
+            doorOnePRL.position = new Vector3(0f, 9.33f, 0f);
     }
    
 }

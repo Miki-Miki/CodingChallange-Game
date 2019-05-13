@@ -10,8 +10,8 @@ public class TerminalTwo : MonoBehaviour
     public GameObject SceneTransitionCanvas;
     public InputField _inputField;
     public TextMeshProUGUI _textMesh;
-    public Transform door2;
     public Transform door2PRL;
+    public float doorSpeed;
 
     private bool isInteractable;
     private DescriptionControl description;
@@ -19,6 +19,7 @@ public class TerminalTwo : MonoBehaviour
     private int ntTerminalWasOpened = 0;
     private ConditionChecker condition;
     private Scene activeScene;
+    private Transform door2;
 
 
 
@@ -31,6 +32,7 @@ public class TerminalTwo : MonoBehaviour
     void Update()
     {
         activeScene = SceneManager.GetActiveScene();
+        door2 = GameObject.FindGameObjectWithTag("doorTwo").transform;
 
         if (description.GetTimesDescritpionWasPoped() > 0 && isInteractable &&
         Input.GetButtonDown("Use"))
@@ -61,8 +63,12 @@ public class TerminalTwo : MonoBehaviour
             condition.setTerminalIsOpen(false);
         }
 
-        if(condition.getDoorTwoOpen()) keepDoorOpen();
-        if(condition.getPRL_DoorTwoOpen()) keepPRLDoorOpen();
+        if(condition.getDoorTwoOpen())
+        {
+            Vector3 target = new Vector3(142.8f, 2.24f, -4.9f);
+            door2.position = Vector3.Lerp(door2.position, target, Time.deltaTime * doorSpeed);
+        }
+   
     }
 
     void OnTriggerEnter2D(Collider2D collision)

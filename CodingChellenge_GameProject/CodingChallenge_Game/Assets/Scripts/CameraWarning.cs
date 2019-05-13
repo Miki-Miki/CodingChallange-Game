@@ -5,9 +5,10 @@ using UnityEngine;
 public class CameraWarning : MonoBehaviour
 {
     public Animator cameraAnimator;
+    public Animator cameraWarningObjective;
+
     private CCInside condition;
     private PlayerMovement player;
-
     private CMFollowObject cmFollowScript;
     private bool hasEntered = false;
 
@@ -29,6 +30,7 @@ public class CameraWarning : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player" && !hasEntered)
         {
+            StartCoroutine(startObjective(5f));
             //DisablePlayerDelayed(6f);
             isForWarning = true;
             condition.setIsForCamWarning(true);
@@ -60,5 +62,12 @@ public class CameraWarning : MonoBehaviour
     private void DisablePlayerDelayed(float delay)
     {
         StartCoroutine(DisPlayer(delay));
+    }
+
+    IEnumerator startObjective(float delay)
+    {
+        cameraWarningObjective.SetBool("isObjectiveAvailible", true);
+        yield return new WaitForSeconds(delay);
+        cameraWarningObjective.SetBool("isObjectiveComplete", true);
     }
 }

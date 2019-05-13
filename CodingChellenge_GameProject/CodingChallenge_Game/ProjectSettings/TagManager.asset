@@ -16,6 +16,8 @@ TagManager:
   - computerScreen
   - cameraObjective
   - CCInside
+  - doorOne
+  - doorTwo
   layers:
   - Default
   - TransparentFX

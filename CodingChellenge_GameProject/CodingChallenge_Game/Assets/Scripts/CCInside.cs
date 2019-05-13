@@ -10,14 +10,19 @@ public class CCInside : MonoBehaviour
     // Checkers for objectives
     private bool isForCamWarning = false;
 
+    // Check if door open
+    private bool hasDoorOpened = false;
+
     void Update() 
     {
-        if(isForCamWarning)
+        if(isForCamWarning && cameraWarning != null)
             cameraWarning.SetBool("isObjectiveAvailible", true);
-        if(!isForCamWarning)
+        if(!isForCamWarning && cameraWarning != null)
             cameraWarning.SetBool("isObjectiveComplete", true);
     }
 
     public void setIsForCamWarning(bool set) { isForCamWarning = set; }
     public bool getIsForCamWarning() { return isForCamWarning; }
+    public void setHasDoorOpened(bool set) { hasDoorOpened = set; }
+    public bool getHasDoorOpened() { return hasDoorOpened; }
 }
