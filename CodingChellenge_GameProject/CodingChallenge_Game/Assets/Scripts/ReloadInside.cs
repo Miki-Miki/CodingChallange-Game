@@ -6,12 +6,18 @@ public class ReloadInside : MonoBehaviour
 {
     private GameObject Player;
     public GameObject door1, door2, door3;
-    public GameObject GameOverCanvas;
+    private GameObject GameOverCanvas;
     public GameObject cam1, cam2;
+    private ConditionChecker condition;
+    private GameObject[] portal;
 
     void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
+        condition = GameObject.FindGameObjectWithTag("ConditionChecker").GetComponent<ConditionChecker>();
+        portal = GameObject.FindGameObjectsWithTag("Portal");
+        GameOverCanvas = GameObject.FindGameObjectWithTag("GameOverCanvas");
+
     }
 
     public void ReloadLevel()
@@ -27,7 +33,15 @@ public class ReloadInside : MonoBehaviour
         door1.transform.position = new Vector3(114f, -2.58f, -4.9f);
         door2.transform.position = new Vector3(140.6f, -2.54f, -4.9f);
         door3.transform.position = new Vector3(196.98f, -2.48f, -6.490003f);
-        GameOverCanvas.SetActive(false);
+        GameOverCanvas.GetComponent<Animator>().SetBool("isGameOver", false);
+        condition.setDoorOneOpen(false);
+        condition.setDoorTwoOpen(false);
+        condition.setDoorThreeOpen(false);
+
+        for(int i = 0; i < portal.Length; i++)
+        {
+            Destroy(portal[i]);
+        }
         
     }
 }

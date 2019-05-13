@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class CameraDetetction : MonoBehaviour
 {
+    //private GameObject GameOverScreen;
     public GameObject GameOverCanvas;
     private bool isGameOver = false;
 
     void Update()
     {
-        // GameOverCanvas = GameObject.FindGameObjectWithTag("GameOverCanvas");
-        if(isGameOver) GameOverCanvas.SetActive(true);
+        GameOverCanvas = GameObject.FindGameObjectWithTag("GameOverCanvas");
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -19,6 +19,7 @@ public class CameraDetetction : MonoBehaviour
         {
             Debug.Log("Player has entered vision");
             isGameOver = true;
+            GameOverCanvas.GetComponent<Animator>().SetBool("isGameOver", true);
         }
     }
 }

@@ -20,6 +20,7 @@ TagManager:
   - doorTwo
   - doorThree
   - GameOverCanvas
+  - GameOverScreen
   layers:
   - Default
   - TransparentFX
