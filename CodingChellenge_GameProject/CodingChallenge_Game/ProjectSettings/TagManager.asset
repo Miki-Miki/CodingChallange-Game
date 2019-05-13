@@ -18,6 +18,8 @@ TagManager:
   - CCInside
   - doorOne
   - doorTwo
+  - doorThree
+  - GameOverCanvas
   layers:
   - Default
   - TransparentFX

@@ -10,7 +10,6 @@ public class TerminalFive : MonoBehaviour
     public GameObject SceneTransitionCanvas;
     public InputField _inputField;
     public TextMeshProUGUI _textMesh;
-    public Transform door3;
     public float doorSpeed;
 
     private bool isInteractable;
@@ -19,6 +18,7 @@ public class TerminalFive : MonoBehaviour
     private int ntTerminalWasOpened = 0;
     private ConditionChecker condition;
     private Scene activeScene;
+    private Transform door3;
 
     void Start()
     {
@@ -29,6 +29,7 @@ public class TerminalFive : MonoBehaviour
     void Update()
     {
         activeScene = SceneManager.GetActiveScene();
+        door3 = GameObject.FindGameObjectWithTag("doorThree").transform;
 
         if (description.GetTimesDescritpionWasPoped() > 0 && isInteractable &&
         Input.GetButtonDown("Use"))

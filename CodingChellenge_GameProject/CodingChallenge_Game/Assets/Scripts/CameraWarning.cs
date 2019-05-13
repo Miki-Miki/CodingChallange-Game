@@ -30,11 +30,9 @@ public class CameraWarning : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player" && !hasEntered)
         {
-            StartCoroutine(startObjective(5f));
-            //DisablePlayerDelayed(6f);
             isForWarning = true;
             condition.setIsForCamWarning(true);
-            cameraAnimator.SetBool("cameraWarning", true);
+            StartCoroutine(cameraObjective(3f));
             hasEntered = true;
         }
     }

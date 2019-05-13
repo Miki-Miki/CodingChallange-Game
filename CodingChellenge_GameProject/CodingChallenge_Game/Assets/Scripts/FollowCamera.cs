@@ -19,6 +19,7 @@ public class FollowCamera : MonoBehaviour
 
     void Update()
     {
+        cam = GameObject.FindGameObjectWithTag("MainCamera").transform;
         Object.transform.position = cam.position;
     }
 

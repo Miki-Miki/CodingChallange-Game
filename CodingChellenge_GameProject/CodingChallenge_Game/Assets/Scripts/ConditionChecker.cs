@@ -25,6 +25,7 @@ public class ConditionChecker : MonoBehaviour
     public Animator OpenCompAnim;
     public Animator CheckCompPRL;
     public Animator goOutside;
+    private Animator cameraWarning;
     
     //Checkers for objectives
     private int objectiveTestPortal = 0;
@@ -93,6 +94,13 @@ public class ConditionChecker : MonoBehaviour
             delay_objective(5.5f, goOutside, "isObjectiveAvailible", true);
         if (isDoorOpen == true)
             goOutside.SetBool("isObjectiveComplete", true);
+
+        cameraWarning = GameObject.FindGameObjectWithTag("cameraWarning").GetComponent<Animator>();
+
+        if (isForCamWarning)
+            cameraWarning.SetBool("isObjectiveAvailible", true);
+        if (!isForCamWarning)
+            cameraWarning.SetBool("isObjectiveComplete", true);
     }
 
     IEnumerator Delay_letter_F(float delay_for_seconds) {
