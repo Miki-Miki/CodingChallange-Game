@@ -19,7 +19,7 @@ public class FadeMainMenu : MonoBehaviour
 
     public void LoadScene()
     {
-        SceneManager.LoadScene("Scene1");
+        SceneManager.LoadScene("Scene2");
     }
 
     public void RunFadeAnimation() 

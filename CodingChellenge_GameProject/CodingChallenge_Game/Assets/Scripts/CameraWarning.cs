@@ -30,8 +30,9 @@ public class CameraWarning : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player" && !hasEntered)
         {
+            Debug.Log("Camera Warning!!!");
             isForWarning = true;
-            condition.setIsForCamWarning(true);
+            cameraAnimator.SetTrigger("cameraWarning");
             StartCoroutine(cameraObjective(3f));
             hasEntered = true;
         }

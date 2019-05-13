@@ -19,7 +19,7 @@ public class NPC_patrol : MonoBehaviour
 
     void Update()
     {
-         transform.position = Vector2.MoveTowards(transform.position, moveSpots[randomSpot].position, speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, moveSpots[randomSpot].position, speed * Time.deltaTime);
 
         if (randomSpot == 1)
         {
