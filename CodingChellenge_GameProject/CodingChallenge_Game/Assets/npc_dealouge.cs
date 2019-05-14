@@ -24,7 +24,7 @@ public class npc_dealouge : MonoBehaviour
             Debug.Log("E presesd");
         }
 
-        if(isTrigger && Input.GetButtonDown("Description"))
+        if(isTrigger && Input.GetButtonDown("Use"))
         {
             canvas.GetComponent<Animator>().SetBool("for_fade_in", true);
             dialogueSystem.active = true;

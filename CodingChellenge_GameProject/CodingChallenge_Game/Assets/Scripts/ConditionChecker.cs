@@ -27,7 +27,7 @@ public class ConditionChecker : MonoBehaviour
     public Animator goOutside;
     private Animator cameraWarning;
     
-    //Checkers for objectives
+    // Checkers for objectives
     private int objectiveTestPortal = 0;
     private int objectiveTestPortalComplete = 0;
     private bool cmpOpenInParallel = false;
@@ -36,7 +36,7 @@ public class ConditionChecker : MonoBehaviour
     private bool firstTimeInParllel = false;
     private bool firstTimeInOutdoors = false;
 
-    //Checkers for terminals
+    // Checkers for terminals
     private int ntTerminalWasUsed = 0;
     private bool terminalIsOpen = false;
     private bool isDoorOneOpen = false;
@@ -50,6 +50,13 @@ public class ConditionChecker : MonoBehaviour
     public GameObject info_letter_F;
     private float seconds_delay = 2.0f;
     //private float delay_player_for_seconds = 3.3f;
+
+    // Checkers for NPCs
+    private bool openedNPC1 = false;
+    private bool openedNPC2 = false;
+    private static int ntTalked = 0;
+    private bool openedNPC1PRL = false;
+    private bool openedNPC2PRL = false;
 
     void Start()
     {
@@ -207,4 +214,14 @@ public class ConditionChecker : MonoBehaviour
 
     public void setFirsTimeInOutdoors(bool set) { firstTimeInOutdoors = set; }
     public bool getFirstTimeInOutdoors() { return firstTimeInOutdoors; }
+
+    public void setNPC1Open(bool set) { openedNPC1 = set; }
+    public bool getNPC1Open() { return openedNPC1; }
+    public void setNPC2Open(bool set) { openedNPC2 = set; }
+    public bool getNPC2Open() { return openedNPC2; }
+
+    public void setNPC1OpenPRL(bool set) { openedNPC1PRL = set; }
+    public bool getNPC1OpenPRL() { return openedNPC1PRL; }
+    public void setNPC2OpenPRL(bool set) { openedNPC2PRL = set; }
+    public bool getNPC2OpenPRL() { return openedNPC2PRL; }
 }
