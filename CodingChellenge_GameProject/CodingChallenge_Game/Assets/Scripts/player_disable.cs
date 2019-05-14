@@ -31,12 +31,14 @@ public class player_disable : MonoBehaviour
         playerAnimator.SetBool("isForAnimation", false);
         playerAnimator.SetBool("isForCrouchAnimation", false);
         playerAnimator.SetBool("cPressed", false);
+       // Player.GetComponent<PlayerMovement>().standStill();
         playerScript.enabled = false;
     }
 
     public void EnablePlayer()
     {
         playerScript.enabled = true;
+       // Player.GetComponent<PlayerMovement>().walk();
     }
 
     public void DisablePortal()

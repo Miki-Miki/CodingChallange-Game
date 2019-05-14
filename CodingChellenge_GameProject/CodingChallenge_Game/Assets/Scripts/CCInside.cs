@@ -15,9 +15,9 @@ public class CCInside : MonoBehaviour
 
     void Update() 
     {
-        if(isForCamWarning && cameraWarning != null)
+        if(isForCamWarning )
             cameraWarning.SetBool("isObjectiveAvailible", true);
-        if(!isForCamWarning && cameraWarning != null)
+        if(!isForCamWarning)
             cameraWarning.SetBool("isObjectiveComplete", true);
     }
 

@@ -29,7 +29,7 @@ public class ReloadInsidePRL : MonoBehaviour
 
         Player.transform.position = new Vector3(105.65f, -1.94f, -4.340001f);
         Player.GetComponent<PlayerMovement>().enabled = true;
-        GameOverCanvas.GetComponent<Animator>().SetBool("isGameOver", false);
+        //GameOverCanvas.GetComponent<Animator>().SetBool("isGameOver", false);
         condition.setDoorOneOpen(false);
         condition.setDoorTwoOpen(false);
         condition.setDoorThreeOpen(false);

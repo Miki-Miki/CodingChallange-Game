@@ -176,6 +176,9 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    public void standStill() { rb2d.isKinematic = false; }
+    public void walk() { rb2d.isKinematic = true;  }
+    
     public void disablePlayer()
     {
         this.enabled = false;

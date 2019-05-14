@@ -17,10 +17,10 @@ public class FollowCamera : MonoBehaviour
         }
     }
 
-    void Update()
+    void FixedUpdate()
     {
         cam = GameObject.FindGameObjectWithTag("MainCamera").transform;
-        Object.transform.position = cam.position;
+        Object.transform.position = Vector3.Lerp(Object.transform.position, cam.position, Time.deltaTime * 7);
     }
 
     IEnumerator delay_buzz_animation(float delay) {

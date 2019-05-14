@@ -1146,11 +1146,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.86
       objectReference: {fileID: 0}
-    - target: {fileID: 740810494, guid: 55fe67b92b421424f8b5262a3e9c21e7, type: 3}
-      propertyPath: portal
-      value: 
-      objectReference: {fileID: 8103831108970845440, guid: aebdebc5dde98a54585bbee46273e395,
-        type: 3}
     - target: {fileID: 2681783940064020706, guid: 55fe67b92b421424f8b5262a3e9c21e7,
         type: 3}
       propertyPath: scaleX
@@ -1176,6 +1171,11 @@ PrefabInstance:
       propertyPath: pRunSpeed
       value: 85
       objectReference: {fileID: 0}
+    - target: {fileID: 740810494, guid: 55fe67b92b421424f8b5262a3e9c21e7, type: 3}
+      propertyPath: portal
+      value: 
+      objectReference: {fileID: 8103831108970845440, guid: aebdebc5dde98a54585bbee46273e395,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55fe67b92b421424f8b5262a3e9c21e7, type: 3}
 --- !u!1 &635231967
@@ -11169,7 +11169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backgrounds:
   - {fileID: 1182359074}
-  smoothing: 1
+  smoothing: 0.84
 --- !u!4 &1517991304
 Transform:
   m_ObjectHideFlags: 0

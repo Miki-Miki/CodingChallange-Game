@@ -7,7 +7,6 @@ public class CameraWarning : MonoBehaviour
     public Animator cameraAnimator;
     public Animator cameraWarningObjective;
 
-    private CCInside condition;
     private PlayerMovement player;
     private CMFollowObject cmFollowScript;
     private bool hasEntered = false;
@@ -17,13 +16,14 @@ public class CameraWarning : MonoBehaviour
     void Start()
     {
         cmFollowScript = GetComponent<CMFollowObject>();
+
     }
 
     void Update()
     {
-        condition = GameObject.FindGameObjectWithTag("CCInside").GetComponent<CCInside>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
-        if (hasEntered) cameraWarnignComplete(4f);
+        cameraWarningObjective.SetBool("isObjectiveComplete", false);
+        if (hasEntered) StartCoroutine(cameraObjective(6f));
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -33,7 +33,9 @@ public class CameraWarning : MonoBehaviour
             Debug.Log("Camera Warning!!!");
             isForWarning = true;
             cameraAnimator.SetTrigger("cameraWarning");
-            StartCoroutine(cameraObjective(3f));
+            //cameraWarningObjective.SetBool("isObjectiveComplete", false);
+            cameraWarningObjective.SetBool("isObjectiveAvailible", true);
+            //StartCoroutine(cameraObjective(3f));
             hasEntered = true;
         }
     }
@@ -41,7 +43,8 @@ public class CameraWarning : MonoBehaviour
     IEnumerator cameraObjective(float delay) 
     {
         yield return new WaitForSeconds(delay);
-        condition.setIsForCamWarning(false);
+        cameraWarningObjective.SetBool("isObjectiveComplete", true);
+
     }
 
     private void cameraWarnignComplete(float delay)

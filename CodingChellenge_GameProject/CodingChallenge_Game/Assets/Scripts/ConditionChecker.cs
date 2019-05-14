@@ -33,6 +33,8 @@ public class ConditionChecker : MonoBehaviour
     private bool cmpOpenInParallel = false;
     private bool isOutside = false;
     private bool isForCamWarning = false;
+    private bool firstTimeInParllel = false;
+    private bool firstTimeInOutdoors = false;
 
     //Checkers for terminals
     private int ntTerminalWasUsed = 0;
@@ -95,12 +97,7 @@ public class ConditionChecker : MonoBehaviour
         if (isDoorOpen == true)
             goOutside.SetBool("isObjectiveComplete", true);
 
-        cameraWarning = GameObject.FindGameObjectWithTag("cameraWarning").GetComponent<Animator>();
-
-        if (isForCamWarning)
-            cameraWarning.SetBool("isObjectiveAvailible", true);
-        if (!isForCamWarning)
-            cameraWarning.SetBool("isObjectiveComplete", true);
+   
     }
 
     IEnumerator Delay_letter_F(float delay_for_seconds) {
@@ -204,4 +201,10 @@ public class ConditionChecker : MonoBehaviour
 
     public void setDoorThreeOpen(bool set) { isDoorThreeOpen = set; }
     public bool getDoorThreeOpen() {return isDoorThreeOpen; }
+
+    public void setFirstTimeInParallel(bool set) { firstTimeInParllel = set; }
+    public bool getFirstTimeInPrallel() { return firstTimeInParllel; }
+
+    public void setFirsTimeInOutdoors(bool set) { firstTimeInOutdoors = set; }
+    public bool getFirstTimeInOutdoors() { return firstTimeInOutdoors; }
 }

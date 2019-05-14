@@ -21,6 +21,8 @@ TagManager:
   - doorThree
   - GameOverCanvas
   - GameOverScreen
+  - camOne
+  - camTwo
   layers:
   - Default
   - TransparentFX
