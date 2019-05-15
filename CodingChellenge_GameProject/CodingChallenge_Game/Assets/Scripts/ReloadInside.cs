@@ -6,7 +6,7 @@ public class ReloadInside : MonoBehaviour
 {
     private GameObject Player;
     private GameObject door1, door2, door3;
-    private GameObject cam1, cam2;
+    public GameObject cam1, cam2;
     private ConditionChecker condition;
     private GameObject[] portal;
 
@@ -18,8 +18,8 @@ public class ReloadInside : MonoBehaviour
         door1 = GameObject.FindGameObjectWithTag("doorOne");
         door2 = GameObject.FindGameObjectWithTag("doorTwo");
         door3 = GameObject.FindGameObjectWithTag("doorThree");
-        cam1 = GameObject.FindGameObjectWithTag("camOne");
-        cam2 = GameObject.FindGameObjectWithTag("camTwo");
+        //cam1 = GameObject.FindGameObjectWithTag("camOne");
+        //cam2 = GameObject.FindGameObjectWithTag("camTwo");
     }
 
 
@@ -38,6 +38,8 @@ public class ReloadInside : MonoBehaviour
         condition.setDoorOneOpen(false);
         condition.setDoorTwoOpen(false);
         condition.setDoorThreeOpen(false);
+        condition.setCamOneKilled(false);
+        condition.setCamTwoKilled(false);
 
         for(int i = 0; i < portal.Length; i++)
         {

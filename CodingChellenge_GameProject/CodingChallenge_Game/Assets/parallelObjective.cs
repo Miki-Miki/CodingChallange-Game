@@ -6,10 +6,10 @@ public class parallelObjective : MonoBehaviour
 {
     public Animator onLoadObjective;
     private ConditionChecker condition;
-    ////void Start()
-    //{
-    //    condition = GameObject.FindGameObjectWithTag("ConditionChecker").GetComponent<ConditionChecker>();
-    //}
+    void Start()
+    {
+        condition = GameObject.FindGameObjectWithTag("ConditionChecker").GetComponent<ConditionChecker>();
+    }
 
     // Update is called once per frame
     void Update()

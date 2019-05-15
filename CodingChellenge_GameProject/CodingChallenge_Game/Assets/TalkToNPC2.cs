@@ -29,14 +29,10 @@ public class TalkToNPC2 : MonoBehaviour
         
             if(!objComplete) objectiveAnimator.SetBool("isObjectiveAvailible", false);
 
-            if(condition.getNPC1Open() && condition.getNPC2Open()) 
-            {
-                objectiveAnimator.SetBool("isObjectiveAvailible", true);
-            }
-
             if(condition.getNPC1Open() && condition.getNPC1OpenPRL() && condition.getNPC2Open()
             && condition.getNPC2OpenPRL())
             {
+                objectiveAnimator.SetBool("isObjectiveAvailible", true);
                 colliderWall.SetActive(false);
             }
         }

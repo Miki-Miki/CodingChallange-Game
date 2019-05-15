@@ -35,6 +35,7 @@ public class ConditionChecker : MonoBehaviour
     private bool isForCamWarning = false;
     private bool firstTimeInParllel = false;
     private bool firstTimeInOutdoors = false;
+    private bool firstTimeInsideParallel = false;
 
     // Checkers for terminals
     private int ntTerminalWasUsed = 0;
@@ -224,4 +225,7 @@ public class ConditionChecker : MonoBehaviour
     public bool getNPC1OpenPRL() { return openedNPC1PRL; }
     public void setNPC2OpenPRL(bool set) { openedNPC2PRL = set; }
     public bool getNPC2OpenPRL() { return openedNPC2PRL; }
+
+    public void setFirstTimeInsideParallel(bool set) { firstTimeInsideParallel = set; }
+    public bool getFirstTimeInsideParallel() { return firstTimeInsideParallel; }
 }
