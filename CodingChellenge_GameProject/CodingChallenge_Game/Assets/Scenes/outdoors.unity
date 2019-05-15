@@ -6316,21 +6316,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0.17836654
       objectReference: {fileID: 0}
-    - target: {fileID: 6090566215700956334, guid: ba4e2403df7fb394a9303e0036ba2928,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7893742272128880521, guid: ba4e2403df7fb394a9303e0036ba2928,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -51
-      objectReference: {fileID: 0}
-    - target: {fileID: 7893742272128880521, guid: ba4e2403df7fb394a9303e0036ba2928,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -567
-      objectReference: {fileID: 0}
     - target: {fileID: 7893742272611019071, guid: ba4e2403df7fb394a9303e0036ba2928,
         type: 3}
       propertyPath: m_ReferenceResolution.x
@@ -6350,6 +6335,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Navigation.m_Mode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6090566215700956334, guid: ba4e2403df7fb394a9303e0036ba2928,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7893742272128880521, guid: ba4e2403df7fb394a9303e0036ba2928,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -51
+      objectReference: {fileID: 0}
+    - target: {fileID: 7893742272128880521, guid: ba4e2403df7fb394a9303e0036ba2928,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -567
       objectReference: {fileID: 0}
     - target: {fileID: 7893742273519134082, guid: ba4e2403df7fb394a9303e0036ba2928,
         type: 3}
@@ -7623,6 +7623,7 @@ GameObject:
   - component: {fileID: 1977237514}
   - component: {fileID: 1977237513}
   - component: {fileID: 1977237516}
+  - component: {fileID: 1977237517}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -7731,6 +7732,20 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: Cinemachine.CinemachineBrain+VcamActivatedEvent, Cinemachine, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &1977237517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1977237512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd55571e0bebaea4e823f4c89bbfcf13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _wantedAspectRatio: 1.778
+  landscapeModeOnly: 1
 --- !u!1 &2015221459
 GameObject:
   m_ObjectHideFlags: 0
